@@ -18,6 +18,12 @@ def get_main_keyboard(user_id, lang="en"):
         [get_label("settings", lang), get_label("support", lang)]
     ], resize_keyboard=True)
 
+def get_main_keyboard_no_translation(user_id, lang="en"):
+    return ReplyKeyboardMarkup([
+        [get_label("next", lang), get_label("answer", lang)],
+        [get_label("settings", lang), get_label("support", lang)]
+    ], resize_keyboard=True)
+
 def get_language_keyboard():
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("🇷🇺 Русский", callback_data="lang_ru"),
