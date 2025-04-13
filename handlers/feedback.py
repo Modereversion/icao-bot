@@ -35,13 +35,12 @@ async def handle_feedback_message(update: Update, context: ContextTypes.DEFAULT_
             f"Новый отзыв от пользователя {user.full_name} (@{user.username}):\n\n"
             f"{feedback_text}"
         )
-        # Пересылаем админу (в личку)
+        # Отправляем отзыв админу (в личное сообщение, если оно установлено)
         await context.bot.send_message(chat_id=ADMIN_ID, text=feedback_message)
-        # Сохраняем в локальном файле
+        # Сохраняем отзыв в файле
         feedbacks = load_feedbacks()
         feedbacks.append(feedback_message)
         save_feedbacks(feedbacks)
-
         context.user_data["feedback_mode"] = False
         lang = context.user_data.get("language", "en")
         thanks = "🙏 Спасибо за ваш отзыв!" if lang == "ru" else "🙏 Thank you for your feedback!"
