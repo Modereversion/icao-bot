@@ -36,7 +36,7 @@ async def handle_settings_callback(update: Update, context: ContextTypes.DEFAULT
     level = context.user_data.get("level", "easy")
     data = get_user_data(user_id)
     
-    def t(ru, en): 
+    def t(ru, en):
         return ru if lang == "ru" else en
 
     if query.data == "change_language":
@@ -93,12 +93,14 @@ async def handle_settings_callback(update: Update, context: ContextTypes.DEFAULT
         context.user_data["level"] = "hard"
         user_data[user_id]["level"] = "hard"
         await query.edit_message_text(t("🚀 Уровень установлен: Сложный", "🚀 Level set: Hard"))
+    elif query.data == "switch_to_hard":
+        context.user_data["level"] = "hard"
+        user_data[user_id]["level"] = "hard"
+        await query.edit_message_text("🚀 Режим сложных вопросов активирован!" if lang == "ru" else "🚀 Hard question mode activated!")
+        await query.message.reply_text("🔁 Обновляем клавиатуру...", reply_markup=get_main_keyboard(user_id, lang))
 
 def get_settings_handlers():
     return [
-        MessageHandler(filters.Regex("^(⚙️ настройки|⚙️ settings)$"), settings_command),
-        CallbackQueryHandler(
-            handle_settings_callback,
-            pattern="^(change_language|change_level|show_progress|reset_progress|leave_feedback|lang_en|lang_ru|level_easy|level_hard)$"
-        )
+        MessageHandler(filters.Regex("⚙️ Настройки|⚙️ Settings"), settings_command),
+        CallbackQueryHandler(handle_settings_callback, pattern="^(change_language|change_level|show_progress|reset_progress|leave_feedback|lang_en|lang_ru|level_easy|level_hard|switch_to_hard)$")
     ]
