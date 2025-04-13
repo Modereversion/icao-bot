@@ -13,12 +13,12 @@ def get_label(key, lang):
     return labels[key][lang]
 
 def get_main_keyboard(user_id, lang="en"):
+    # БЕЗ кнопки "Управление", только основные
     keyboard = [
         [get_label("next", lang), get_label("answer", lang)],
         [get_label("q_translate", lang), get_label("a_translate", lang)],
         [get_label("settings", lang), get_label("support", lang)]
     ]
-    # В версии 1.0 кнопка "Управление" не добавляется
     return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
 
 def get_language_keyboard():
