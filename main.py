@@ -20,17 +20,24 @@ logging.basicConfig(
 
 app = ApplicationBuilder().token(BOT_TOKEN).build()
 
-# Регистрируем обработчики
+# Регистрируем обработчики команд
 app.add_handler(CommandHandler("start", start_command))
 app.add_handler(CommandHandler("support", support_command))
 
+# Регистрируем обработчики настроек
 for handler in get_settings_handlers():
     app.add_handler(handler)
 
+# Регистрируем административные обработчики
 for handler in get_admin_handlers():
     app.add_handler(handler)
 
-app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_feedback_message))
+# Создаем пользовательский фильтр для отзывов: срабатывает только когда feedback_mode True
+feedback_filter = filters.TEXT & (lambda update, context: context.user_data.get("feedback_mode", False))
+
+# Регистрируем обработчик для сообщений-отзывов с использованием специального фильтра
+app.add_handler(MessageHandler(feedback_filter, handle_feedback_message))
+# Регистрируем обработчик для обычных сообщений, когда отзыв не активен
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_user_message))
 
 logging.info("🤖 Бот запущен...")
