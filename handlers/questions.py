@@ -34,11 +34,13 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     msg = update.message.text.strip()
     data = get_user_data(user_id)
 
+    # Получаем язык из контекста, но для вопросов и ответов всегда используем английский.
     lang = context.user_data.get("language", data.get("language", "en"))
     level = context.user_data.get("level", "easy")
     data["language"] = lang
     context.user_data["language"] = lang
 
+    # Генерация меток для кнопок (при этом кнопки отображаются согласно языку интерфейса)
     btn_next = "✈️ Следующий вопрос" if lang == "ru" else "✈️ Next question"
     btn_answer = "💬 Ответ" if lang == "ru" else "💬 Answer"
     btn_q_trans = "🌍 Перевод вопроса" if lang == "ru" else "🌍 Translate question"
@@ -46,6 +48,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
 
     logging.info(f"[USER {user_id}] Сообщение: {msg} | Язык: {lang} | Уровень: {level}")
 
+    # Обработка кнопки "Следующий вопрос"
     if msg == btn_next:
         available = [q for q in QUESTIONS if q["level"] == level and q["id"] not in data[f"{level}_done"]]
         if not available:
@@ -66,23 +69,27 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         data[f"{level}_done"].append(question["id"])
         data["last_question"] = question
 
-        await update.message.reply_text(f"📝 {question['question_' + lang]}")
-        voice = generate_voice(question['question_en'])  # Генерация голосового сообщения на английском
+        # Всегда отправляем вопрос на английском независимо от языка интерфейса
+        await update.message.reply_text(f"📝 {question['question_en']}")
+        voice = generate_voice(question['question_en'])
         if voice:
             await update.message.reply_voice(voice)
         return
 
+    # Обработка кнопки "Ответ"
     if msg == btn_answer:
         q = data.get("last_question")
         if not q:
             await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
             return
-        await update.message.reply_text(f"✅ {q['answer_' + lang]}")
+        # Всегда отправляем ответ на английском независимо от языка интерфейса
+        await update.message.reply_text(f"✅ {q['answer_en']}")
         voice = generate_voice(q['answer_en'])
         if voice:
             await update.message.reply_voice(voice)
         return
 
+    # Обработка кнопки "Перевод вопроса" (показываем русский вариант вопроса)
     if msg == btn_q_trans:
         q = data.get("last_question")
         if not q:
@@ -91,6 +98,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         await update.message.reply_text(f"🌍 {q['question_ru']}")
         return
 
+    # Обработка кнопки "Перевод ответа" (показываем русский вариант ответа)
     if msg == btn_a_trans:
         q = data.get("last_question")
         if not q:
