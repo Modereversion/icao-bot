@@ -1,7 +1,7 @@
 import json
 import random
 import logging
-from telegram import Update
+from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes
 from config import QUESTIONS_FILE
 from keyboards import get_main_keyboard
@@ -34,13 +34,13 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     msg = update.message.text.strip()
     data = get_user_data(user_id)
 
-    # Получаем язык из контекста, но для вопросов и ответов всегда используем английский.
+    # Получаем язык из контекста, но для вопросов и ответов всегда используем английский
     lang = context.user_data.get("language", data.get("language", "en"))
     level = context.user_data.get("level", "easy")
     data["language"] = lang
     context.user_data["language"] = lang
 
-    # Генерация меток для кнопок (при этом кнопки отображаются согласно языку интерфейса)
+    # Генерация меток для кнопок (отображаются согласно языку интерфейса)
     btn_next = "✈️ Следующий вопрос" if lang == "ru" else "✈️ Next question"
     btn_answer = "💬 Ответ" if lang == "ru" else "💬 Answer"
     btn_q_trans = "🌍 Перевод вопроса" if lang == "ru" else "🌍 Translate question"
@@ -48,20 +48,28 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
 
     logging.info(f"[USER {user_id}] Сообщение: {msg} | Язык: {lang} | Уровень: {level}")
 
-    # Обработка кнопки "Следующий вопрос"
+    # --- Обработка кнопки "Следующий вопрос" ---
     if msg == btn_next:
         available = [q for q in QUESTIONS if q["level"] == level and q["id"] not in data[f"{level}_done"]]
         if not available:
+            # Если закончились простые вопросы, отправляем инлайн-клавиатуру для выбора дальнейшего действия
             if level == "easy":
-                context.user_data["level"] = "hard"
+                keyboard = InlineKeyboardMarkup([
+                    [InlineKeyboardButton("Перейти к сложным", callback_data="switch_to_hard"),
+                     InlineKeyboardButton("Начать сначала", callback_data="reset_progress")]
+                ])
                 await update.message.reply_text(
-                    "🎉 Вы прошли все простые вопросы. Перехожу к сложным!" if lang == "ru"
-                    else "🎉 All easy questions done. Switching to hard questions!"
+                    "✅ Вы ответили на все простые вопросы. Что хотите сделать дальше?",
+                    reply_markup=keyboard
                 )
             else:
+                # Если закончились сложные вопросы, предлагаем только начать сначала
+                keyboard = InlineKeyboardMarkup([
+                    [InlineKeyboardButton("Начать сначала", callback_data="reset_progress")]
+                ])
                 await update.message.reply_text(
-                    "✅ Все вопросы завершены. Хотите начать сначала?" if lang == "ru"
-                    else "✅ All questions completed. Want to start over?"
+                    "✅ Все вопросы завершены. Хотите начать сначала?",
+                    reply_markup=keyboard
                 )
             return
 
@@ -69,40 +77,48 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         data[f"{level}_done"].append(question["id"])
         data["last_question"] = question
 
-        # Всегда отправляем вопрос на английском независимо от языка интерфейса
+        # Всегда отправляем вопрос на английском независимо от выбранного языка интерфейса
         await update.message.reply_text(f"📝 {question['question_en']}")
         voice = generate_voice(question['question_en'])
         if voice:
             await update.message.reply_voice(voice)
         return
 
-    # Обработка кнопки "Ответ"
+    # --- Обработка кнопки "Ответ" ---
     if msg == btn_answer:
         q = data.get("last_question")
         if not q:
-            await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
+            await update.message.reply_text(
+                "❗ Сначала выберите вопрос." if lang == "ru"
+                else "❗ Please select a question first."
+            )
             return
-        # Всегда отправляем ответ на английском независимо от языка интерфейса
         await update.message.reply_text(f"✅ {q['answer_en']}")
         voice = generate_voice(q['answer_en'])
         if voice:
             await update.message.reply_voice(voice)
         return
 
-    # Обработка кнопки "Перевод вопроса" (показываем русский вариант вопроса)
+    # --- Обработка кнопки "Перевод вопроса" ---
     if msg == btn_q_trans:
         q = data.get("last_question")
         if not q:
-            await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
+            await update.message.reply_text(
+                "❗ Сначала выберите вопрос." if lang == "ru"
+                else "❗ Please select a question first."
+            )
             return
         await update.message.reply_text(f"🌍 {q['question_ru']}")
         return
 
-    # Обработка кнопки "Перевод ответа" (показываем русский вариант ответа)
+    # --- Обработка кнопки "Перевод ответа" ---
     if msg == btn_a_trans:
         q = data.get("last_question")
         if not q:
-            await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
+            await update.message.reply_text(
+                "❗ Сначала выберите вопрос." if lang == "ru"
+                else "❗ Please select a question first."
+            )
             return
         await update.message.reply_text(f"🇷🇺 {q['answer_ru']}")
         return
