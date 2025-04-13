@@ -20,6 +20,14 @@ logging.basicConfig(
 
 app = ApplicationBuilder().token(BOT_TOKEN).build()
 
+# Добавляем универсальный обработчик для отладки всех обновлений
+async def debug_all_updates(update, context):
+    logging.info(f"[DEBUG ALL] Update: {update}")
+
+# Регистрируем отладочный обработчик
+app.add_handler(MessageHandler(filters.ALL, debug_all_updates))
+
+# Регистрируем остальные обработчики
 app.add_handler(CommandHandler("start", start_command))
 app.add_handler(CommandHandler("support", support_command))
 
@@ -31,7 +39,6 @@ for handler in get_admin_handlers():
 for handler in get_admin_block_handlers():
     app.add_handler(handler)
 
-# Универсальный обработчик для текстовых сообщений
 async def message_dispatcher(update, context):
     if update.message and update.message.text:
         logging.info(f"[DEBUG] Получено сообщение: '{update.message.text}'")
