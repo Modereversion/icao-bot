@@ -9,16 +9,17 @@ async def handle_feedback_message(update: Update, context: ContextTypes.DEFAULT_
     if context.user_data.get("feedback_mode"):
         user = update.effective_user
         feedback_text = update.message.text
+
         message = f"Новый отзыв от пользователя {user.full_name} (@{user.username}):\n\n{feedback_text}"
         subject = "Новый отзыв от пользователя"
         send_email(subject, message)
-        # Сбрасываем режим отзывов после обработки
+
         context.user_data["feedback_mode"] = False
+
         lang = context.user_data.get("language", "en")
         thanks = "🙏 Спасибо за ваш отзыв!" if lang == "ru" else "🙏 Thank you for your feedback!"
         await update.message.reply_text(thanks)
     else:
-        # Если feedback_mode не активен, этот обработчик не будет вызван из-за фильтра
         return
 
 def send_email(subject, body):
@@ -27,10 +28,15 @@ def send_email(subject, body):
         msg["Subject"] = subject
         msg["From"] = EMAIL
         msg["To"] = EMAIL
+
         with smtplib.SMTP("smtp.gmail.com", 587) as server:
             server.starttls()
+            # Используем переменную EMAIL_PASSWORD для авторизации
             if EMAIL_PASSWORD:
                 server.login(EMAIL, EMAIL_PASSWORD)
+            else:
+                logging.error("Переменная EMAIL_PASSWORD не установлена.")
+                return
             server.send_message(msg)
     except Exception as e:
         logging.error(f"Ошибка при отправке email: {e}")
