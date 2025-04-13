@@ -35,7 +35,7 @@ async def handle_feedback_message(update: Update, context: ContextTypes.DEFAULT_
             f"Новый отзыв от пользователя {user.full_name} (@{user.username}):\n\n"
             f"{feedback_text}"
         )
-        # Отправляем отзыв администратору в личные сообщения
+        # Отправляем отзыв администратору (в личку, если есть чат с ботом)
         await context.bot.send_message(chat_id=ADMIN_ID, text=feedback_message)
         # Сохраняем отзыв в файле
         feedbacks = load_feedbacks()
