@@ -12,11 +12,13 @@ async def handle_feedback_message(update: Update, context: ContextTypes.DEFAULT_
         message = f"Новый отзыв от пользователя {user.full_name} (@{user.username}):\n\n{feedback_text}"
         subject = "Новый отзыв от пользователя"
         send_email(subject, message)
+        # Сбрасываем режим отзывов после обработки
         context.user_data["feedback_mode"] = False
         lang = context.user_data.get("language", "en")
         thanks = "🙏 Спасибо за ваш отзыв!" if lang == "ru" else "🙏 Thank you for your feedback!"
         await update.message.reply_text(thanks)
     else:
+        # Если feedback_mode не активен, этот обработчик не будет вызван из-за фильтра
         return
 
 def send_email(subject, body):
