@@ -8,19 +8,17 @@ def get_label(key, lang):
         "q_translate": {"ru": "🌍 перевод вопроса", "en": "🌍 translate question"},
         "a_translate": {"ru": "🇷🇺 перевод ответа", "en": "🇷🇺 translate answer"},
         "support": {"ru": "💳 поддержать проект", "en": "💳 support project"},
-        "settings": {"ru": "⚙️ настройки", "en": "⚙️ settings"},
-        "management": {"ru": "управление", "en": "management"}
+        "settings": {"ru": "⚙️ настройки", "en": "⚙️ settings"}
     }
     return labels[key][lang]
 
 def get_main_keyboard(user_id, lang="en"):
+    # БЕЗ кнопки "Управление", только основные
     keyboard = [
         [get_label("next", lang), get_label("answer", lang)],
         [get_label("q_translate", lang), get_label("a_translate", lang)],
         [get_label("settings", lang), get_label("support", lang)]
     ]
-    if user_id == ADMIN_ID:
-        keyboard.append([get_label("management", lang)])
     return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
 
 def get_language_keyboard():
