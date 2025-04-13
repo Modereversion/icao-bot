@@ -7,6 +7,7 @@ from config import QUESTIONS_FILE
 from keyboards import get_main_keyboard
 from utils.tts import generate_voice
 
+# Загрузка вопросов из файла
 try:
     with open(QUESTIONS_FILE, encoding="utf-8") as f:
         QUESTIONS = json.load(f)
@@ -14,6 +15,7 @@ except Exception as e:
     logging.error(f"Ошибка загрузки файла вопросов: {e}")
     QUESTIONS = []
 
+# Глобальный словарь для хранения данных пользователей
 user_data = {}
 
 def get_user_data(user_id):
@@ -24,76 +26,80 @@ def get_user_data(user_id):
             "last_question": None,
             "language": "en",
             "auto_repeat": False,
-            "answer_display_count": 0,
-            "q_translate_count": 0,
-            "a_translate_count": 0,
+            # Счётчики для текущего вопроса:
+            "answer_display_count": 0,   # для кнопки "Ответ"
+            "q_translate_count": 0,      # для кнопки "Перевод вопроса"
+            "a_translate_count": 0,      # для кнопки "Перевод ответа"
         }
     return user_data[user_id]
 
 async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    msg = update.message.text.strip().lower()
-    logging.info(f"[DEBUG] Получено сообщение: '{msg}'")
-
     user_id = update.effective_user.id
+    msg = update.message.text.strip()
     data = get_user_data(user_id)
+
+    # Получаем язык из контекста (интерфейс – на выбранном языке, текст вопросов/ответов всегда на английском)
     lang = context.user_data.get("language", data.get("language", "en"))
     level = context.user_data.get("level", "easy")
-
     data["language"] = lang
     context.user_data["language"] = lang
 
-    btn_next    = "✈️ следующий вопрос" if lang == "ru" else "✈️ next question"
-    btn_answer  = "💬 ответ" if lang == "ru" else "💬 answer"
-    btn_q_trans = "🌍 перевод вопроса" if lang == "ru" else "🌍 translate question"
-    btn_a_trans = "🇷🇺 перевод ответа" if lang == "ru" else "🇷🇺 translate answer"
-    btn_support = "💳 поддержать проект" if lang == "ru" else "💳 support project"
+    # Метки для reply-кнопок
+    btn_next    = "✈️ Следующий вопрос" if lang == "ru" else "✈️ Next question"
+    btn_answer  = "💬 Ответ" if lang == "ru" else "💬 Answer"
+    btn_q_trans = "🌍 Перевод вопроса" if lang == "ru" else "🌍 Translate question"
+    btn_a_trans = "🇷🇺 Перевод ответа" if lang == "ru" else "🇷🇺 Translate answer"
+    btn_support = "💳 Поддержать проект" if lang == "ru" else "💳 Support project"
 
-    logging.info(f"[DEBUG] Ожидаемые кнопки: next='{btn_next}', answer='{btn_answer}', qtrans='{btn_q_trans}', atrans='{btn_a_trans}', support='{btn_support}'")
+    logging.info(f"[USER {user_id}] Сообщение: {msg} | Язык: {lang} | Уровень: {level}")
 
-    # Поддержать проект
-    if btn_support in msg:
-        text_support = ("💳 Вы можете поддержать проект здесь:\nhttps://www.sberbank.com/sms/pbpn?requisiteNumber=79155691550"
-                        if lang == "ru"
-                        else
-                        "💳 You can support the project here:\nhttps://www.sberbank.com/sms/pbpn?requisiteNumber=79155691550")
-        await update.message.reply_text(text_support)
+    # Обработка кнопки "Поддержать проект"
+    if msg == btn_support:
+        support_text = (
+            "💳 Вы можете поддержать проект здесь:\nhttps://www.sberbank.com/sms/pbpn?requisiteNumber=79155691550"
+            if lang == "ru" else
+            "💳 You can support the project here:\nhttps://www.sberbank.com/sms/pbpn?requisiteNumber=79155691550"
+        )
+        await update.message.reply_text(support_text)
         return
 
-    # Следующий вопрос
-    if btn_next in msg:
+    # Обработка кнопки "Следующий вопрос"
+    if msg == btn_next:
         available = [q for q in QUESTIONS if q["level"] == level and q["id"] not in data[f"{level}_done"]]
         if not available:
             if level == "easy":
+                # Если простых вопросов не осталось – формируем inline-клавиатуру
                 if lang == "ru":
-                    keyboard = InlineKeyboardMarkup([
-                        [InlineKeyboardButton("Перейти к сложным", callback_data="switch_to_hard"),
-                         InlineKeyboardButton("Начать сначала", callback_data="reset_progress")]
-                    ])
+                    button1 = "Перейти к сложным"
+                    button2 = "Начать сначала"
                     prompt = "✅ Вы ответили на все простые вопросы. Что хотите сделать дальше?"
                 else:
-                    keyboard = InlineKeyboardMarkup([
-                        [InlineKeyboardButton("Switch to hard", callback_data="switch_to_hard"),
-                         InlineKeyboardButton("Start over", callback_data="reset_progress")]
-                    ])
+                    button1 = "Switch to hard"
+                    button2 = "Start over"
                     prompt = "✅ All easy questions done. Choose next step:"
+                keyboard = InlineKeyboardMarkup([
+                    [InlineKeyboardButton(button1, callback_data="switch_to_hard"),
+                     InlineKeyboardButton(button2, callback_data="reset_progress")]
+                ])
                 await update.message.reply_text(prompt, reply_markup=keyboard)
             else:
                 if lang == "ru":
-                    keyboard = InlineKeyboardMarkup([
-                        [InlineKeyboardButton("Начать сначала", callback_data="reset_progress")]
-                    ])
+                    button = "Начать сначала"
                     prompt = "✅ Все вопросы завершены. Хотите начать сначала?"
                 else:
-                    keyboard = InlineKeyboardMarkup([
-                        [InlineKeyboardButton("Start over", callback_data="reset_progress")]
-                    ])
+                    button = "Start over"
                     prompt = "✅ All questions completed. Start over?"
+                keyboard = InlineKeyboardMarkup([
+                    [InlineKeyboardButton(button, callback_data="reset_progress")]
+                ])
                 await update.message.reply_text(prompt, reply_markup=keyboard)
             return
 
         question = random.choice(available)
         data[f"{level}_done"].append(question["id"])
         data["last_question"] = question
+
+        # Сбрасываем счётчики для нового вопроса
         data["answer_display_count"] = 0
         data["q_translate_count"] = 0
         data["a_translate_count"] = 0
@@ -104,64 +110,61 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
             await update.message.reply_voice(voice)
         return
 
-    # Ответ
-    if btn_answer in msg:
+    # Обработка кнопки "Ответ"
+    if msg == btn_answer:
         q = data.get("last_question")
         if not q:
             await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
             return
-        count = data["answer_display_count"]
-        if count == 0:
+        answer_count = data.get("answer_display_count", 0)
+        if answer_count == 0:
             await update.message.reply_text(f"✅ {q['answer_en']}")
             voice = generate_voice(q['answer_en'])
             if voice:
                 await update.message.reply_voice(voice)
             data["answer_display_count"] = 1
-        elif count == 1:
+        elif answer_count == 1:
             await update.message.reply_text("❗ Ответ уже выведен" if lang == "ru" else "❗ Answer already displayed")
             data["answer_display_count"] = 2
         else:
             return
         return
 
-    # Перевод вопроса
-    if btn_q_trans in msg:
+    # Обработка кнопки "Перевод вопроса"
+    if msg == btn_q_trans:
         q = data.get("last_question")
         if not q:
             await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
             return
-        q_count = data["q_translate_count"]
-        if q_count == 0:
+        q_trans_count = data.get("q_translate_count", 0)
+        if q_trans_count == 0:
             await update.message.reply_text(f"🌍 {q['question_ru']}")
             data["q_translate_count"] = 1
-        elif q_count == 1:
+        elif q_trans_count == 1:
             await update.message.reply_text("❗ Вопрос уже переведен" if lang == "ru" else "❗ Question already translated")
             data["q_translate_count"] = 2
         else:
             return
         return
 
-    # Перевод ответа
-    if btn_a_trans in msg:
+    # Обработка кнопки "Перевод ответа"
+    if msg == btn_a_trans:
         q = data.get("last_question")
         if not q:
             await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
             return
-        if data["answer_display_count"] == 0:
+        if data.get("answer_display_count", 0) == 0:
             await update.message.reply_text("❗ Сначала получите основной ответ" if lang == "ru" else "❗ Please display the main answer first")
             return
-        a_count = data["a_translate_count"]
-        if a_count == 0:
+        a_trans_count = data.get("a_translate_count", 0)
+        if a_trans_count == 0:
             await update.message.reply_text(f"🇷🇺 {q['answer_ru']}")
             data["a_translate_count"] = 1
-        elif a_count == 1:
+        elif a_trans_count == 1:
             await update.message.reply_text("❗ Ответ уже переведен" if lang == "ru" else "❗ Answer already translated")
             data["a_translate_count"] = 2
         else:
             return
         return
 
-    # Ничего не совпало
-    await update.message.reply_text(
-        "❓ Используй кнопки меню." if lang == "ru" else "❓ Please use the menu buttons."
-    )
+    await update.message.reply_text("❓ Используй кнопки меню." if lang == "ru" else "❓ Please use the menu buttons.")
