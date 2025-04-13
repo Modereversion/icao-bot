@@ -2,18 +2,17 @@ from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes, MessageHandler, CommandHandler, CallbackQueryHandler, filters
 from config import ADMIN_ID
 from handlers.questions import user_data  # Глобальный словарь пользователей
-from handlers.feedback import feedback_list
+from handlers.feedback import load_feedbacks, clear_feedbacks
 
-# Множество заблокированных пользователей
+# Множество заблокированных пользователей (если потребуется в будущем)
 BLOCKED_USERS = set()
 
 async def management_menu_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     lang = context.user_data.get("language", "en")
-    # Проверяем, что вызывающий пользователь – администратор
     if user_id != ADMIN_ID:
         return
-    # Формируем inline-клавиатуру с опциями административного меню
+    # Формируем inline‑клавиатуру с опциями административного меню
     if lang == "ru":
         buttons = [
             [InlineKeyboardButton("Просмотреть статистику", callback_data="admin_view_stats")],
@@ -43,15 +42,11 @@ async def admin_management_callback(update: Update, context: ContextTypes.DEFAUL
         text = f"📈 Всего пользователей: {total_users}" if lang == "ru" else f"📈 Total users: {total_users}"
         await query.edit_message_text(text)
     elif query.data == "admin_full_stats":
-        # Формируем подробную статистику для каждого пользователя
-        # Для каждого пользователя выводим: id, first_name, last_name, username, country (в нашем случае language_code),
-        # дату первого запуска (если такая информация сохранялась)
         if not user_data:
             text = "Нет данных по пользователям" if lang == "ru" else "No user data available"
         else:
             lines = []
             for uid, data in user_data.items():
-                # Если таких ключей нет, выводим "-"
                 first_name = data.get("first_name", "-")
                 last_name = data.get("last_name", "-")
                 username = data.get("username", "-")
@@ -60,34 +55,30 @@ async def admin_management_callback(update: Update, context: ContextTypes.DEFAUL
                 line = f"ID: {uid} | {first_name} {last_name} (@{username}) | {country} | {first_launch}"
                 lines.append(line)
             text = "\n".join(lines)
-        await query.edit_message_text(text if text else "Нет данных" if lang == "ru" else "No data")
+        await query.edit_message_text(text if text else ("Нет данных" if lang == "ru" else "No data"))
     elif query.data == "admin_view_feedbacks":
-        if not feedback_list:
+        feedbacks = load_feedbacks()
+        if not feedbacks:
             text = "Нет отзывов" if lang == "ru" else "No feedbacks"
         else:
-            text = "\n\n".join(feedback_list)
+            text = "\n\n".join(feedbacks)
         await query.edit_message_text(text)
     elif query.data == "admin_clear_feedbacks":
-        feedback_list.clear()
+        clear_feedbacks()
         text = "Отзывы очищены" if lang == "ru" else "Feedbacks cleared"
         await query.edit_message_text(text)
     elif query.data == "admin_block_user":
-        # Переводим админа в режим блокировки
         context.user_data["block_mode"] = True
         prompt = "Введите ID пользователя для блокировки:" if lang == "ru" else "Enter user ID to block:"
         await query.edit_message_text(prompt)
 
 def get_admin_handlers():
     return [
-        # Обработчик для текстовой команды "Управление" / "Management"
         MessageHandler(filters.Regex("^(Управление|Management)$"), management_menu_command),
-        # Обработчик inline callback от административного меню
         CallbackQueryHandler(admin_management_callback, pattern="^admin_.*")
     ]
 
-# Обработчик для блокировки пользователя (при входе в режиме block_mode)
 async def admin_block_user_input(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    # Проверяем, что мы в режиме блокировки и что это сообщение от администратора
     user_id = update.effective_user.id
     if user_id != ADMIN_ID or not context.user_data.get("block_mode"):
         return
@@ -101,7 +92,6 @@ async def admin_block_user_input(update: Update, context: ContextTypes.DEFAULT_T
         await update.message.reply_text("Некорректный ID. Попробуйте снова:" if context.user_data.get("language", "en")=="ru" else "Invalid ID. Please try again:")
 
 def get_admin_block_handlers():
-    # Регистрируем отдельный обработчик для ввода ID при блокировке
     return [
         MessageHandler(filters.TEXT, admin_block_user_input)
     ]
