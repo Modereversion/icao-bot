@@ -1,19 +1,22 @@
-import logging
-import smtplib
-from email.mime.text import MIMEText
 from telegram import Update
 from telegram.ext import ContextTypes
-from config import EMAIL, EMAIL_PASSWORD
+from config import ADMIN_ID
 
 async def handle_feedback_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if context.user_data.get("feedback_mode"):
         user = update.effective_user
         feedback_text = update.message.text
 
-        message = f"Новый отзыв от пользователя {user.full_name} (@{user.username}):\n\n{feedback_text}"
-        subject = "Новый отзыв от пользователя"
-        send_email(subject, message)
+        # Формирование сообщения для администратора
+        feedback_message = (
+            f"Новый отзыв от пользователя {user.full_name} (@{user.username}):\n\n"
+            f"{feedback_text}"
+        )
+        
+        # Отправляем отзыв админу через Telegram
+        await context.bot.send_message(chat_id=ADMIN_ID, text=feedback_message)
 
+        # Выключаем режим отзыва
         context.user_data["feedback_mode"] = False
 
         lang = context.user_data.get("language", "en")
@@ -21,22 +24,3 @@ async def handle_feedback_message(update: Update, context: ContextTypes.DEFAULT_
         await update.message.reply_text(thanks)
     else:
         return
-
-def send_email(subject, body):
-    try:
-        msg = MIMEText(body)
-        msg["Subject"] = subject
-        msg["From"] = EMAIL
-        msg["To"] = EMAIL
-
-        with smtplib.SMTP("smtp.gmail.com", 587) as server:
-            server.starttls()
-            # Используем переменную EMAIL_PASSWORD для авторизации
-            if EMAIL_PASSWORD:
-                server.login(EMAIL, EMAIL_PASSWORD)
-            else:
-                logging.error("Переменная EMAIL_PASSWORD не установлена.")
-                return
-            server.send_message(msg)
-    except Exception as e:
-        logging.error(f"Ошибка при отправке email: {e}")
