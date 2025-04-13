@@ -35,7 +35,8 @@ def get_user_data(user_id):
 
 async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
-    msg = update.message.text.strip().lower()  # приводим к нижнему регистру и убираем лишние пробелы
+    # Приводим полученный текст к нижнему регистру и удаляем лишние пробелы
+    msg = update.message.text.strip().lower()  
     logging.info(f"[DEBUG] Получено сообщение: '{msg}'")
     
     data = get_user_data(user_id)
@@ -44,17 +45,17 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     data["language"] = lang
     context.user_data["language"] = lang
 
-    # Устанавливаем текст кнопок в зависимости от языка
-    btn_next    = ("✈️ следующий вопрос" if lang == "ru" else "✈️ next question")
-    btn_answer  = ("💬 ответ" if lang == "ru" else "💬 answer")
-    btn_q_trans = ("🌍 перевод вопроса" if lang == "ru" else "🌍 translate question")
-    btn_a_trans = ("🇷🇺 перевод ответа" if lang == "ru" else "🇷🇺 translate answer")
-    btn_support = ("💳 поддержать проект" if lang == "ru" else "💳 support project")
+    # Ожидаемые тексты кнопок (в нижнем регистре)
+    btn_next    = "✈️ следующий вопрос" if lang == "ru" else "✈️ next question"
+    btn_answer  = "💬 ответ" if lang == "ru" else "💬 answer"
+    btn_q_trans = "🌍 перевод вопроса" if lang == "ru" else "🌍 translate question"
+    btn_a_trans = "🇷🇺 перевод ответа" if lang == "ru" else "🇷🇺 translate answer"
+    btn_support = "💳 поддержать проект" if lang == "ru" else "💳 support project"
 
     logging.info(f"[DEBUG] Ожидаемые кнопки: btn_next='{btn_next}', btn_answer='{btn_answer}', btn_q_trans='{btn_q_trans}', btn_a_trans='{btn_a_trans}', btn_support='{btn_support}'")
 
     # --- Обработка кнопки "Поддержать проект" ---
-    if msg == btn_support:
+    if btn_support in msg:
         support_text = ("💳 Вы можете поддержать проект здесь:\nhttps://www.sberbank.com/sms/pbpn?requisiteNumber=79155691550" 
                         if lang == "ru" 
                         else "💳 You can support the project here:\nhttps://www.sberbank.com/sms/pbpn?requisiteNumber=79155691550")
@@ -62,7 +63,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         return
 
     # --- Обработка кнопки "Следующий вопрос" ---
-    if msg == btn_next:
+    if btn_next in msg:
         available = [q for q in QUESTIONS if q["level"] == level and q["id"] not in data[f"{level}_done"]]
         if not available:
             if level == "easy":
@@ -109,7 +110,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         return
 
     # --- Обработка кнопки "Ответ" ---
-    if msg == btn_answer:
+    if btn_answer in msg:
         q = data.get("last_question")
         if not q:
             await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
@@ -129,7 +130,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         return
 
     # --- Обработка кнопки "Перевод вопроса" ---
-    if msg == btn_q_trans:
+    if btn_q_trans in msg:
         q = data.get("last_question")
         if not q:
             await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
@@ -146,7 +147,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         return
 
     # --- Обработка кнопки "Перевод ответа" ---
-    if msg == btn_a_trans:
+    if btn_a_trans in msg:
         q = data.get("last_question")
         if not q:
             await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
