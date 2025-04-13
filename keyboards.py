@@ -3,13 +3,13 @@ from config import ADMIN_ID
 
 def get_label(key, lang):
     labels = {
-        "next": {"ru": "✈️ Следующий вопрос", "en": "✈️ Next question"},
-        "answer": {"ru": "💬 Ответ", "en": "💬 Answer"},
-        "q_translate": {"ru": "🌍 Перевод вопроса", "en": "🌍 Translate question"},
-        "a_translate": {"ru": "🇷🇺 Перевод ответа", "en": "🇷🇺 Translate answer"},
-        "support": {"ru": "💳 Поддержать проект", "en": "💳 Support project"},
-        "settings": {"ru": "⚙️ Настройки", "en": "⚙️ Settings"},
-        "management": {"ru": "Управление", "en": "Management"}
+        "next": {"ru": "✈️ следующий вопрос", "en": "✈️ next question"},
+        "answer": {"ru": "💬 ответ", "en": "💬 answer"},
+        "q_translate": {"ru": "🌍 перевод вопроса", "en": "🌍 translate question"},
+        "a_translate": {"ru": "🇷🇺 перевод ответа", "en": "🇷🇺 translate answer"},
+        "support": {"ru": "💳 поддержать проект", "en": "💳 support project"},
+        "settings": {"ru": "⚙️ настройки", "en": "⚙️ settings"},
+        "management": {"ru": "управление", "en": "management"}
     }
     return labels[key][lang]
 
