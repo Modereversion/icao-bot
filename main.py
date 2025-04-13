@@ -31,23 +31,16 @@ for handler in get_admin_handlers():
 for handler in get_admin_block_handlers():
     app.add_handler(handler)
 
-# Универсальный обработчик для всех текстовых сообщений для отладки
+# Универсальный обработчик для текстовых сообщений
 async def message_dispatcher(update, context):
     if update.message and update.message.text:
         logging.info(f"[DEBUG] Получено сообщение: '{update.message.text}'")
-    else:
-        logging.info("[DEBUG] Нет текста в update.message")
     if context.user_data.get("feedback_mode"):
         await handle_feedback_message(update, context)
     else:
         await handle_user_message(update, context)
 
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message_dispatcher))
-
-# Добавляем также универсальный обработчик для всех обновлений (если нужно)
-# async def all_updates(update, context):
-#     logging.info(f"[DEBUG] Update: {update}")
-# app.add_handler(MessageHandler(filters.ALL, all_updates))
 
 logging.info("🤖 Бот запущен...")
 app.run_polling()
