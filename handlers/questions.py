@@ -1,7 +1,7 @@
 import json
 import random
 import logging
-from telegram import Update
+from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes
 from config import QUESTIONS_FILE
 from keyboards import get_main_keyboard
@@ -44,7 +44,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     data["language"] = lang
     context.user_data["language"] = lang
 
-    # Метки для кнопок (зависят от языка интерфейса)
+    # Генерация меток для кнопок (текст кнопок зависит от языка интерфейса)
     btn_next    = "✈️ Следующий вопрос" if lang == "ru" else "✈️ Next question"
     btn_answer  = "💬 Ответ" if lang == "ru" else "💬 Answer"
     btn_q_trans = "🌍 Перевод вопроса" if lang == "ru" else "🌍 Translate question"
@@ -56,15 +56,29 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     if msg == btn_next:
         available = [q for q in QUESTIONS if q["level"] == level and q["id"] not in data[f"{level}_done"]]
         if not available:
+            # Если вопросов не осталось для данного уровня:
             if level == "easy":
+                # Для простых вопросов – предлагаем два варианта: начать сложные или начать сначала (сброс статистики)
+                keyboard = InlineKeyboardMarkup([
+                    [
+                        InlineKeyboardButton("Перейти к сложным", callback_data="switch_to_hard"),
+                        InlineKeyboardButton("Начать сначала", callback_data="reset_progress")
+                    ]
+                ])
                 await update.message.reply_text(
-                    "✅ Вы ответили на все простые вопросы. Перехожу к сложным!" if lang == "ru"
-                    else "✅ All easy questions done. Switching to hard questions!"
+                    "✅ Вы ответили на все простые вопросы. Что хотите сделать дальше?" if lang == "ru"
+                    else "✅ All easy questions done. Choose next step:",
+                    reply_markup=keyboard
                 )
             else:
+                # Для сложных вопросов – предлагаем только вариант начать сначала
+                keyboard = InlineKeyboardMarkup([
+                    [InlineKeyboardButton("Начать сначала", callback_data="reset_progress")]
+                ])
                 await update.message.reply_text(
                     "✅ Все вопросы завершены. Хотите начать сначала?" if lang == "ru"
-                    else "✅ All questions completed. Want to start over?"
+                    else "✅ All questions completed. Start over?",
+                    reply_markup=keyboard
                 )
             return
 
@@ -72,12 +86,12 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         data[f"{level}_done"].append(question["id"])
         data["last_question"] = question
 
-        # Сбрасываем все счётчики при выборе нового вопроса
+        # Сбрасываем все счётчики для нового вопроса
         data["answer_display_count"] = 0
         data["q_translate_count"] = 0
         data["a_translate_count"] = 0
 
-        # Отправляем вопрос на английском
+        # Отправляем вопрос на английском независимо от выбранного языка интерфейса
         await update.message.reply_text(f"📝 {question['question_en']}")
         voice = generate_voice(question['question_en'])
         if voice:
@@ -89,7 +103,8 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         q = data.get("last_question")
         if not q:
             await update.message.reply_text(
-                "❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first."
+                "❗ Сначала выберите вопрос." if lang 
+                == "ru" else "❗ Please select a question first."
             )
             return
         answer_count = data.get("answer_display_count", 0)
@@ -107,7 +122,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
             )
             data["answer_display_count"] = 2
         else:
-            # Третье и последующие – ничего не делаем
+            # Третье и последующие нажатия – никаких действий
             return
         return
 
@@ -116,7 +131,8 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         q = data.get("last_question")
         if not q:
             await update.message.reply_text(
-                "❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first."
+                "❗ Сначала выберите вопрос." if lang == "ru" 
+                else "❗ Please select a question first."
             )
             return
         q_trans_count = data.get("q_translate_count", 0)
@@ -125,13 +141,13 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
             await update.message.reply_text(f"🌍 {q['question_ru']}")
             data["q_translate_count"] = 1
         elif q_trans_count == 1:
-            # Второй раз – сообщение, что вопрос уже переведен
+            # Второй раз – сообщение, что перевод уже выполнен
             await update.message.reply_text(
                 "❗ Вопрос уже переведен" if lang == "ru" else "❗ Question already translated"
             )
             data["q_translate_count"] = 2
         else:
-            # Третье и последующие – ничего не делаем
+            # Третье и последующие нажатия – ничего не делаем
             return
         return
 
@@ -140,16 +156,17 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         q = data.get("last_question")
         if not q:
             await update.message.reply_text(
-                "❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first."
+                "❗ Сначала выберите вопрос." if lang == "ru" 
+                else "❗ Please select a question first."
             )
             return
-        # Дополнительная проверка: если основной ответ ещё не был выведен, не делаем перевод
+        # Если основной ответ ещё не был выведен, не выполняем перевод
         if data.get("answer_display_count", 0) == 0:
             await update.message.reply_text(
-                "❗ Сначала получите основной ответ" if lang == "ru" else "❗ Please display the main answer first"
+                "❗ Сначала получите основной ответ" if lang == "ru" 
+                else "❗ Please display the main answer first"
             )
             return
-
         a_trans_count = data.get("a_translate_count", 0)
         if a_trans_count == 0:
             # Первый раз отправляем перевод ответа (на русском)
@@ -162,10 +179,11 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
             )
             data["a_translate_count"] = 2
         else:
-            # Третье и последующие – ничего не делаем
+            # Третье и последующие нажатия – никаких действий
             return
         return
 
     await update.message.reply_text(
-        "❓ Используй кнопки меню." if lang == "ru" else "❓ Please use the menu buttons."
+        "❓ Используй кнопки меню." if lang == "ru" 
+        else "❓ Please use the menu buttons."
     )
