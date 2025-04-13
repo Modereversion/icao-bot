@@ -28,18 +28,18 @@ app.add_handler(CommandHandler("support", support_command))
 for handler in get_settings_handlers():
     app.add_handler(handler)
 
-# Регистрируем административные обработчики
+# Регистрируем обработчики администратора (отображаются только для админа)
 for handler in get_admin_handlers():
     app.add_handler(handler)
 
-# Объединённый диспетчер текстовых сообщений:
+# Объединённый обработчик текстовых сообщений:
+# Если режим отзыва активен, вызывается feedback, иначе – обычный обработчик вопросов
 async def message_dispatcher(update, context):
-    if context.user_data.get("feedback_mode", False):
+    if context.user_data.get("feedback_mode"):
         await handle_feedback_message(update, context)
     else:
         await handle_user_message(update, context)
 
-# Регистрируем единый обработчик для всех текстовых сообщений, кроме команд
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message_dispatcher))
 
 logging.info("🤖 Бот запущен...")
