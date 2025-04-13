@@ -11,7 +11,6 @@ from handlers.commands import start_command, support_command
 from handlers.feedback import handle_feedback_message
 from handlers.questions import handle_user_message
 from handlers.settings import get_settings_handlers
-from handlers.admin import get_admin_handlers, get_admin_block_handlers
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -20,25 +19,19 @@ logging.basicConfig(
 
 app = ApplicationBuilder().token(BOT_TOKEN).build()
 
-# Временный отладочный обработчик - выводит ВСЕ обновления
-async def debug_all_updates(update, context):
-    logging.info(f"[DEBUG ALL] Update data: {update.to_dict()}")
-
-app.add_handler(MessageHandler(filters.ALL, debug_all_updates))
-
+# Регистрируем команды
 app.add_handler(CommandHandler("start", start_command))
 app.add_handler(CommandHandler("support", support_command))
 
+# Регистрируем обработчики настроек (инлайн)
 for handler in get_settings_handlers():
     app.add_handler(handler)
-for handler in get_admin_handlers():
-    app.add_handler(handler)
-for handler in get_admin_block_handlers():
-    app.add_handler(handler)
 
+# Универсальный обработчик текстовых сообщений
 async def message_dispatcher(update, context):
+    # Для отладки, вы можете доп. логировать
     if update.message and update.message.text:
-        logging.info(f"[DEBUG MSG] Пользовательский текст: '{update.message.text}'")
+        logging.info(f"[DEBUG] Пришло сообщение: '{update.message.text}'")
     if context.user_data.get("feedback_mode"):
         await handle_feedback_message(update, context)
     else:
