@@ -14,6 +14,7 @@ except Exception as e:
     logging.error(f"Ошибка загрузки файла вопросов: {e}")
     QUESTIONS = []
 
+# Глобальный словарь данных пользователей
 user_data = {}
 
 def get_user_data(user_id):
@@ -32,7 +33,7 @@ def get_user_data(user_id):
     return user_data[user_id]
 
 async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    # Приводим к нижнему регистру
+    # Приводим полученный текст к нижнему регистру
     msg = update.message.text.strip().lower()
     logging.info(f"[DEBUG] Получено сообщение: '{msg}'")
 
@@ -41,6 +42,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     lang = data.get("language", "en")
     level = data.get("level", "easy")
 
+    # Ожидаемые тексты кнопок (в нижнем регистре)
     btn_next    = "✈️ следующий вопрос" if lang == "ru" else "✈️ next question"
     btn_answer  = "💬 ответ" if lang == "ru" else "💬 answer"
     btn_q_trans = "🌍 перевод вопроса" if lang == "ru" else "🌍 translate question"
@@ -64,20 +66,10 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     if btn_next in msg:
         available = [q for q in QUESTIONS if q["level"] == level and q["id"] not in data[f"{level}_done"]]
         if not available:
-            if level == "easy":
-                # Предыдущий вариант, без «Перейти к сложным»
-                if lang == "ru":
-                    prompt = "✅ Все лёгкие вопросы пройдены. Хотите начать сначала?"
-                else:
-                    prompt = "✅ All easy questions completed. Do you want to start over?"
-                await update.message.reply_text(prompt)
-            else:
-                # Когда сложные вопросы закончились, тоже предлагаем что-то
-                if lang == "ru":
-                    prompt = "✅ Все вопросы пройдены. Начнём заново?"
-                else:
-                    prompt = "✅ All questions done. Restart?"
-                await update.message.reply_text(prompt)
+            # Если вопросы закончились – просто предлагаем начать сначала
+            prompt = ("✅ Все лёгкие вопросы пройдены. Хотите начать сначала?" if lang == "ru"
+                      else "✅ All easy questions completed. Do you want to start over?")
+            await update.message.reply_text(prompt)
             return
 
         question = random.choice(available)
@@ -150,7 +142,4 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
             return
         return
 
-    # Иначе
-    await update.message.reply_text(
-        "❓ Используй кнопки меню." if lang == "ru" else "❓ Please use the menu buttons."
-    )
+    await update.message.reply_text("❓ Используй кнопки меню." if lang == "ru" else "❓ Please use the menu buttons.")
