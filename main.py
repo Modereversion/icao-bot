@@ -19,18 +19,18 @@ logging.basicConfig(
 
 app = ApplicationBuilder().token(BOT_TOKEN).build()
 
-# Команды
+# Регистрируем команды
 app.add_handler(CommandHandler("start", start_command))
 app.add_handler(CommandHandler("support", support_command))
 
-# Настройки (инлайн)
+# Регистрируем обработчики настроек (инлайн)
 for handler in get_settings_handlers():
     app.add_handler(handler)
 
+# Универсальный обработчик для текстовых сообщений
 async def message_dispatcher(update, context):
     if update.message and update.message.text:
         logging.info(f"[DEBUG] Получено сообщение: '{update.message.text}'")
-
     if context.user_data.get("feedback_mode"):
         await handle_feedback_message(update, context)
     else:
