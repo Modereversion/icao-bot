@@ -19,7 +19,6 @@ def get_main_keyboard(user_id, lang="en"):
         [get_label("q_translate", lang), get_label("a_translate", lang)],
         [get_label("settings", lang), get_label("support", lang)]
     ]
-    # Если пользователь является администратором, добавляем кнопку "Управление"
     if user_id == ADMIN_ID:
         keyboard.append([get_label("management", lang)])
     return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
