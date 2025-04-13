@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "level": "easy",
+    "question_en": "Where are you flying to?",
+    "question_ru": "Куда вы летите?",
+    "answer_en": "I'm flying to Frankfurt. It's a short international flight.",
+    "answer_ru": "Я лечу во Франкфурт. Это короткий международный рейс."
+  },
+  {
+    "id": 2,
+    "level": "easy",
+    "question_en": "What is your aircraft type?",
+    "question_ru": "Какой у вас тип воздушного судна?",
+    "answer_en": "It's a Boeing 737. A narrow-body jet.",
+    "answer_ru": "Это Боинг 737. Узкофюзеляжный реактивный самолёт."
+  },
+  {
+    "id": 3,
+    "level": "easy",
+    "question_en": "What is the current weather?",
+    "question_ru": "Какая сейчас погода?",
+    "answer_en": "The weather is clear. Visibility is good.",
+    "answer_ru": "Погода ясная. Видимость хорошая."
+  },
+  {
+    "id": 4,
+    "level": "easy",
+    "question_en": "How many passengers are on board?",
+    "question_ru": "Сколько пассажиров на борту?",
+    "answer_en": "There are 120 passengers. All are seated and ready.",
+    "answer_ru": "На борту 120 пассажиров. Все на местах и готовы."
+  },
+  {
+    "id": 5,
+    "level": "easy",
+    "question_en": "What is your cruising altitude?",
+    "question_ru": "Какова ваша эшелонная высота?",
+    "answer_en": "We are cruising at flight level 350. Conditions are stable.",
+    "answer_ru": "Мы летим на эшелоне 350. Условия стабильные."
+  },
+  {
+    "id": 6,
+    "level": "hard",
+    "question_en": "What would you do in case of radio failure?",
+    "question_ru": "Что вы будете делать в случае отказа радиосвязи?",
+    "answer_en": "I would follow standard lost communication procedures. I will maintain assigned altitude and route.",
+    "answer_ru": "Я выполню стандартные процедуры при потере связи. Буду соблюдать заданный эшелон и маршрут."
+  },
+  {
+    "id": 7,
+    "level": "hard",
+    "question_en": "Describe a bird strike and your actions.",
+    "question_ru": "Опишите попадание птицы в двигатель и ваши действия.",
+    "answer_en": "We experienced a bird strike after takeoff. I declared an emergency and returned to the airport.",
+    "answer_ru": "После взлёта произошёл удар птицы. Я сообщил об аварийной ситуации и вернулся в аэропорт."
+  },
+  {
+    "id": 8,
+    "level": "hard",
+    "question_en": "How do you report a medical emergency onboard?",
+    "question_ru": "Как вы сообщите о медицинской чрезвычайной ситуации на борту?",
+    "answer_en": "I will inform ATC of the emergency. I will request priority landing.",
+    "answer_ru": "Я сообщу авиадиспетчеру об экстренной ситуации. Запрошу приоритетную посадку."
+  },
+  {
+    "id": 9,
+    "level": "hard",
+    "question_en": "How do you handle low visibility landing?",
+    "question_ru": "Как вы действуете при посадке в условиях низкой видимости?",
+    "answer_en": "I rely on ILS and instruments. I will go around if visual is not acquired.",
+    "answer_ru": "Я полагаюсь на ILS и приборы. Ухожу на второй круг, если не увижу ВПП."
+  },
+  {
+    "id": 10,
+    "level": "hard",
+    "question_en": "What is your procedure in case of engine failure during cruise?",
+    "question_ru": "Каковы ваши действия при отказе двигателя в крейсерском полёте?",
+    "answer_en": "I reduce speed, inform ATC, and descend if needed. I plan for diversion.",
+    "answer_ru": "Снижаю скорость, сообщаю диспетчеру и при необходимости снижаюсь. Планирую уход на запасной аэродром."
+  }
+]
