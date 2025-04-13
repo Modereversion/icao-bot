@@ -13,7 +13,7 @@ async def handle_feedback_message(update: Update, context: ContextTypes.DEFAULT_
             f"{feedback_text}"
         )
         
-        # Отправляем отзыв админу через Telegram
+        # Отправка отзыва администратору через Telegram
         await context.bot.send_message(chat_id=ADMIN_ID, text=feedback_message)
 
         # Выключаем режим отзыва
