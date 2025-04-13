@@ -10,8 +10,8 @@ from config import BOT_TOKEN
 from handlers.commands import start_command, support_command
 from handlers.feedback import handle_feedback_message
 from handlers.questions import handle_user_message
-from handlers.settings import get_settings_handlers
-from handlers.admin import get_admin_handlers
+from handlers/settings import get_settings_handlers
+from handlers.admin import get_admin_handlers, get_admin_block_handlers
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -28,12 +28,13 @@ app.add_handler(CommandHandler("support", support_command))
 for handler in get_settings_handlers():
     app.add_handler(handler)
 
-# Регистрируем обработчики администратора (отображаются только для админа)
+# Регистрируем обработчики администратора
 for handler in get_admin_handlers():
     app.add_handler(handler)
+for handler in get_admin_block_handlers():
+    app.add_handler(handler)
 
-# Объединённый обработчик текстовых сообщений:
-# Если режим отзыва активен, вызывается feedback, иначе – обычный обработчик вопросов
+# Обработчик для остальных текстовых сообщений
 async def message_dispatcher(update, context):
     if context.user_data.get("feedback_mode"):
         await handle_feedback_message(update, context)
