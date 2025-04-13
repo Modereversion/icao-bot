@@ -35,9 +35,7 @@ def get_user_data(user_id):
 
 async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
-    msg = update.message.text.strip()
-    
-    # Добавляем отладочное сообщение с полученным текстом
+    msg = update.message.text.strip().lower()  # приводим к нижнему регистру и убираем лишние пробелы
     logging.info(f"[DEBUG] Получено сообщение: '{msg}'")
     
     data = get_user_data(user_id)
@@ -46,15 +44,14 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     data["language"] = lang
     context.user_data["language"] = lang
 
-    # Генерация меток для reply-кнопок (текст зависит от языка интерфейса)
-    btn_next    = "✈️ Следующий вопрос" if lang == "ru" else "✈️ Next question"
-    btn_answer  = "💬 Ответ" if lang == "ru" else "💬 Answer"
-    btn_q_trans = "🌍 Перевод вопроса" if lang == "ru" else "🌍 Translate question"
-    btn_a_trans = "🇷🇺 Перевод ответа" if lang == "ru" else "🇷🇺 Translate answer"
-    btn_support = "💳 Поддержать проект" if lang == "ru" else "💳 Support project"
+    # Устанавливаем текст кнопок в зависимости от языка
+    btn_next    = ("✈️ следующий вопрос" if lang == "ru" else "✈️ next question")
+    btn_answer  = ("💬 ответ" if lang == "ru" else "💬 answer")
+    btn_q_trans = ("🌍 перевод вопроса" if lang == "ru" else "🌍 translate question")
+    btn_a_trans = ("🇷🇺 перевод ответа" if lang == "ru" else "🇷🇺 translate answer")
+    btn_support = ("💳 поддержать проект" if lang == "ru" else "💳 support project")
 
-    # Логируем ожидания
-    logging.info(f"[DEBUG] Ожидаемые тексты кнопок: btn_next='{btn_next}', btn_answer='{btn_answer}', btn_q_trans='{btn_q_trans}', btn_a_trans='{btn_a_trans}', btn_support='{btn_support}'")
+    logging.info(f"[DEBUG] Ожидаемые кнопки: btn_next='{btn_next}', btn_answer='{btn_answer}', btn_q_trans='{btn_q_trans}', btn_a_trans='{btn_a_trans}', btn_support='{btn_support}'")
 
     # --- Обработка кнопки "Поддержать проект" ---
     if msg == btn_support:
@@ -115,8 +112,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     if msg == btn_answer:
         q = data.get("last_question")
         if not q:
-            await update.message.reply_text("❗ Сначала выберите вопрос." 
-                                              if lang == "ru" else "❗ Please select a question first.")
+            await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
             return
         answer_count = data.get("answer_display_count", 0)
         if answer_count == 0:
@@ -126,8 +122,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
                 await update.message.reply_voice(voice)
             data["answer_display_count"] = 1
         elif answer_count == 1:
-            await update.message.reply_text("❗ Ответ уже выведен" 
-                                              if lang == "ru" else "❗ Answer already displayed")
+            await update.message.reply_text("❗ Ответ уже выведен" if lang == "ru" else "❗ Answer already displayed")
             data["answer_display_count"] = 2
         else:
             return
@@ -137,16 +132,14 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     if msg == btn_q_trans:
         q = data.get("last_question")
         if not q:
-            await update.message.reply_text("❗ Сначала выберите вопрос." 
-                                              if lang == "ru" else "❗ Please select a question first.")
+            await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
             return
         q_trans_count = data.get("q_translate_count", 0)
         if q_trans_count == 0:
             await update.message.reply_text(f"🌍 {q['question_ru']}")
             data["q_translate_count"] = 1
         elif q_trans_count == 1:
-            await update.message.reply_text("❗ Вопрос уже переведен" 
-                                              if lang == "ru" else "❗ Question already translated")
+            await update.message.reply_text("❗ Вопрос уже переведен" if lang == "ru" else "❗ Question already translated")
             data["q_translate_count"] = 2
         else:
             return
@@ -156,24 +149,20 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     if msg == btn_a_trans:
         q = data.get("last_question")
         if not q:
-            await update.message.reply_text("❗ Сначала выберите вопрос." 
-                                              if lang == "ru" else "❗ Please select a question first.")
+            await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
             return
         if data.get("answer_display_count", 0) == 0:
-            await update.message.reply_text("❗ Сначала получите основной ответ" 
-                                              if lang == "ru" else "❗ Please display the main answer first")
+            await update.message.reply_text("❗ Сначала получите основной ответ" if lang == "ru" else "❗ Please display the main answer first")
             return
         a_trans_count = data.get("a_translate_count", 0)
         if a_trans_count == 0:
             await update.message.reply_text(f"🇷🇺 {q['answer_ru']}")
             data["a_translate_count"] = 1
         elif a_trans_count == 1:
-            await update.message.reply_text("❗ Ответ уже переведен" 
-                                              if lang == "ru" else "❗ Answer already translated")
+            await update.message.reply_text("❗ Ответ уже переведен" if lang == "ru" else "❗ Answer already translated")
             data["a_translate_count"] = 2
         else:
             return
         return
 
-    await update.message.reply_text("❓ Используй кнопки меню." 
-                                      if lang == "ru" else "❓ Please use the menu buttons.")
+    await update.message.reply_text("❓ Используй кнопки меню." if lang == "ru" else "❓ Please use the menu buttons.")
