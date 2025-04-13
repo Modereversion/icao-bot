@@ -11,7 +11,7 @@ async def management_menu_command(update: Update, context: ContextTypes.DEFAULT_
     lang = context.user_data.get("language", "en")
     if user_id != ADMIN_ID:
         return
-    # Формируем inline‑клавиатуру для админа
+    # Формируем inline‑клавиатуру
     if lang == "ru":
         buttons = [
             [InlineKeyboardButton("Просмотреть статистику", callback_data="admin_view_stats")],
@@ -87,7 +87,7 @@ async def admin_block_user_input(update: Update, context: ContextTypes.DEFAULT_T
 
 def get_admin_handlers():
     return [
-        MessageHandler(filters.Regex("^(Управление|Management)$"), management_menu_command),
+        MessageHandler(filters.Regex("^(управление|management)$"), management_menu_command),
         CallbackQueryHandler(admin_management_callback, pattern="^admin_.*")
     ]
 
