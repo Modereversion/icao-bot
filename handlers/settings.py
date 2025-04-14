@@ -47,16 +47,16 @@ async def handle_settings_callback(update: Update, context: ContextTypes.DEFAULT
         easy = len(data["easy_done"])
         hard = len(data["hard_done"])
         answer_viewed = data.get("answers_viewed", 0)
-        q_trans = data.get("q_translate_count", 0)
-        a_trans = data.get("a_translate_count", 0)
+        q_trans = data.get("q_translations", 0)
+        a_trans = data.get("a_translations", 0)
 
         progress = (
             f"{t('📊 Прогресс:', '📊 Progress:')}\n"
             f"🛫 {t('Лёгкие вопросы', 'Easy questions')}: {easy}\n"
             f"🚀 {t('Сложные вопросы', 'Hard questions')}: {hard}\n"
-            f"💬 {t('Просмотров ответа', 'Answers viewed')}: {answer_viewed}\n"
-            f"🌍 {t('Переводов вопроса', 'Question translations')}: {q_trans}\n"
-            f"🇷🇺 {t('Переводов ответа', 'Answer translations')}: {a_trans}"
+            f"💬 {t('Просмотров ответов', 'Answers viewed')}: {answer_viewed}\n"
+            f"🌍 {t('Переводов вопросов', 'Question translations')}: {q_trans}\n"
+            f"🇷🇺 {t('Переводов ответов', 'Answer translations')}: {a_trans}"
         )
         await query.edit_message_text(progress)
     elif query.data == "reset_progress":
@@ -68,6 +68,8 @@ async def handle_settings_callback(update: Update, context: ContextTypes.DEFAULT
             "answers_viewed": 0,
             "q_translate_count": 0,
             "a_translate_count": 0,
+            "q_translations": 0,
+            "a_translations": 0,
             "language": lang,
             "level": "easy"
         }
