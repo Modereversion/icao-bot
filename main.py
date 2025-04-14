@@ -1,3 +1,4 @@
+import json
 import logging
 from telegram.ext import (
     ApplicationBuilder,
@@ -8,34 +9,38 @@ from telegram.ext import (
 )
 from config import BOT_TOKEN
 from handlers.commands import start_command, support_command
-from handlers.feedback import handle_feedback_message
 from handlers.questions import handle_user_message
 from handlers.settings import get_settings_handlers
 from handlers.admin import get_admin_handlers
+from handlers.feedback import handle_feedback_message
 
+# Настройка логирования
 logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     level=logging.INFO
 )
 
+# Создаём приложение
 app = ApplicationBuilder().token(BOT_TOKEN).build()
 
-# Регистрируем обработчики команд
+# Загружаем вопросы в память для режима экзамена
+with open("questions.json", encoding="utf-8") as f:
+    app.bot_data["questions"] = json.load(f)
+
+# Обработчики команд
 app.add_handler(CommandHandler("start", start_command))
 app.add_handler(CommandHandler("support", support_command))
 
-# Регистрируем обработчики настроек
+# Обработчики настроек
 for handler in get_settings_handlers():
     app.add_handler(handler)
 
-# Регистрируем административные обработчики
+# Обработчики админа
 for handler in get_admin_handlers():
     app.add_handler(handler)
 
-# Регистрируем обработчик текстовых сообщений, который перенаправляет в соответствующие функции
-# (включая обработку отзыва и вопросы)
+# Обработка текстовых сообщений (вопросы, переводы, ответы и отзывы)
 async def message_dispatcher(update, context):
-    # Если установлен режим отзыва, перенаправляем сообщение в обработчик отзывов
     if context.user_data.get("feedback_mode"):
         await handle_feedback_message(update, context)
     else:
@@ -43,5 +48,7 @@ async def message_dispatcher(update, context):
 
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message_dispatcher))
 
-logging.info("🤖 Бот запущен...")
-app.run_polling()
+# Запуск бота
+if __name__ == "__main__":
+    logging.info("🚀 Бот запущен!")
+    app.run_polling()
