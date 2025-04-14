@@ -3,7 +3,7 @@ import random
 import logging
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes
-from config import QUESTIONS_FILE
+from config import QUESTIONS_FILE, ADMIN_ID
 from keyboards import get_main_keyboard
 from utils.tts import generate_voice
 
@@ -27,9 +27,9 @@ def get_user_data(user_id):
             "language": "en",
             "auto_repeat": False,
             # Счётчики для текущего вопроса:
-            "answer_display_count": 0,     # для основной кнопки "Ответ"
+            "answer_display_count": 0,     # для кнопки "Ответ"
             "q_translate_count": 0,        # для кнопки "Перевод вопроса"
-            "a_translate_count": 0         # для кнопки "Перевод ответа" (если основной ответ выведен)
+            "a_translate_count": 0         # для кнопки "Перевод ответа"
         }
     return user_data[user_id]
 
@@ -38,13 +38,24 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     msg = update.message.text.strip()
     data = get_user_data(user_id)
 
-    # Получаем язык из контекста (интерфейс – выбранный язык; тексты вопросов/ответов всегда на английском)
+    # Получаем язык из контекста (тексты вопросов/ответов всегда на английском, интерфейс – в выбранном языке)
     lang = context.user_data.get("language", data.get("language", "en"))
     level = context.user_data.get("level", "easy")
     data["language"] = lang
     context.user_data["language"] = lang
 
-    # Метки для reply-кнопок (зависят от языка интерфейса)
+    # Если администратор нажал кнопку "Управление", показываем инлайн-меню для теста
+    if user_id == ADMIN_ID and msg in ["🛠️ Управление", "🛠️ Admin Control"]:
+        inline_keyboard = InlineKeyboardMarkup([
+             [InlineKeyboardButton("1", callback_data="admin_1"), InlineKeyboardButton("2", callback_data="admin_2")],
+             [InlineKeyboardButton("3", callback_data="admin_3"), InlineKeyboardButton("4", callback_data="admin_4")],
+             [InlineKeyboardButton("5", callback_data="admin_5")]
+        ])
+        prompt = "Выберите действие:" if lang == "ru" else "Choose an action:"
+        await update.message.reply_text(prompt, reply_markup=inline_keyboard)
+        return
+
+    # Генерация меток для reply-кнопок (зависят от языка интерфейса)
     btn_next    = "✈️ Следующий вопрос" if lang == "ru" else "✈️ Next question"
     btn_answer  = "💬 Ответ" if lang == "ru" else "💬 Answer"
     btn_q_trans = "🌍 Перевод вопроса" if lang == "ru" else "🌍 Translate question"
@@ -113,13 +124,11 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     if msg == btn_answer:
         q = data.get("last_question")
         if not q:
-            # Если вопрос не выбран, на первом нажатии показываем сообщение, далее ничего не делаем
             if data.get("answer_display_count") == 0:
                 await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
-                data["answer_display_count"] = -1  # -1 означает, что сообщение уже показано
+                data["answer_display_count"] = -1
             return
         if data["answer_display_count"] <= 0:
-            # Если до сих пор основной ответ не выведен (значение 0)
             await update.message.reply_text(f"✅ {q['answer_en']}")
             voice = generate_voice(q['answer_en'])
             if voice:
@@ -136,7 +145,6 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     if msg == btn_q_trans:
         q = data.get("last_question")
         if not q:
-            # Если вопрос не выбран, при первом нажатии выводим сообщение, далее ничего не делаем
             if data.get("q_translate_count", 0) == 0:
                 await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
                 data["q_translate_count"] = -1
@@ -155,12 +163,10 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     if msg == btn_a_trans:
         q = data.get("last_question")
         if not q:
-            # Если вопрос не выбран
             if data.get("a_translate_count", 0) == 0:
                 await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
                 data["a_translate_count"] = -1
             return
-        # Если основной ответ ещё не был выведен, сообщаем пользователю (однократно)
         if data.get("answer_display_count", 0) <= 0:
             if data.get("a_translate_count", 0) == 0:
                 await update.message.reply_text("❗ Сначала получите основной ответ" if lang == "ru" else "❗ Please display the main answer first")
