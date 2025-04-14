@@ -23,8 +23,10 @@ async def support_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     lang = context.user_data.get("language", "en")
 
     keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("💳 Поддержать" if lang == "ru" else "💳 Support", callback_data="show_support_link")],
-        [InlineKeyboardButton("🔙 Назад" if lang == "ru" else "🔙 Back", callback_data="back_to_main")]
+        [
+            InlineKeyboardButton("💳 Поддержать" if lang == "ru" else "💳 Support", callback_data="show_support_link"),
+            InlineKeyboardButton("🔙 Назад" if lang == "ru" else "🔙 Back", callback_data="back_to_main")
+        ]
     ])
 
     await update.message.reply_text(
