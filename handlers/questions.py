@@ -7,15 +7,15 @@ from config import QUESTIONS_FILE, ADMIN_ID
 from keyboards import get_main_keyboard
 from utils.tts import generate_voice
 
-# Загрузка вопросов из файла
+# Загрузка вопросов
 try:
     with open(QUESTIONS_FILE, encoding="utf-8") as f:
         QUESTIONS = json.load(f)
 except Exception as e:
-    logging.error(f"Ошибка загрузки файла вопросов: {e}")
+    logging.error(f"Ошибка загрузки вопросов: {e}")
     QUESTIONS = []
 
-# Глобальный словарь для хранения данных пользователей
+# Пользовательские данные
 user_data = {}
 
 def get_user_data(user_id):
@@ -28,8 +28,7 @@ def get_user_data(user_id):
             "auto_repeat": False,
             "answer_display_count": 0,
             "q_translate_count": 0,
-            "a_translate_count": 0,
-            "exams_passed": 0
+            "a_translate_count": 0
         }
     return user_data[user_id]
 
@@ -94,7 +93,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         data["a_translate_count"] = 0
 
         await update.message.reply_text(f"📝 {question['question_en']}")
-        voice = generate_voice(question['question_en'])
+        voice = generate_voice(question["question_en"])
         if voice:
             await update.message.reply_voice(voice)
         return
@@ -102,12 +101,8 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     if msg == btn_answer:
         q = data.get("last_question")
         if not q:
-            await update.message.reply_text(
-                "❗ Сначала выберите вопрос." if lang == "ru"
-                else "❗ Please select a question first."
-            )
+            await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
             return
-
         if data["answer_display_count"] == 0:
             await update.message.reply_text(f"✅ {q['answer_en']}")
             voice = generate_voice(q['answer_en'])
@@ -115,54 +110,34 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
                 await update.message.reply_voice(voice)
             data["answer_display_count"] = 1
         else:
-            await update.message.reply_text(
-                "❗ Ответ уже получен." if lang == "ru" else "❗ Answer already shown."
-            )
+            await update.message.reply_text("❗ Ответ уже получен." if lang == "ru" else "❗ Answer already shown.")
         return
 
     if msg == btn_q_trans:
         q = data.get("last_question")
         if not q:
-            await update.message.reply_text(
-                "❗ Сначала выберите вопрос." if lang == "ru"
-                else "❗ Please select a question first."
-            )
+            await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
             return
-
         if data["q_translate_count"] == 0:
             await update.message.reply_text(f"🌍 {q['question_ru']}")
             data["q_translate_count"] = 1
         else:
-            await update.message.reply_text(
-                "❗ Вопрос уже переведён." if lang == "ru"
-                else "❗ Question already translated."
-            )
+            await update.message.reply_text("❗ Вопрос уже переведён." if lang == "ru" else "❗ Question already translated.")
         return
 
     if msg == btn_a_trans:
         q = data.get("last_question")
         if not q:
-            await update.message.reply_text(
-                "❗ Сначала выберите вопрос." if lang == "ru"
-                else "❗ Please select a question first."
-            )
+            await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
             return
-
         if data["answer_display_count"] == 0:
-            await update.message.reply_text(
-                "❗ Сначала получите основной ответ." if lang == "ru"
-                else "❗ Please display the main answer first."
-            )
+            await update.message.reply_text("❗ Сначала получите основной ответ." if lang == "ru" else "❗ Please display the main answer first.")
             return
-
         if data["a_translate_count"] == 0:
             await update.message.reply_text(f"🇷🇺 {q['answer_ru']}")
             data["a_translate_count"] = 1
         else:
-            await update.message.reply_text(
-                "❗ Ответ уже переведён." if lang == "ru"
-                else "❗ Answer already translated."
-            )
+            await update.message.reply_text("❗ Ответ уже переведён." if lang == "ru" else "❗ Answer already translated.")
         return
 
     await update.message.reply_text("❓ Используй кнопки меню." if lang == "ru" else "❓ Please use the menu buttons.")
