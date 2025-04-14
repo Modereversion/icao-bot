@@ -47,9 +47,9 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     # Если администратор нажал кнопку "Управление", показываем инлайн-меню для теста
     if user_id == ADMIN_ID and msg in ["🛠️ Управление", "🛠️ Admin Control"]:
         inline_keyboard = InlineKeyboardMarkup([
-             [InlineKeyboardButton("1", callback_data="admin_1"), InlineKeyboardButton("2", callback_data="admin_2")],
-             [InlineKeyboardButton("3", callback_data="admin_3"), InlineKeyboardButton("4", callback_data="admin_4")],
-             [InlineKeyboardButton("5", callback_data="admin_5")]
+             [InlineKeyboardButton("1", callback_data="admin_1")],
+             [InlineKeyboardButton("2", callback_data="admin_2")],
+             [InlineKeyboardButton("3", callback_data="admin_3")]
         ])
         prompt = "Выберите действие:" if lang == "ru" else "Choose an action:"
         await update.message.reply_text(prompt, reply_markup=inline_keyboard)
