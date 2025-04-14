@@ -27,11 +27,9 @@ def get_user_data(user_id):
             "language": "en",
             "auto_repeat": False,
             # Счётчики для текущего вопроса:
-            "answer_display_count": 0,         # для основной кнопки "Ответ" (если вопрос выбран)
-            "answer_no_question_count": 0,       # для отслеживания нажатий кнопки "Ответ", если вопрос не выбран
-            "q_translate_count": 0,            # для кнопки "Перевод вопроса"
-            "a_translate_count": 0,            # для кнопки "Перевод ответа" (если ответ уже выведен)
-            "a_translate_no_answer_count": 0   # для отслеживания нажатий кнопки "Перевод ответа" до вывода основного ответа
+            "answer_display_count": 0,     # для основной кнопки "Ответ"
+            "q_translate_count": 0,        # для кнопки "Перевод вопроса"
+            "a_translate_count": 0         # для кнопки "Перевод ответа" (если основной ответ выведен)
         }
     return user_data[user_id]
 
@@ -40,16 +38,13 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     msg = update.message.text.strip()
     data = get_user_data(user_id)
 
-    # Получаем язык из контекста (интерфейс – на выбранном языке, тексты вопросов/ответов всегда на английском)
+    # Получаем язык из контекста (интерфейс – выбранный язык; тексты вопросов/ответов всегда на английском)
     lang = context.user_data.get("language", data.get("language", "en"))
     level = context.user_data.get("level", "easy")
     data["language"] = lang
     context.user_data["language"] = lang
 
-    # Сбрасываем счётчик отсутствия выбранного вопроса при выборе нового вопроса (в обработке кнопки "Следующий вопрос")
-    # Это будет выполнено ниже при выборе нового вопроса.
-    
-    # Генерация меток для reply-кнопок (текст зависит от языка интерфейса)
+    # Метки для reply-кнопок (зависят от языка интерфейса)
     btn_next    = "✈️ Следующий вопрос" if lang == "ru" else "✈️ Next question"
     btn_answer  = "💬 Ответ" if lang == "ru" else "💬 Answer"
     btn_q_trans = "🌍 Перевод вопроса" if lang == "ru" else "🌍 Translate question"
@@ -105,10 +100,8 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
 
         # Сбрасываем все счётчики при выборе нового вопроса
         data["answer_display_count"] = 0
-        data["answer_no_question_count"] = 0
         data["q_translate_count"] = 0
         data["a_translate_count"] = 0
-        data["a_translate_no_answer_count"] = 0
 
         await update.message.reply_text(f"📝 {question['question_en']}")
         voice = generate_voice(question['question_en'])
@@ -120,22 +113,19 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     if msg == btn_answer:
         q = data.get("last_question")
         if not q:
-            # Если вопрос не выбран, используем специальный счётчик
-            no_q_count = data.get("answer_no_question_count", 0)
-            if no_q_count == 0:
+            # Если вопрос не выбран, на первом нажатии показываем сообщение, далее ничего не делаем
+            if data.get("answer_display_count") == 0:
                 await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
-                data["answer_no_question_count"] = 1
-            else:
-                return
+                data["answer_display_count"] = -1  # -1 означает, что сообщение уже показано
             return
-        answer_count = data.get("answer_display_count", 0)
-        if answer_count == 0:
+        if data["answer_display_count"] <= 0:
+            # Если до сих пор основной ответ не выведен (значение 0)
             await update.message.reply_text(f"✅ {q['answer_en']}")
             voice = generate_voice(q['answer_en'])
             if voice:
                 await update.message.reply_voice(voice)
             data["answer_display_count"] = 1
-        elif answer_count == 1:
+        elif data["answer_display_count"] == 1:
             await update.message.reply_text("❗ Ответ уже выведен" if lang == "ru" else "❗ Answer already displayed")
             data["answer_display_count"] = 2
         else:
@@ -146,13 +136,15 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     if msg == btn_q_trans:
         q = data.get("last_question")
         if not q:
-            await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
+            # Если вопрос не выбран, при первом нажатии выводим сообщение, далее ничего не делаем
+            if data.get("q_translate_count", 0) == 0:
+                await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
+                data["q_translate_count"] = -1
             return
-        q_trans_count = data.get("q_translate_count", 0)
-        if q_trans_count == 0:
+        if data["q_translate_count"] == 0:
             await update.message.reply_text(f"🌍 {q['question_ru']}")
             data["q_translate_count"] = 1
-        elif q_trans_count == 1:
+        elif data["q_translate_count"] == 1:
             await update.message.reply_text("❗ Вопрос уже переведен" if lang == "ru" else "❗ Question already translated")
             data["q_translate_count"] = 2
         else:
@@ -163,24 +155,21 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     if msg == btn_a_trans:
         q = data.get("last_question")
         if not q:
-            await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
+            # Если вопрос не выбран
+            if data.get("a_translate_count", 0) == 0:
+                await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
+                data["a_translate_count"] = -1
             return
-        if data.get("answer_display_count", 0) == 0:
-            no_ans_cnt = data.get("a_translate_no_answer_count", 0)
-            if no_ans_cnt == 0:
-                data["a_translate_no_answer_count"] = 1
-                return
-            elif no_ans_cnt == 1:
+        # Если основной ответ ещё не был выведен, сообщаем пользователю (однократно)
+        if data.get("answer_display_count", 0) <= 0:
+            if data.get("a_translate_count", 0) == 0:
                 await update.message.reply_text("❗ Сначала получите основной ответ" if lang == "ru" else "❗ Please display the main answer first")
-                data["a_translate_no_answer_count"] = 2
-            else:
-                return
+                data["a_translate_count"] = -1
             return
-        a_trans_count = data.get("a_translate_count", 0)
-        if a_trans_count == 0:
+        if data["a_translate_count"] == 0:
             await update.message.reply_text(f"🇷🇺 {q['answer_ru']}")
             data["a_translate_count"] = 1
-        elif a_trans_count == 1:
+        elif data["a_translate_count"] == 1:
             await update.message.reply_text("❗ Ответ уже переведен" if lang == "ru" else "❗ Answer already translated")
             data["a_translate_count"] = 2
         else:
