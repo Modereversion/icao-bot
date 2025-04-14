@@ -1,181 +1,151 @@
 import json
 import random
+import logging
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes
-from config import QUESTIONS_FILE
+from config import QUESTIONS_FILE, ADMIN_ID
+from keyboards import get_main_keyboard
 from utils.tts import generate_voice
 
 # Загрузка вопросов
-with open(QUESTIONS_FILE, encoding="utf-8") as f:
-    QUESTIONS = json.load(f)
+try:
+    with open(QUESTIONS_FILE, encoding="utf-8") as f:
+        QUESTIONS = json.load(f)
+except Exception as e:
+    logging.error(f"Ошибка загрузки вопросов: {e}")
+    QUESTIONS = []
 
+# Пользовательские данные
 user_data = {}
 
 def get_user_data(user_id):
     if user_id not in user_data:
         user_data[user_id] = {
-            "language": "en",
-            "level": "easy",
-            "done_ids": [],
-            "postponed": [],
+            "easy_done": [],
+            "hard_done": [],
             "last_question": None,
-            "last_msg_id": None,
-            "last_voice_id": None,
-            "last_display": "question"
+            "language": "en",
+            "auto_repeat": False,
+            "answer_display_count": 0,
+            "q_translate_count": 0,
+            "a_translate_count": 0,
+            "answers_viewed": 0,
+            "q_translations": 0,
+            "a_translations": 0
         }
     return user_data[user_id]
 
-# Приветствие
 async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
-    lang_code = update.effective_user.language_code or "en"
-    lang = "ru" if lang_code.startswith("ru") else "en"
+    msg = update.message.text.strip()
+    data = get_user_data(user_id)
+
+    lang = context.user_data.get("language", data.get("language", "en"))
+    level = context.user_data.get("level", "easy")
+    data["language"] = lang
     context.user_data["language"] = lang
-    data = get_user_data(user_id)
 
-    # Очистка и сброс
-    data.update({
-        "done_ids": [],
-        "postponed": [],
-        "last_question": None,
-        "last_msg_id": None,
-        "last_voice_id": None,
-        "last_display": "question"
-    })
+    btn_next    = "✈️ Следующий вопрос" if lang == "ru" else "✈️ Next question"
+    btn_answer  = "💬 Ответ" if lang == "ru" else "💬 Answer"
+    btn_q_trans = "🌍 Перевод вопроса" if lang == "ru" else "🌍 Translate question"
+    btn_a_trans = "🇷🇺 Перевод ответа" if lang == "ru" else "🇷🇺 Translate answer"
+    btn_support = "💳 Поддержать проект" if lang == "ru" else "💳 Support project"
 
-    text = (
-        "👋 Привет! Добро пожаловать в Level 4 Trainer – твой тренажёр к экзамену ИКАО!\n\n"
-        "Нажми «🚀 Начать тренировку», чтобы приступить к первому вопросу."
-        if lang == "ru" else
-        "👋 Welcome to Level 4 Trainer – your ICAO speaking exam trainer!\n\n"
-        "Press «🚀 Start training» to begin."
-    )
-
-    keyboard = InlineKeyboardMarkup([
-        [InlineKeyboardButton("🚀 Начать тренировку" if lang == "ru" else "🚀 Start training", callback_data="start_training")]
-    ])
-
-    await update.message.reply_text(text, reply_markup=keyboard)
-
-# Новый вопрос
-async def send_new_question(update, context, user_id, lang):
-    data = get_user_data(user_id)
-
-    # Удаление старой озвучки и кнопок
-    try:
-        if data.get("last_voice_id"):
-            await context.bot.delete_message(chat_id=user_id, message_id=data["last_voice_id"])
-        if data.get("last_msg_id"):
-            await context.bot.edit_message_reply_markup(chat_id=user_id, message_id=data["last_msg_id"], reply_markup=None)
-    except:
-        pass
-
-    level = data.get("level", "easy")
-    available = [q for q in QUESTIONS if q["level"] == level and q["id"] not in data["done_ids"]]
-
-    if not available and data["postponed"]:
-        available = data["postponed"]
-        data["postponed"] = []
-
-    if not available:
-        await update.callback_query.message.reply_text("✅ Все вопросы завершены!" if lang == "ru" else "✅ All questions completed!")
+    # 👨‍💻 Админ-панель
+    if user_id == ADMIN_ID and msg in ["🛠️ Управление", "🛠️ Admin Control"]:
+        inline_keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("1", callback_data="admin_1"), InlineKeyboardButton("2", callback_data="admin_2")],
+            [InlineKeyboardButton("3", callback_data="admin_3"), InlineKeyboardButton("4", callback_data="admin_4")],
+            [InlineKeyboardButton("5", callback_data="admin_5")]
+        ])
+        prompt = "Выберите действие:" if lang == "ru" else "Choose an action:"
+        await update.message.reply_text(prompt, reply_markup=inline_keyboard)
         return
 
-    question = random.choice(available)
-    if question not in data["postponed"]:
-        data["done_ids"].append(question["id"])
-
-    data["last_question"] = question
-    data["last_display"] = "question"
-
-    text = f"📝 {question['question_en']}"
-    keyboard = InlineKeyboardMarkup([
-        [
-            InlineKeyboardButton("✈️ Следующий вопрос" if lang == "ru" else "✈️ Next", callback_data="next_question"),
-            InlineKeyboardButton("💬 Ответ" if lang == "ru" else "💬 Answer", callback_data="show_answer")
-        ],
-        [
-            InlineKeyboardButton("🌍 Перевод вопроса" if lang == "ru" else "🌍 Translate Q", callback_data="translate_q"),
-            InlineKeyboardButton("🇷🇺 Перевод ответа" if lang == "ru" else "🇷🇺 Translate A", callback_data="translate_a")
-        ],
-        [
-            InlineKeyboardButton("🔁 Ответить позже" if lang == "ru" else "🔁 Answer later", callback_data="postpone")
-        ]
-    ])
-
-    sent = await update.callback_query.message.reply_text(text, reply_markup=keyboard)
-    voice = generate_voice(question["question_en"])
-    if voice:
-        voice_msg = await update.callback_query.message.reply_voice(voice)
-        data["last_voice_id"] = voice_msg.message_id
-    data["last_msg_id"] = sent.message_id
-
-# Inline-кнопки
-async def handle_inline_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    user_id = query.from_user.id
-    lang = context.user_data.get("language", "en")
-    data = get_user_data(user_id)
-    await query.answer()
-
-    code = query.data
-    q = data.get("last_question")
-    msg = query.message
-
-    # Начать тренировку / Следующий вопрос
-    if code == "start_training" or code == "next_question":
-        await send_new_question(update, context, user_id, lang)
+    # 💳 Поддержать проект
+    if msg == btn_support:
+        from handlers.commands import support_command
+        await support_command(update, context)
         return
 
-    if not q:
-        await msg.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
+    # ✈️ Следующий вопрос
+    if msg == btn_next:
+        available = [q for q in QUESTIONS if q["level"] == level and q["id"] not in data[f"{level}_done"]]
+        if not available:
+            if level == "easy":
+                button1 = "Перейти к сложным" if lang == "ru" else "Switch to hard"
+                button2 = "Начать сначала" if lang == "ru" else "Start over"
+                prompt = "✅ Вы ответили на все простые вопросы. Что хотите сделать дальше?" if lang == "ru" else "✅ All easy questions done. Choose next step:"
+                keyboard = InlineKeyboardMarkup([
+                    [InlineKeyboardButton(button1, callback_data="switch_to_hard"),
+                     InlineKeyboardButton(button2, callback_data="reset_progress")]
+                ])
+            else:
+                button = "Начать сначала" if lang == "ru" else "Start over"
+                prompt = "✅ Все вопросы завершены. Хотите начать сначала?" if lang == "ru" else "✅ All questions completed. Start over?"
+                keyboard = InlineKeyboardMarkup([[InlineKeyboardButton(button, callback_data="reset_progress")]])
+            await update.message.reply_text(prompt, reply_markup=keyboard)
+            return
+
+        question = random.choice(available)
+        data[f"{level}_done"].append(question["id"])
+        data["last_question"] = question
+        data["answer_display_count"] = 0
+        data["q_translate_count"] = 0
+        data["a_translate_count"] = 0
+
+        await update.message.reply_text(f"📝 {question['question_en']}")
+        voice = generate_voice(question['question_en'])
+        if voice:
+            await update.message.reply_voice(voice)
         return
 
-    # Удаляем старое голосовое
-    try:
-        if data.get("last_voice_id"):
-            await context.bot.delete_message(chat_id=user_id, message_id=data["last_voice_id"])
-    except:
-        pass
-
-    if code == "show_answer":
-        if data["last_display"] == "answer":
+    # 💬 Ответ
+    if msg == btn_answer:
+        q = data.get("last_question")
+        if not q:
+            await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
             return
-        text = f"💬 {q['answer_en']}"
-        voice = generate_voice(q['answer_en'])
-        await msg.edit_text(text, reply_markup=msg.reply_markup)
-        if voice:
-            voice_msg = await msg.reply_voice(voice)
-            data["last_voice_id"] = voice_msg.message_id
-        data["last_display"] = "answer"
+        if data["answer_display_count"] == 0:
+            await update.message.reply_text(f"✅ {q['answer_en']}")
+            voice = generate_voice(q['answer_en'])
+            if voice:
+                await update.message.reply_voice(voice)
+            data["answer_display_count"] = 1
+            data["answers_viewed"] += 1  # ✅ учёт статистики
+        else:
+            await update.message.reply_text("❗ Ответ уже получен." if lang == "ru" else "❗ Answer already shown.")
+        return
 
-    elif code == "translate_q":
-        if data["last_display"] == "q_trans":
+    # 🌍 Перевод вопроса
+    if msg == btn_q_trans:
+        q = data.get("last_question")
+        if not q:
+            await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
             return
-        text = f"🌍 {q['question_ru']}"
-        voice = generate_voice(q["question_en"])
-        await msg.edit_text(text, reply_markup=msg.reply_markup)
-        if voice:
-            voice_msg = await msg.reply_voice(voice)
-            data["last_voice_id"] = voice_msg.message_id
-        data["last_display"] = "q_trans"
+        if data["q_translate_count"] == 0:
+            await update.message.reply_text(f"🌍 {q['question_ru']}")
+            data["q_translate_count"] = 1
+            data["q_translations"] += 1  # ✅ учёт статистики
+        else:
+            await update.message.reply_text("❗ Вопрос уже переведён." if lang == "ru" else "❗ Question already translated.")
+        return
 
-    elif code == "translate_a":
-        if data["last_display"] == "a_trans":
+    # 🇷🇺 Перевод ответа
+    if msg == btn_a_trans:
+        q = data.get("last_question")
+        if not q:
+            await update.message.reply_text("❗ Сначала выберите вопрос." if lang == "ru" else "❗ Please select a question first.")
             return
-        if data["last_display"] != "answer":
-            await msg.reply_text("❗ Сначала посмотрите ответ." if lang == "ru" else "❗ Please view the answer first.")
+        if data["answer_display_count"] == 0:
+            await update.message.reply_text("❗ Сначала получите основной ответ." if lang == "ru" else "❗ Please display the main answer first.")
             return
-        text = f"🇷🇺 {q['answer_ru']}"
-        voice = generate_voice(q["answer_en"])
-        await msg.edit_text(text, reply_markup=msg.reply_markup)
-        if voice:
-            voice_msg = await msg.reply_voice(voice)
-            data["last_voice_id"] = voice_msg.message_id
-        data["last_display"] = "a_trans"
+        if data["a_translate_count"] == 0:
+            await update.message.reply_text(f"🇷🇺 {q['answer_ru']}")
+            data["a_translate_count"] = 1
+            data["a_translations"] += 1  # ✅ учёт статистики
+        else:
+            await update.message.reply_text("❗ Ответ уже переведён." if lang == "ru" else "❗ Answer already translated.")
+        return
 
-    elif code == "postpone":
-        if q not in data["postponed"]:
-            data["postponed"].append(q)
-        await msg.reply_text("📌 Вопрос отложен. Переходим к следующему!" if lang == "ru" else "📌 Question saved for later. Moving on!")
-        await send_new_question(update, context, user_id, lang)
+    await update.message.reply_text("❓ Используй кнопки меню." if lang == "ru" else "❓ Please use the menu buttons.")
