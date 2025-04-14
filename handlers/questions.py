@@ -42,12 +42,14 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     data["language"] = lang
     context.user_data["language"] = lang
 
+    # Кнопки
     btn_next    = "✈️ Следующий вопрос" if lang == "ru" else "✈️ Next question"
     btn_answer  = "💬 Ответ" if lang == "ru" else "💬 Answer"
     btn_q_trans = "🌍 Перевод вопроса" if lang == "ru" else "🌍 Translate question"
     btn_a_trans = "🇷🇺 Перевод ответа" if lang == "ru" else "🇷🇺 Translate answer"
     btn_support = "💳 Поддержать проект" if lang == "ru" else "💳 Support project"
 
+    # 👨‍💻 Админ-панель
     if user_id == ADMIN_ID and msg in ["🛠️ Управление", "🛠️ Admin Control"]:
         inline_keyboard = InlineKeyboardMarkup([
             [InlineKeyboardButton("1", callback_data="admin_1"), InlineKeyboardButton("2", callback_data="admin_2")],
@@ -58,15 +60,13 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         await update.message.reply_text(prompt, reply_markup=inline_keyboard)
         return
 
+    # 💳 Поддержать проект — теперь вызывает инлайн-меню из commands.py
     if msg == btn_support:
-        support_text = (
-            "💳 Вы можете поддержать проект здесь:\nhttps://www.sberbank.com/sms/pbpn?requisiteNumber=79155691550"
-            if lang == "ru" else
-            "💳 You can support the project here:\nhttps://www.sberbank.com/sms/pbpn?requisiteNumber=79155691550"
-        )
-        await update.message.reply_text(support_text)
+        from handlers.commands import support_command
+        await support_command(update, context)
         return
 
+    # ✈️ Следующий вопрос
     if msg == btn_next:
         available = [q for q in QUESTIONS if q["level"] == level and q["id"] not in data[f"{level}_done"]]
         if not available:
@@ -93,11 +93,12 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         data["a_translate_count"] = 0
 
         await update.message.reply_text(f"📝 {question['question_en']}")
-        voice = generate_voice(question["question_en"])
+        voice = generate_voice(question['question_en'])
         if voice:
             await update.message.reply_voice(voice)
         return
 
+    # 💬 Ответ
     if msg == btn_answer:
         q = data.get("last_question")
         if not q:
@@ -113,6 +114,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
             await update.message.reply_text("❗ Ответ уже получен." if lang == "ru" else "❗ Answer already shown.")
         return
 
+    # 🌍 Перевод вопроса
     if msg == btn_q_trans:
         q = data.get("last_question")
         if not q:
@@ -125,6 +127,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
             await update.message.reply_text("❗ Вопрос уже переведён." if lang == "ru" else "❗ Question already translated.")
         return
 
+    # 🇷🇺 Перевод ответа
     if msg == btn_a_trans:
         q = data.get("last_question")
         if not q:
