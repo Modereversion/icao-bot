@@ -2,81 +2,1625 @@
   {
     "id": 1,
     "level": "easy",
-    "question_en": "Where are you flying to?",
-    "question_ru": "Куда вы летите?",
-    "answer_en": "I'm flying to Frankfurt. It's a short international flight.",
-    "answer_ru": "Я лечу во Франкфурт. Это короткий международный рейс."
+    "question_en": "What is a near miss?",
+    "question_ru": "Что такое опасное сближение?",
+    "answer_en": "A near miss is a situation when two aircraft come very close to each other but don't collide. Pilots usually need to take quick action to avoid an accident. Such cases must be reported to improve flight safety.",
+    "answer_ru": "Опасное сближение — это ситуация, когда два самолёта приближаются друг к другу на опасное расстояние, но не сталкиваются. Пилотам обычно нужно быстро действовать, чтобы избежать аварии. О таких случаях необходимо сообщать для повышения безопасности полётов."
   },
   {
     "id": 2,
     "level": "easy",
-    "question_en": "What is your aircraft type?",
-    "question_ru": "Какой у вас тип воздушного судна?",
-    "answer_en": "It's a Boeing 737. A narrow-body jet.",
-    "answer_ru": "Это Боинг 737. Узкофюзеляжный реактивный самолёт."
+    "question_en": "Why do pilots practice belly landings in simulators?",
+    "question_ru": "Почему пилоты отрабатывают посадку на фюзеляж на тренажёрах?",
+    "answer_en": "Pilots practice belly landings in simulators to prepare for emergency situations when the landing gear fails. It helps them stay calm and make the right decisions during real emergencies. This training improves safety for both crew and passengers.",
+    "answer_ru": "Пилоты отрабатывают посадку на фюзеляж на тренажёрах, чтобы быть готовыми к чрезвычайным ситуациям при отказе шасси. Это помогает сохранять спокойствие и принимать правильные решения. Такая подготовка повышает безопасность экипажа и пассажиров."
   },
   {
     "id": 3,
     "level": "easy",
-    "question_en": "What is the current weather?",
-    "question_ru": "Какая сейчас погода?",
-    "answer_en": "The weather is clear. Visibility is good.",
-    "answer_ru": "Погода ясная. Видимость хорошая."
+    "question_en": "Why is bird activity dangerous for flight?",
+    "question_ru": "Почему активность птиц опасна для полёта?",
+    "answer_en": "Bird activity is dangerous because birds can be ingested into engines and cause damage. This may lead to engine failure and force an emergency landing. Bird strikes are especially risky during takeoff and landing.",
+    "answer_ru": "Активность птиц опасна, потому что птицы могут попасть в двигатели и повредить их. Это может привести к отказу двигателя и вынужденной посадке. Наибольший риск — во время взлёта и посадки."
   },
   {
     "id": 4,
     "level": "easy",
-    "question_en": "How many passengers are on board?",
-    "question_ru": "Сколько пассажиров на борту?",
-    "answer_en": "There are 120 passengers. All are seated and ready.",
-    "answer_ru": "На борту 120 пассажиров. Все на местах и готовы."
+    "question_en": "Why is it effective to analyze aviation incident reports?",
+    "question_ru": "Почему эффективно анализировать отчёты об авиационных происшествиях?",
+    "answer_en": "Analyzing incident reports helps identify safety issues and learn from previous mistakes. It prevents similar problems in the future. This process is essential for improving flight safety.",
+    "answer_ru": "Анализ отчётов об авиационных происшествиях помогает выявить проблемы безопасности и учиться на прошлых ошибках. Это предотвращает повторение подобных ситуаций. Такой анализ важен для повышения безопасности полётов."
   },
   {
     "id": 5,
     "level": "easy",
-    "question_en": "What is your cruising altitude?",
-    "question_ru": "Какова ваша эшелонная высота?",
-    "answer_en": "We are cruising at flight level 350. Conditions are stable.",
-    "answer_ru": "Мы летим на эшелоне 350. Условия стабильные."
+    "question_en": "What equipment prevents an aircraft from impacting terrain?",
+    "question_ru": "Какое оборудование предотвращает столкновение самолёта с землёй?",
+    "answer_en": "The Ground Proximity Warning System (GPWS) or Enhanced GPWS alerts pilots when the aircraft is too close to the ground. It gives voice warnings so pilots can take immediate action. This system helps avoid Controlled Flight Into Terrain (CFIT) accidents.",
+    "answer_ru": "Система предупреждения о приближении к земле (GPWS) или улучшенная версия (EGPWS) подаёт сигналы, если самолёт слишком близко к земле. Она использует голосовые предупреждения, чтобы пилоты могли немедленно действовать. Эта система помогает предотвратить столкновение с землёй при управляемом полёте (CFIT)."
   },
   {
     "id": 6,
-    "level": "hard",
-    "question_en": "What would you do in case of radio failure?",
-    "question_ru": "Что вы будете делать в случае отказа радиосвязи?",
-    "answer_en": "I would follow standard lost communication procedures. I will maintain assigned altitude and route.",
-    "answer_ru": "Я выполню стандартные процедуры при потере связи. Буду соблюдать заданный эшелон и маршрут."
+    "level": "easy",
+    "question_en": "What goods are classified as dangerous?",
+    "question_ru": "Какие грузы классифицируются как опасные?",
+    "answer_en": "Dangerous goods include flammable liquids, explosives, toxic substances, and corrosive materials. These items can pose serious risks during transportation. Pilots and crew must know how to handle such cargo properly.",
+    "answer_ru": "Опасные грузы включают легковоспламеняющиеся жидкости, взрывчатые вещества, токсичные и коррозионные материалы. Эти предметы могут представлять серьёзную угрозу во время перевозки. Пилоты и экипаж должны уметь правильно обращаться с таким грузом."
   },
   {
     "id": 7,
-    "level": "hard",
-    "question_en": "Describe a bird strike and your actions.",
-    "question_ru": "Опишите попадание птицы в двигатель и ваши действия.",
-    "answer_en": "We experienced a bird strike after takeoff. I declared an emergency and returned to the airport.",
-    "answer_ru": "После взлёта произошёл удар птицы. Я сообщил об аварийной ситуации и вернулся в аэропорт."
+    "level": "easy",
+    "question_en": "What does an \"aviation accident\" mean?",
+    "question_ru": "Что означает термин «авиационное происшествие»?",
+    "answer_en": "An aviation accident is an event related to aircraft operation that results in serious injury, death, or significant aircraft damage. It usually happens during takeoff, landing, or flight. All such cases are investigated by authorities.",
+    "answer_ru": "Авиационное происшествие — это событие, связанное с эксплуатацией самолёта, которое приводит к серьёзным травмам, гибели или серьёзным повреждениям воздушного судна. Обычно оно происходит при взлёте, посадке или в полёте. Все такие случаи расследуются властями."
   },
   {
     "id": 8,
-    "level": "hard",
-    "question_en": "How do you report a medical emergency onboard?",
-    "question_ru": "Как вы сообщите о медицинской чрезвычайной ситуации на борту?",
-    "answer_en": "I will inform ATC of the emergency. I will request priority landing.",
-    "answer_ru": "Я сообщу авиадиспетчеру об экстренной ситуации. Запрошу приоритетную посадку."
+    "level": "easy",
+    "question_en": "What is the difference between a runway incursion and a runway excursion?",
+    "question_ru": "В чём разница между выкатыванием и входом на ВПП?",
+    "answer_en": "A runway incursion is when an aircraft, vehicle, or person enters the runway without permission. A runway excursion happens when an aircraft departs the runway unintentionally during takeoff or landing. Both events are serious safety risks.",
+    "answer_ru": "Вход на ВПП — это когда самолёт, транспортное средство или человек попадают на полосу без разрешения. Выкатывание — это когда самолёт случайно покидает полосу при взлёте или посадке. Оба случая представляют серьёзную угрозу безопасности."
   },
   {
     "id": 9,
-    "level": "hard",
-    "question_en": "How do you handle low visibility landing?",
-    "question_ru": "Как вы действуете при посадке в условиях низкой видимости?",
-    "answer_en": "I rely on ILS and instruments. I will go around if visual is not acquired.",
-    "answer_ru": "Я полагаюсь на ILS и приборы. Ухожу на второй круг, если не увижу ВПП."
+    "level": "easy",
+    "question_en": "What medical problems require a request for an ambulance?",
+    "question_ru": "Какие медицинские проблемы требуют вызова скорой помощи?",
+    "answer_en": "Serious conditions like heart attacks, strokes, or unconsciousness require an ambulance. The crew must inform ATC and arrange medical assistance on arrival. Prompt care can save lives.",
+    "answer_ru": "Серьёзные состояния, такие как инфаркт, инсульт или потеря сознания, требуют вызова скорой помощи. Экипаж должен сообщить об этом диспетчерам и организовать помощь по прибытии. Быстрая помощь может спасти жизнь."
   },
   {
     "id": 10,
+    "level": "easy",
+    "question_en": "What weather phenomena cannot be identified by inflight weather radar?",
+    "question_ru": "Какие погодные явления не определяются метеорадаром в полёте?",
+    "answer_en": "In-flight weather radar cannot detect clear air turbulence or volcanic ash. These phenomena are dangerous but invisible to radar. Pilots rely on reports and forecasts to avoid them.",
+    "answer_ru": "Метеорадар не обнаруживает турбулентность в ясном небе и вулканический пепел. Эти явления опасны, но невидимы для радара. Пилоты используют прогнозы и сообщения других экипажей, чтобы их избежать."
+  },
+  {
+    "id": 11,
+    "level": "easy",
+    "question_en": "How do weather conditions affect aircraft endurance?",
+    "question_ru": "Как погодные условия влияют на продолжительность полёта?",
+    "answer_en": "Strong headwinds reduce endurance by increasing fuel consumption. Icing can also affect performance and efficiency. Pilots must consider weather during flight planning.",
+    "answer_ru": "Сильный встречный ветер снижает продолжительность полёта из-за увеличения расхода топлива. Обледенение также ухудшает характеристики самолёта. Погода всегда учитывается при планировании рейса."
+  },
+  {
+    "id": 12,
+    "level": "easy",
+    "question_en": "In what situations should pilots override the autopilot?",
+    "question_ru": "В каких ситуациях пилоты должны отключить автопилот?",
+    "answer_en": "Pilots should override autopilot during severe turbulence, system malfunctions, or unusual aircraft behavior. Manual control allows faster and more accurate reactions. Safety always comes first.",
+    "answer_ru": "Пилоты отключают автопилот при сильной турбулентности, сбоях системы или нестандартном поведении самолёта. Ручное управление позволяет быстрее и точнее реагировать. Безопасность — на первом месте."
+  },
+  {
+    "id": 13,
+    "level": "easy",
+    "question_en": "What does a flight plan contain?",
+    "question_ru": "Что содержит план полёта?",
+    "answer_en": "A flight plan includes route, altitude, fuel amount, aircraft type, and estimated time of arrival. It also shows alternate airports and emergency details. This document is essential for safe flight management.",
+    "answer_ru": "План полёта включает маршрут, эшелон, количество топлива, тип воздушного судна и расчётное время прибытия. Также указываются запасные аэродромы и данные на случай чрезвычайной ситуации. Этот документ важен для безопасного выполнения рейса."
+  },
+  {
+    "id": 14,
+    "level": "easy",
+    "question_en": "How does jet lag influence passenger and pilot behavior?",
+    "question_ru": "Как джетлаг влияет на поведение пассажиров и пилотов?",
+    "answer_en": "Jet lag causes fatigue, irritability, and reduced concentration. For pilots, it may affect decision-making and reaction time. Proper rest and planning help minimize its impact.",
+    "answer_ru": "Джетлаг вызывает усталость, раздражительность и снижает концентрацию. У пилотов это может повлиять на принятие решений и скорость реакции. Правильный отдых и планирование помогают снизить влияние джетлага."
+  },
+  {
+    "id": 15,
+    "level": "easy",
+    "question_en": "What does re-routing mean?",
+    "question_ru": "Что означает изменение маршрута?",
+    "answer_en": "Re-routing means changing the planned flight route due to weather, traffic, or emergencies. It helps ensure safety and avoid delays. Pilots coordinate this with ATC.",
+    "answer_ru": "Изменение маршрута означает отклонение от запланированного пути из-за погоды, трафика или ЧС. Это помогает обеспечить безопасность и избежать задержек. Пилоты согласуют изменения с диспетчерами."
+  },
+  {
+    "id": 16,
+    "level": "easy",
+    "question_en": "What is a slot time?",
+    "question_ru": "Что такое слот-время?",
+    "answer_en": "Slot time is a specific time window for takeoff or landing at busy airports. It helps manage air traffic efficiently. Missing the slot may cause delays.",
+    "answer_ru": "Слот-время — это установленный временной интервал для взлёта или посадки в загруженных аэропортах. Оно помогает эффективно управлять воздушным движением. Пропуск слота может привести к задержкам."
+  },
+  {
+    "id": 17,
+    "level": "easy",
+    "question_en": "Why is diplomatic entry required by some countries?",
+    "question_ru": "Почему некоторые страны требуют дипломатического разрешения на вход?",
+    "answer_en": "Diplomatic entry is needed for government or military flights entering foreign airspace. It ensures international cooperation and legal compliance. Without it, overflight may be denied.",
+    "answer_ru": "Дипломатическое разрешение требуется для государственных или военных рейсов, пересекающих иностранное воздушное пространство. Это обеспечивает международное сотрудничество и соблюдение закона. Без него пролёт может быть запрещён."
+  },
+  {
+    "id": 18,
+    "level": "easy",
+    "question_en": "What factors may impact aircraft performance?",
+    "question_ru": "Какие факторы могут повлиять на характеристики самолёта?",
+    "answer_en": "Aircraft performance is affected by weight, temperature, altitude, and wind. These factors influence takeoff, climb, and fuel efficiency. Pilots calculate performance before every flight.",
+    "answer_ru": "На характеристики самолёта влияют вес, температура, высота и ветер. Эти факторы важны для взлёта, набора высоты и расхода топлива. Пилоты рассчитывают характеристики перед каждым рейсом."
+  },
+  {
+    "id": 19,
+    "level": "easy",
+    "question_en": "What do you do to avoid communication problems in English?",
+    "question_ru": "Что вы делаете, чтобы избежать проблем в общении на английском языке?",
+    "answer_en": "I use standard phraseology and speak clearly at a moderate pace. I ask for clarification if something is unclear. It’s important to stay calm and professional.",
+    "answer_ru": "Я использую стандартную фразеологию и говорю чётко в умеренном темпе. Если что-то непонятно, я прошу разъяснить. Важно сохранять спокойствие и профессионализм."
+  },
+  {
+    "id": 20,
+    "level": "easy",
+    "question_en": "Why should pilots discuss airport layout during the initial briefing?",
+    "question_ru": "Почему пилоты должны обсуждать схему аэропорта на начальном брифинге?",
+    "answer_en": "Discussing airport layout helps avoid confusion during taxiing, especially at complex airports. It reduces the risk of runway incursions. This improves safety and coordination.",
+    "answer_ru": "Обсуждение схемы аэропорта помогает избежать путаницы при рулении, особенно в сложных аэропортах. Это снижает риск выезда на ВПП. Такой подход повышает безопасность и координацию."
+  },
+  {
+    "id": 21,
+    "level": "easy",
+    "question_en": "Why is the de-icing procedure sometimes necessary?",
+    "question_ru": "Почему иногда необходима процедура удаления льда?",
+    "answer_en": "De-icing is needed when ice or frost accumulates on the aircraft. Ice can disrupt airflow and reduce lift. Removing it ensures safe takeoff and flight.",
+    "answer_ru": "Удаление льда необходимо, когда на самолёте накапливается иней или лёд. Лёд нарушает обтекание крыла и снижает подъёмную силу. Его удаление необходимо для безопасного взлёта и полёта."
+  },
+  {
+    "id": 22,
+    "level": "easy",
+    "question_en": "How do landmarks help perform flights under VFR?",
+    "question_ru": "Как ориентиры помогают выполнять полёты по ПВП?",
+    "answer_en": "Landmarks like rivers, roads, and cities help pilots navigate visually. They confirm the aircraft’s position without instruments. This is essential for safe VFR flying.",
+    "answer_ru": "Ориентиры, такие как реки, дороги и города, помогают пилотам ориентироваться визуально. Они подтверждают положение самолёта без приборов. Это важно для безопасного полёта по ПВП."
+  },
+  {
+    "id": 23,
+    "level": "easy",
+    "question_en": "Do you like operating your current type of aircraft?",
+    "question_ru": "Вам нравится управлять текущим типом самолёта?",
+    "answer_en": "Yes, I enjoy flying it because it is reliable and efficient. I feel confident handling it in various conditions. It’s a good fit for my experience.",
+    "answer_ru": "Да, мне нравится этот самолёт — он надёжный и эффективный. Я чувствую уверенность при управлении в разных условиях. Он подходит моему уровню опыта."
+  },
+  {
+    "id": 24,
+    "level": "easy",
+    "question_en": "What are the requirements for pilot qualification?",
+    "question_ru": "Каковы требования к квалификации пилота?",
+    "answer_en": "A pilot must complete flight training, pass theoretical exams, and log required flight hours. They also need a medical certificate and successful check rides. Continuous training is required to maintain qualification.",
+    "answer_ru": "Пилот должен пройти лётную подготовку, сдать теоретические экзамены и налетать определённое количество часов. Также требуется медицинское заключение и успешная проверка навыков. Для поддержания квалификации необходима регулярная переподготовка."
+  },
+  {
+    "id": 25,
+    "level": "easy",
+    "question_en": "What may influence effective radiotelephony communication?",
+    "question_ru": "Что может повлиять на эффективность радиосвязи?",
+    "answer_en": "Radiotelephony can be affected by poor signal quality, language barriers, or incorrect phraseology. Background noise and high workload can also cause misunderstandings. Clear and standard communication is essential.",
+    "answer_ru": "На радиосвязь могут повлиять плохое качество сигнала, языковые барьеры и неправильная фразеология. Также мешают шум и высокая нагрузка. Чёткая и стандартная речь очень важна."
+  },
+  {
+    "id": 26,
+    "level": "easy",
+    "question_en": "Moscow airspace is congested. Why is that?",
+    "question_ru": "Воздушное пространство Москвы загружено. Почему?",
+    "answer_en": "Moscow has several major airports close together, which leads to high traffic density. The area serves many international and domestic flights. Special procedures help manage the congestion.",
+    "answer_ru": "В районе Москвы расположено несколько крупных аэропортов, что создаёт плотный трафик. Регион обслуживает множество международных и внутренних рейсов. Существуют специальные процедуры для управления загрузкой."
+  },
+  {
+    "id": 27,
+    "level": "easy",
+    "question_en": "How can pilots manage to land in poor weather conditions?",
+    "question_ru": "Как пилоты могут посадить самолёт в плохих погодных условиях?",
+    "answer_en": "Pilots use instruments and autopilot systems to land safely in poor weather. They follow approach procedures and minimums. If the conditions are too bad, they go around or divert.",
+    "answer_ru": "Пилоты используют приборы и автопилот для безопасной посадки в плохую погоду. Они следуют процедурам захода и установленным минимумам. Если условия слишком плохие, выполняется уход или отклонение на запасной аэродром."
+  },
+  {
+    "id": 28,
+    "level": "easy",
+    "question_en": "How is the runway prepared for a belly landing?",
+    "question_ru": "Как подготавливается ВПП для посадки на фюзеляж?",
+    "answer_en": "The runway is cleared of obstacles and emergency services are positioned nearby. Foam may be spread on the runway surface to reduce fire risk. The airport is closed for other traffic.",
+    "answer_ru": "Полоса очищается от препятствий, службы экстренной помощи занимают позиции. На полосу может быть нанесена пена для снижения риска пожара. Аэропорт закрывается для остального движения."
+  },
+  {
+    "id": 29,
+    "level": "easy",
+    "question_en": "What measures minimize bird risk?",
+    "question_ru": "Какие меры снижают риск столкновения с птицами?",
+    "answer_en": "Airports use bird control programs including loud sounds, lights, and trained animals. Habitat management also helps reduce bird presence. Pilots stay alert, especially during takeoff and landing.",
+    "answer_ru": "В аэропортах используются программы отпугивания птиц — громкие звуки, свет и обученные животные. Управление средой обитания также снижает их количество. Пилоты особенно внимательны на взлёте и посадке."
+  },
+  {
+    "id": 30,
+    "level": "easy",
+    "question_en": "What is a bomb threat?",
+    "question_ru": "Что такое угроза взрыва на борту?",
+    "answer_en": "A bomb threat is a warning or suspicion that there may be an explosive device on board. Pilots follow emergency checklists and coordinate with ATC. Authorities investigate the threat after landing.",
+    "answer_ru": "Угроза взрыва — это предупреждение или подозрение, что на борту может находиться взрывное устройство. Пилоты следуют аварийным инструкциям и координируются с диспетчерами. После посадки угрозу проверяют соответствующие службы."
+  },
+  {
+    "id": 31,
+    "level": "easy",
+    "question_en": "How is dangerous cargo transported?",
+    "question_ru": "Как перевозятся опасные грузы?",
+    "answer_en": "Dangerous cargo is packed, labeled, and documented according to strict regulations. It is loaded in specific aircraft zones. Crew must be trained to handle such shipments safely.",
+    "answer_ru": "Опасные грузы упаковываются, маркируются и документируются в соответствии со строгими правилами. Они размещаются в определённых зонах самолёта. Экипаж должен быть обучен безопасной работе с такими грузами."
+  },
+  {
+    "id": 32,
+    "level": "easy",
+    "question_en": "Why is smoking prohibited on board?",
+    "question_ru": "Почему курение запрещено на борту?",
+    "answer_en": "Smoking is banned because it can start fires and affect cabin air quality. It also sets off smoke detectors in lavatories. Safety regulations strictly forbid it.",
+    "answer_ru": "Курение запрещено, потому что может привести к пожару и загрязняет воздух в салоне. Оно также активирует дымовые детекторы в туалетах. Это строго запрещено правилами безопасности."
+  },
+  {
+    "id": 33,
+    "level": "easy",
+    "question_en": "How hazardous is it to encounter a wild animal on the runway?",
+    "question_ru": "Насколько опасна встреча с диким животным на ВПП?",
+    "answer_en": "A wild animal on the runway can cause a collision during takeoff or landing. This may damage the aircraft and endanger lives. Airports take measures to keep runways clear.",
+    "answer_ru": "Дикое животное на полосе может вызвать столкновение при взлёте или посадке. Это может повредить самолёт и угрожать жизням. Аэропорты принимают меры для защиты полос от животных."
+  },
+  {
+    "id": 34,
+    "level": "easy",
+    "question_en": "What equipment may be necessary for transporting disabled passengers?",
+    "question_ru": "Какое оборудование может потребоваться для перевозки пассажиров с ограниченными возможностями?",
+    "answer_en": "Airlines may use special wheelchairs, boarding ramps, and lifting devices. The cabin crew assists passengers and ensures comfort and safety. Coordination with ground staff is also important.",
+    "answer_ru": "Авиакомпании используют специальные инвалидные кресла, пандусы и подъёмные устройства. Экипаж помогает пассажирам и обеспечивает их комфорт и безопасность. Также важна координация с наземными службами."
+  },
+  {
+    "id": 35,
+    "level": "easy",
+    "question_en": "What are the reasons for a runway overrun?",
+    "question_ru": "Каковы причины выкатывания за пределы ВПП?",
+    "answer_en": "Runway overruns may occur due to wet or icy surfaces, high landing speed, or late braking. Mechanical failures or pilot error can also contribute. Proper planning and training reduce this risk.",
+    "answer_ru": "Выкатывание может произойти из-за мокрой или обледеневшей полосы, высокой скорости посадки или позднего торможения. Также возможны технические неисправности или ошибка пилота. Правильное планирование и подготовка снижают риск."
+  },
+  {
+    "id": 36,
+    "level": "easy",
+    "question_en": "Why is it mandatory to avoid a thunderstorm area?",
+    "question_ru": "Почему необходимо избегать зоны грозы?",
+    "answer_en": "Thunderstorms can cause turbulence, lightning strikes, hail, and wind shear. These hazards are dangerous for aircraft. Pilots always plan to fly around storm cells.",
+    "answer_ru": "Грозы могут вызвать турбулентность, удары молнии, град и сдвиг ветра. Эти явления опасны для самолётов. Пилоты всегда планируют обходить грозовые очаги."
+  },
+  {
+    "id": 37,
+    "level": "easy",
+    "question_en": "What flight conditions are the most important at decision height? Why?",
+    "question_ru": "Какие условия полёта наиболее важны на высоте принятия решения и почему?",
+    "answer_en": "At decision height, visibility and runway alignment are crucial. The pilot must clearly see the runway to continue landing. If not, a go-around is mandatory.",
+    "answer_ru": "На высоте принятия решения важны видимость и выравнивание с ВПП. Пилот должен чётко видеть полосу, чтобы продолжить посадку. В противном случае необходимо уходить на второй круг."
+  },
+  {
+    "id": 38,
+    "level": "easy",
+    "question_en": "What does a pilot do if he does not feel well before the flight?",
+    "question_ru": "Что делает пилот, если чувствует себя плохо перед полётом?",
+    "answer_en": "If a pilot feels unwell, they must inform the airline and avoid flying. Safety is the top priority. A replacement crew member is assigned if needed.",
+    "answer_ru": "Если пилот чувствует себя плохо, он обязан сообщить об этом и не выполнять рейс. Безопасность — прежде всего. При необходимости назначается замена."
+  },
+  {
+    "id": 39,
+    "level": "easy",
+    "question_en": "What do you think is effective against unlawful interference?",
+    "question_ru": "Что, по вашему мнению, эффективно против неправомерного вмешательства?",
+    "answer_en": "Strict security checks, crew training, and communication with authorities help prevent unlawful interference. Cooperation between services is key. Early detection is crucial.",
+    "answer_ru": "Строгий досмотр, обучение экипажа и взаимодействие с властями помогают предотвратить вмешательство. Важна координация между службами. Раннее выявление — ключевой фактор."
+  },
+  {
+    "id": 40,
+    "level": "easy",
+    "question_en": "In what cases is re-routing necessary?",
+    "question_ru": "В каких случаях необходимо изменение маршрута?",
+    "answer_en": "Re-routing may be required due to bad weather, technical issues, or airspace restrictions. It helps avoid risks and ensures a safe flight. ATC provides instructions for the new route.",
+    "answer_ru": "Изменение маршрута может потребоваться из-за плохой погоды, технических проблем или ограничений в воздушном пространстве. Это помогает избежать рисков и обеспечить безопасность. Диспетчеры дают инструкции по новому маршруту."
+  },
+  {
+    "id": 41,
+    "level": "easy",
+    "question_en": "What ATC traffic separation minima is normally applied to heavy aircraft?",
+    "question_ru": "Какие интервалы эшелонирования обычно применяются к тяжёлым воздушным судам?",
+    "answer_en": "Heavy aircraft require greater separation due to their wake turbulence. Typically, 5 nautical miles or more is kept between aircraft. ATC ensures safe distances at all times.",
+    "answer_ru": "Тяжёлым самолётам требуется больший интервал из-за спутной турбулентности. Обычно сохраняется дистанция не менее 5 морских миль. Диспетчеры следят за безопасным эшелонированием."
+  },
+  {
+    "id": 42,
+    "level": "easy",
+    "question_en": "How could government flights affect flight operations?",
+    "question_ru": "Как правительственные рейсы могут повлиять на работу авиации?",
+    "answer_en": "Government flights may lead to temporary airspace closures or priority handling. This can cause delays for regular traffic. Airlines adjust routes and schedules accordingly.",
+    "answer_ru": "Правительственные рейсы могут вызвать временное закрытие воздушного пространства или приоритетное обслуживание. Это вызывает задержки обычных рейсов. Авиакомпании корректируют маршруты и расписание."
+  },
+  {
+    "id": 43,
+    "level": "easy",
+    "question_en": "Why is there a lot of emergency equipment on board?",
+    "question_ru": "Почему на борту много аварийного оборудования?",
+    "answer_en": "Emergency equipment ensures safety in case of unexpected situations like fire, decompression, or evacuation. It includes oxygen masks, fire extinguishers, and life vests. Crew are trained to use it properly.",
+    "answer_ru": "Аварийное оборудование обеспечивает безопасность в нештатных ситуациях: пожар, разгерметизация, эвакуация. В него входят кислородные маски, огнетушители, спасательные жилеты. Экипаж обучен его использованию."
+  },
+  {
+    "id": 44,
+    "level": "easy",
+    "question_en": "Why is coordination between airport services and the flight crew required?",
+    "question_ru": "Почему требуется координация между службами аэропорта и экипажем?",
+    "answer_en": "Coordination ensures smooth operations such as refueling, catering, and boarding. It helps avoid delays and safety issues. Effective communication is essential for ground handling.",
+    "answer_ru": "Координация обеспечивает бесперебойную работу, такую как заправка, питание и посадка. Это помогает избежать задержек и проблем с безопасностью. Эффективная связь необходима при наземном обслуживании."
+  },
+  {
+    "id": 45,
+    "level": "easy",
+    "question_en": "Which airport layout may be complicated for maneuvering?",
+    "question_ru": "Какая схема аэропорта может быть сложной для маневрирования?",
+    "answer_en": "Airports with intersecting runways, many taxiways, or outdated signage can be difficult. Poor visibility also adds challenges. Pilots must review charts carefully before taxiing.",
+    "answer_ru": "Аэропорты с пересекающимися ВПП, множеством рулёжных дорожек или устаревшими указателями могут быть сложными. Плохая видимость также усложняет задачу. Пилоты должны внимательно изучать схемы перед рулением."
+  },
+  {
+    "id": 46,
+    "level": "easy",
+    "question_en": "What are the differences between an APU and a GPU?",
+    "question_ru": "В чём разница между ВСУ и наземным источником питания?",
+    "answer_en": "APU (Auxiliary Power Unit) is part of the aircraft and provides power when engines are off. GPU (Ground Power Unit) is external and supplies electricity on the ground. Both help start systems and maintain cabin comfort.",
+    "answer_ru": "ВСУ — это вспомогательная силовая установка внутри самолёта, обеспечивающая питание при выключенных двигателях. Наземный источник питания — внешнее оборудование. Оба варианта используются для запуска систем и обеспечения комфорта на борту."
+  },
+  {
+    "id": 47,
+    "level": "easy",
+    "question_en": "Which command should you follow in case of conflicting ATC and TCAS instructions? Why?",
+    "question_ru": "Какую команду нужно выполнять при конфликте указаний от диспетчера и TCAS и почему?",
+    "answer_en": "Pilots must always follow TCAS instructions in case of conflict. TCAS gives immediate collision avoidance alerts. ATC is informed after the maneuver is completed.",
+    "answer_ru": "Пилоты всегда должны следовать указаниям TCAS при конфликте с командами диспетчера. TCAS даёт мгновенные предупреждения о сближении. После манёвра экипаж сообщает об этом диспетчеру."
+  },
+  {
+    "id": 48,
+    "level": "easy",
+    "question_en": "They say that twin-engine aircraft are safer than four-engine aircraft. What is your opinion?",
+    "question_ru": "Говорят, что двухмоторные самолёты безопаснее четырёхмоторных. Что вы думаете?",
+    "answer_en": "Both types are safe if maintained properly. Twin-engine jets are more efficient and meet strict safety standards. The number of engines doesn't define safety alone.",
+    "answer_ru": "Оба типа безопасны при должном обслуживании. Двухмоторные самолёты более экономичны и соответствуют жёстким стандартам безопасности. Количество двигателей не является единственным критерием безопасности."
+  },
+  {
+    "id": 49,
+    "level": "easy",
+    "question_en": "What should pilots report in case of non-standard situations?",
+    "question_ru": "Что пилоты должны докладывать в нестандартных ситуациях?",
+    "answer_en": "Pilots must report anything unusual such as system failures, medical emergencies, or deviations from the flight plan. Timely reporting helps ATC provide support. It also improves overall safety.",
+    "answer_ru": "Пилоты должны докладывать обо всех нестандартных ситуациях — отказах систем, медпомощи, отклонениях от маршрута. Своевременный доклад помогает диспетчерам оказать помощь. Это повышает общую безопасность."
+  },
+  {
+    "id": 50,
+    "level": "easy",
+    "question_en": "Why is it important that pilots use standard phraseology in most routine situations?",
+    "question_ru": "Почему важно, чтобы пилоты использовали стандартную фразеологию в обычных ситуациях?",
+    "answer_en": "Standard phraseology reduces misunderstandings and improves communication with ATC. It ensures that all parties understand the same message. Consistency leads to safer operations.",
+    "answer_ru": "Стандартная фразеология снижает риск недопонимания и улучшает связь с диспетчерами. Это гарантирует, что все одинаково поймут сообщение. Последовательность повышает безопасность полётов."
+  },
+  {
+    "id": 51,
+    "level": "easy",
+    "question_en": "In what situations does a pilot file reports?",
+    "question_ru": "В каких ситуациях пилот заполняет отчёты?",
+    "answer_en": "Pilots file reports after incidents, delays, technical problems, or unusual events. These reports help analyze risks and improve future operations. Accuracy is important for investigation.",
+    "answer_ru": "Пилоты заполняют отчёты после инцидентов, задержек, технических неисправностей или нестандартных событий. Эти отчёты помогают анализировать риски и улучшать операции в будущем. Важна точность для расследований."
+  },
+  {
+    "id": 52,
+    "level": "easy",
+    "question_en": "What may cause a lack of fuel in flight?",
+    "question_ru": "Что может привести к нехватке топлива в полёте?",
+    "answer_en": "Fuel shortage can result from miscalculation, diversion, headwinds, or leaks. Pilots monitor fuel constantly and plan alternates. Early detection allows safe landing options.",
+    "answer_ru": "Нехватка топлива может быть вызвана ошибками расчёта, отклонением от маршрута, встречным ветром или утечками. Пилоты постоянно следят за топливом и планируют запасные аэродромы. Раннее выявление позволяет безопасно посадить самолёт."
+  },
+  {
+    "id": 53,
+    "level": "easy",
+    "question_en": "Should a pilot dump fuel before a belly landing? Why?",
+    "question_ru": "Должен ли пилот сбрасывать топливо перед посадкой на фюзеляж? Почему?",
+    "answer_en": "Yes, if time and conditions allow, fuel should be dumped to reduce fire risk. It also lowers landing weight. Safety is the main reason for this action.",
+    "answer_ru": "Да, если позволяют условия и время, топливо сбрасывается для снижения риска пожара. Это также уменьшает посадочный вес. Главная цель — безопасность."
+  },
+  {
+    "id": 54,
+    "level": "easy",
+    "question_en": "How is aircraft operation affected by bird ingestion?",
+    "question_ru": "Как попадание птиц в двигатель влияет на работу самолёта?",
+    "answer_en": "Bird ingestion can damage the engine, reduce thrust, or cause engine failure. Pilots may need to return or divert the flight. It’s a serious threat, especially during takeoff.",
+    "answer_ru": "Попадание птиц в двигатель может повредить его, снизить тягу или вызвать отказ. Пилотам может потребоваться вернуться или изменить маршрут. Это серьёзная угроза, особенно при взлёте."
+  },
+  {
+    "id": 55,
+    "level": "easy",
+    "question_en": "What is the purpose of passenger baggage identification?",
+    "question_ru": "Какова цель идентификации багажа пассажиров?",
+    "answer_en": "Baggage identification ensures that all checked bags belong to onboard passengers. It prevents unaccompanied luggage and enhances security. Airlines match tags with passengers’ identities.",
+    "answer_ru": "Идентификация багажа подтверждает, что все зарегистрированные сумки принадлежат пассажирам на борту. Это предотвращает провоз безхозного багажа и повышает безопасность. Авиакомпании сверяют бирки с личностью пассажира."
+  },
+  {
+    "id": 56,
+    "level": "easy",
+    "question_en": "Why is special training necessary for transporting dangerous goods?",
+    "question_ru": "Почему для перевозки опасных грузов требуется специальная подготовка?",
+    "answer_en": "Transporting dangerous goods involves specific handling, labeling, and documentation. Training helps avoid accidents and ensures compliance with international laws. It also protects passengers and crew.",
+    "answer_ru": "Перевозка опасных грузов требует особого обращения, маркировки и документации. Подготовка помогает избежать инцидентов и соблюдать международные нормы. Это защищает пассажиров и экипаж."
+  },
+  {
+    "id": 57,
+    "level": "easy",
+    "question_en": "Why do 'smoke' and 'fumes' mean different things to a pilot?",
+    "question_ru": "Почему для пилота 'дым' и 'испарения' — это разные вещи?",
+    "answer_en": "‘Smoke’ usually means visible particles from fire, while ‘fumes’ are invisible and chemical in nature. Both are dangerous, but require different responses. Correct identification helps in emergency actions.",
+    "answer_ru": "«Дым» — это, как правило, видимые частицы от огня, а «испарения» — невидимые и химического характера. Оба опасны, но требуют разной реакции. Правильное определение помогает в ЧС."
+  },
+  {
+    "id": 58,
+    "level": "easy",
+    "question_en": "What could be the reasons for disrupted airport operations?",
+    "question_ru": "Какие причины могут нарушить работу аэропорта?",
+    "answer_en": "Severe weather, technical failures, security threats, or strikes may disrupt airport operations. These issues cause delays and cancellations. Authorities work to restore normal procedures quickly.",
+    "answer_ru": "Сильная погода, технические сбои, угрозы безопасности или забастовки могут нарушить работу аэропорта. Эти факторы вызывают задержки и отмены рейсов. Власти стараются как можно скорее восстановить работу."
+  },
+  {
+    "id": 59,
+    "level": "easy",
+    "question_en": "What do you do to stay healthy?",
+    "question_ru": "Что вы делаете, чтобы сохранять здоровье?",
+    "answer_en": "I exercise regularly, eat healthy food, and get enough rest before flights. I also stay hydrated and avoid stress. Health is vital for safe flying.",
+    "answer_ru": "Я регулярно занимаюсь спортом, правильно питаюсь и высыпаюсь перед полётами. Также пью достаточно воды и избегаю стресса. Здоровье очень важно для безопасных полётов."
+  },
+  {
+    "id": 60,
+    "level": "easy",
+    "question_en": "What happens if an aircraft is affected by a microburst on final?",
+    "question_ru": "Что происходит, если самолёт попадает в микропорыв при заходе на посадку?",
+    "answer_en": "A microburst causes sudden changes in wind speed and direction, leading to loss of lift. The aircraft may descend rapidly. Pilots must react quickly and go around if necessary.",
+    "answer_ru": "Микропорыв вызывает резкие изменения скорости и направления ветра, что приводит к потере подъёмной силы. Самолёт может резко снижаться. Пилоты должны быстро реагировать и при необходимости уйти на второй круг."
+  },
+  {
+    "id": 61,
+    "level": "easy",
+    "question_en": "What type of precipitation might be really dangerous for flight?",
+    "question_ru": "Какой вид осадков может быть особенно опасен для полёта?",
+    "answer_en": "Freezing rain is particularly dangerous because it causes rapid ice accumulation. This affects control surfaces and engine performance. Pilots avoid flying in such conditions.",
+    "answer_ru": "Ледяной дождь особенно опасен, потому что вызывает быстрое обледенение. Это влияет на управление и работу двигателей. Пилоты избегают полётов в таких условиях."
+  },
+  {
+    "id": 62,
+    "level": "easy",
+    "question_en": "If the runway is not in sight at decision height, what do you do?",
+    "question_ru": "Если полоса не видна на высоте принятия решения, что делать?",
+    "answer_en": "If the runway is not visible at decision height, the pilot must go around. Continuing the approach would be unsafe. The procedure ensures safety during low visibility.",
+    "answer_ru": "Если полоса не видна на высоте принятия решения, пилот обязан уйти на второй круг. Продолжение захода будет небезопасным. Эта процедура обеспечивает безопасность при плохой видимости."
+  },
+  {
+    "id": 63,
+    "level": "easy",
+    "question_en": "You are ready for departure but suddenly delayed. What do you say to the passengers?",
+    "question_ru": "Вы готовы к вылету, но происходит задержка. Что вы скажете пассажирам?",
+    "answer_en": "I inform the passengers about the delay, explain the reason, and give an estimated time. I reassure them that safety comes first. Clear communication helps reduce stress.",
+    "answer_ru": "Я сообщаю пассажирам о задержке, объясняю причину и называю примерное время. Я заверяю их, что безопасность — главный приоритет. Чёткая информация снижает напряжение."
+  },
+  {
+    "id": 64,
+    "level": "easy",
+    "question_en": "If there is a hijacking on your aircraft, what do you do?",
+    "question_ru": "Если на борту захват самолёта, что вы будете делать?",
+    "answer_en": "First, I inform ATC using the appropriate transponder code and phraseology. I follow company procedures and try to keep the situation under control. The main goal is to ensure the safety of passengers and crew.",
+    "answer_ru": "Сначала я сообщаю об этом диспетчеру, используя нужный код ответчика и фразеологию. Далее я действую по процедурам компании и стараюсь держать ситуацию под контролем. Главная цель — безопасность пассажиров и экипажа."
+  },
+  {
+    "id": 65,
+    "level": "easy",
+    "question_en": "How does endurance depend on re-routing?",
+    "question_ru": "Как продолжительность полёта зависит от изменения маршрута?",
+    "answer_en": "Re-routing can increase the distance and flying time, which affects endurance. Pilots monitor fuel levels and recalculate regularly. They may need to land earlier or change alternates.",
+    "answer_ru": "Изменение маршрута может увеличить расстояние и время полёта, что влияет на запас хода. Пилоты следят за уровнем топлива и делают перерасчёты. Иногда приходится садиться раньше или менять запасной аэродром."
+  },
+  {
+    "id": 66,
+    "level": "easy",
+    "question_en": "What actions are necessary to prevent an aircraft from stalling?",
+    "question_ru": "Какие действия необходимы, чтобы не допустить сваливания самолёта?",
+    "answer_en": "To prevent a stall, pilots must monitor speed and avoid excessive pitch. Proper configuration and smooth control inputs are also important. Training helps recognize early signs of a stall.",
+    "answer_ru": "Чтобы не допустить сваливания, пилоты должны следить за скоростью и не допускать чрезмерного угла атаки. Также важна правильная конфигурация и плавное управление. Подготовка помогает распознать признаки сваливания на ранней стадии."
+  },
+  {
+    "id": 67,
+    "level": "easy",
+    "question_en": "What airport situations could ground a lot of aircraft?",
+    "question_ru": "Какие ситуации в аэропорту могут остановить много самолётов?",
+    "answer_en": "Heavy snowfall, low visibility, runway closures, or security incidents can ground aircraft. Such disruptions lead to delays and cancellations. Coordination is needed to resume normal operations.",
+    "answer_ru": "Сильный снегопад, плохая видимость, закрытие полосы или проблемы с безопасностью могут остановить вылеты. Это вызывает задержки и отмены. Требуется координация для восстановления нормальной работы."
+  },
+  {
+    "id": 68,
+    "level": "easy",
+    "question_en": "What actions are required if hydraulic pressure drops below the limit?",
+    "question_ru": "Какие действия нужны при падении давления в гидросистеме ниже нормы?",
+    "answer_en": "Pilots follow the emergency checklist, isolate the affected system, and switch to backup systems if available. They coordinate with ATC and prepare for possible manual landing. Safety remains the priority.",
+    "answer_ru": "Пилоты следуют аварийному чек-листу, отключают повреждённую систему и при необходимости переходят на резервную. Они сообщают диспетчеру и готовятся к ручной посадке. Безопасность — главное."
+  },
+  {
+    "id": 69,
+    "level": "easy",
+    "question_en": "What will you do if the ATC message is too complicated?",
+    "question_ru": "Что вы сделаете, если сообщение от диспетчера слишком сложное?",
+    "answer_en": "I will ask ATC to repeat or clarify the message using standard phraseology. It's important to fully understand instructions before acting. Clear communication prevents mistakes.",
+    "answer_ru": "Я попрошу диспетчера повторить или уточнить сообщение, используя стандартную фразеологию. Важно полностью понять инструкции перед выполнением. Чёткая связь предотвращает ошибки."
+  },
+  {
+    "id": 70,
+    "level": "easy",
+    "question_en": "How is the runway affected by a runway gradient?",
+    "question_ru": "Как уклон ВПП влияет на её использование?",
+    "answer_en": "A runway gradient affects acceleration and braking. Uphill takeoffs may require more thrust, while downhill landings need extra caution. Pilots account for slope during performance calculations.",
+    "answer_ru": "Уклон ВПП влияет на разгон и торможение. При взлёте в горку требуется больше тяги, при посадке с уклоном — повышенная осторожность. Пилоты учитывают уклон при расчётах."
+  },
+  {
+    "id": 71,
+    "level": "easy",
+    "question_en": "What airport vehicles are involved in pre-flight preparation?",
+    "question_ru": "Какие транспортные средства участвуют в предполётной подготовке?",
+    "answer_en": "Fuel trucks, catering vehicles, baggage loaders, and pushback tractors are used before flight. Each has a specific task. Ground crews coordinate their work to meet departure time.",
+    "answer_ru": "Перед вылетом используются топливозаправщики, машины питания, погрузчики багажа и буксировщики. У каждого — своя задача. Наземные службы координируются, чтобы уложиться в расписание."
+  },
+  {
+    "id": 72,
+    "level": "easy",
+    "question_en": "What will your actions be in case of wind shear?",
+    "question_ru": "Каковы ваши действия при сдвиге ветра?",
+    "answer_en": "If wind shear is encountered, I follow the wind shear escape procedure immediately. It includes full thrust and pitch adjustment. Early recognition is key to a safe recovery.",
+    "answer_ru": "При сдвиге ветра я немедленно выполняю процедуру выхода: полный режим тяги и изменение тангажа. Раннее распознавание ситуации — ключ к безопасному восстановлению."
+  },
+  {
+    "id": 73,
+    "level": "easy",
+    "question_en": "What in-flight emergency situations have you experienced?",
+    "question_ru": "С какими аварийными ситуациями в полёте вы сталкивались?",
+    "answer_en": "I once experienced engine vibration and followed the checklist to reduce thrust and monitor the situation. We diverted safely and landed without issues. Training helped me stay calm.",
+    "answer_ru": "Однажды я столкнулся с вибрацией двигателя и действовал по чек-листу: уменьшил тягу и контролировал ситуацию. Мы благополучно ушли на запасной аэродром. Подготовка помогла сохранить спокойствие."
+  },
+  {
+    "id": 74,
+    "level": "easy",
+    "question_en": "Have you ever had to make a difficult decision in flight? Can you share?",
+    "question_ru": "Приходилось ли вам принимать трудное решение в полёте? Можете рассказать?",
+    "answer_en": "Yes, I once had to return to the departure airport due to a technical issue shortly after takeoff. It was not easy, but safety was more important than continuing. The crew acted professionally, and the passengers remained calm.",
+    "answer_ru": "Да, однажды пришлось вернуться в аэропорт вылета из-за технической проблемы вскоре после взлёта. Решение было непростым, но безопасность важнее. Экипаж действовал профессионально, а пассажиры сохраняли спокойствие."
+  },
+  {
+    "id": 75,
+    "level": "easy",
+    "question_en": "In what cases may there be a misunderstanding between a controller and a pilot?",
+    "question_ru": "В каких случаях может возникнуть недопонимание между диспетчером и пилотом?",
+    "answer_en": "Misunderstandings may happen due to language barriers, non-standard phraseology, or bad radio quality. High workload or similar call signs also cause confusion. Clear and calm communication helps avoid it.",
+    "answer_ru": "Недопонимание может возникнуть из-за языкового барьера, нестандартной фразеологии или плохого качества связи. Также мешают высокая нагрузка или похожие позывные. Ясная и спокойная речь помогает избежать этого."
+  },
+  {
+    "id": 76,
+    "level": "easy",
+    "question_en": "What are the major factors for CFIT accidents?",
+    "question_ru": "Каковы основные причины аварий при управляемом полёте в землю (CFIT)?",
+    "answer_en": "CFIT accidents are often caused by poor situational awareness, navigation errors, or lack of terrain information. Bad weather and crew fatigue also play a role. GPWS helps reduce such risks.",
+    "answer_ru": "CFIT-аварии часто вызваны плохой осведомлённостью о ситуации, ошибками навигации или отсутствием информации о рельефе. Также влияют плохая погода и усталость экипажа. Система GPWS помогает снизить риск."
+  },
+  {
+    "id": 77,
+    "level": "easy",
+    "question_en": "What could be the reasons for fuel starvation?",
+    "question_ru": "Каковы возможные причины нехватки топлива?",
+    "answer_en": "Fuel starvation can happen due to improper fuel management, blocked fuel lines, or system malfunctions. Unlike fuel exhaustion, it means fuel is available but not reaching the engines. Pilots are trained to detect and respond to this.",
+    "answer_ru": "Нехватка топлива может произойти из-за неправильного управления, блокировки топливных линий или отказа системы. В отличие от полного исчерпания, топливо есть, но не поступает в двигатели. Пилоты обучены распознавать и устранять такие ситуации."
+  },
+  {
+    "id": 78,
+    "level": "easy",
+    "question_en": "What are the best techniques in case of a belly landing?",
+    "question_ru": "Какие наилучшие методы при посадке на фюзеляж?",
+    "answer_en": "Maintain a proper descent rate and control speed carefully. Keep the wings level and land on the flattest part of the runway. Inform ATC and emergency services in advance.",
+    "answer_ru": "Соблюдайте правильную скорость снижения и точно контролируйте скорость. Удерживайте крылья в горизонте и садитесь на наиболее ровную часть полосы. Заранее сообщите диспетчеру и службам спасения."
+  },
+  {
+    "id": 79,
+    "level": "easy",
+    "question_en": "What measures are effective in preventing bird strikes?",
+    "question_ru": "Какие меры эффективны для предотвращения столкновений с птицами?",
+    "answer_en": "Airports use bird radar, sound devices, and trained animals to keep birds away. Habitat management is also important. Pilots stay alert, especially near airports.",
+    "answer_ru": "В аэропортах применяются радары, звуковые устройства и обученные животные для отпугивания птиц. Также важно управление средой обитания. Пилоты особенно внимательны вблизи аэродромов."
+  },
+  {
+    "id": 80,
+    "level": "easy",
+    "question_en": "What will you do if there is a bomb scare on board?",
+    "question_ru": "Что вы сделаете, если на борту угроза взрыва?",
+    "answer_en": "I would follow the bomb threat checklist, inform ATC, and consider an emergency landing. The crew would secure the area and move passengers away. Authorities would inspect the aircraft after landing.",
+    "answer_ru": "Я выполню чек-лист по угрозе взрыва, сообщу диспетчеру и при необходимости выполню аварийную посадку. Экипаж оцепит зону и отведёт пассажиров. После посадки самолёт осмотрят службы безопасности."
+  },
+  {
+    "id": 81,
+    "level": "easy",
+    "question_en": "What should a pilot check if weapons are carried on board?",
+    "question_ru": "Что должен проверить пилот, если на борту находятся оружие?",
+    "answer_en": "The pilot must verify documentation, storage location, and safety conditions. Weapons must be unloaded and properly secured. Coordination with security personnel is required.",
+    "answer_ru": "Пилот должен проверить документы, место хранения и меры безопасности. Оружие должно быть разряжено и надёжно закреплено. Требуется координация с сотрудниками службы безопасности."
+  },
+  {
+    "id": 82,
+    "level": "easy",
+    "question_en": "Why are there different types of handheld fire extinguishers on board?",
+    "question_ru": "Почему на борту разные типы переносных огнетушителей?",
+    "answer_en": "Different types of fires require specific extinguishing agents. For example, electrical fires need CO₂ extinguishers, while flammable liquids require foam. Having various types increases fire safety.",
+    "answer_ru": "Разные типы пожаров требуют разных средств тушения. Например, для электрических пожаров нужен углекислотный огнетушитель, а для горючих жидкостей — пенный. Наличие разных типов повышает безопасность."
+  },
+  {
+    "id": 83,
+    "level": "easy",
+    "question_en": "What may cause a runway incursion?",
+    "question_ru": "Что может вызвать выход на ВПП без разрешения (runway incursion)?",
+    "answer_en": "Runway incursions can result from miscommunication, lack of situational awareness, or unclear signage. Pilot distraction or fatigue may also play a role. Briefings and proper monitoring help prevent them.",
+    "answer_ru": "Выход на ВПП без разрешения может быть вызван недопониманием, потерей ориентировки или неясной разметкой. Также влияют усталость и отвлечение внимания. Брифинги и внимательный контроль помогают это предотвратить."
+  },
+  {
+    "id": 84,
+    "level": "easy",
+    "question_en": "What actions should be taken in case of pilot incapacitation?",
+    "question_ru": "Какие действия нужно предпринять при утрате работоспособности пилота?",
+    "answer_en": "The other pilot takes control immediately and informs ATC. The incapacitated pilot is given first aid if necessary. The flight continues or diverts depending on the situation.",
+    "answer_ru": "Второй пилот немедленно берёт управление на себя и сообщает диспетчеру. Непригодному пилоту при необходимости оказывают первую помощь. Полёт продолжается или отклоняется в зависимости от ситуации."
+  },
+  {
+    "id": 85,
+    "level": "easy",
+    "question_en": "What happens if the brakes fail during landing?",
+    "question_ru": "Что происходит, если отказывают тормоза при посадке?",
+    "answer_en": "The pilot uses reverse thrust and alternate braking systems. If needed, the aircraft may overrun the runway. Emergency services are alerted in advance.",
+    "answer_ru": "Пилот использует реверс тяги и альтернативные тормозные системы. При необходимости самолёт может выкатиться за пределы ВПП. Аварийные службы предупреждаются заранее."
+  },
+  {
+    "id": 86,
+    "level": "easy",
+    "question_en": "How may natural disasters affect the condition of taxiways and runways?",
+    "question_ru": "Как природные катастрофы могут повлиять на состояние рулёжных дорожек и ВПП?",
+    "answer_en": "Earthquakes, floods, or volcanic eruptions can damage the surface or infrastructure. Debris or cracks make them unsafe for operations. Inspections are needed before reopening.",
+    "answer_ru": "Землетрясения, наводнения или извержения вулканов могут повредить покрытие или инфраструктуру. Обломки или трещины делают их небезопасными для использования. Перед открытием требуется проверка."
+  },
+  {
+    "id": 87,
+    "level": "easy",
+    "question_en": "What is the purpose of a 'touch and go'?",
+    "question_ru": "Какова цель упражнения 'touch and go'?",
+    "answer_en": "‘Touch and go’ is used in training to practice landings and takeoffs in quick succession. It helps improve pilot skills and confidence. It is common during flight instruction.",
+    "answer_ru": "Упражнение 'touch and go' используется в обучении для отработки посадок и взлётов подряд. Оно помогает улучшить навыки и уверенность пилота. Часто применяется при обучении."
+  },
+  {
+    "id": 88,
+    "level": "easy",
+    "question_en": "Why is it important to inform passengers about the flight progress?",
+    "question_ru": "Почему важно информировать пассажиров о ходе полёта?",
+    "answer_en": "Informing passengers reduces anxiety and keeps them updated about the flight. It builds trust and improves their experience. Clear communication is part of good service.",
+    "answer_ru": "Информирование пассажиров снижает тревожность и держит их в курсе. Это укрепляет доверие и улучшает впечатление от полёта. Чёткая информация — часть хорошего сервиса."
+  },
+  {
+    "id": 89,
+    "level": "easy",
+    "question_en": "What penalties are applied to unruly passengers?",
+    "question_ru": "Какие меры применяются к недисциплинированным пассажирам?",
+    "answer_en": "Unruly passengers may face fines, arrest, or even a flight ban. The crew follows procedures to manage the situation. Safety and order on board are priorities.",
+    "answer_ru": "Недисциплинированным пассажирам могут грозить штрафы, арест или запрет на полёты. Экипаж действует по инструкции, чтобы контролировать ситуацию. Безопасность и порядок на борту — приоритет."
+  },
+  {
+    "id": 90,
+    "level": "easy",
+    "question_en": "In what situations can ATC initiate re-routing?",
+    "question_ru": "В каких случаях диспетчер может изменить маршрут?",
+    "answer_en": "ATC may initiate re-routing due to weather, traffic congestion, or airspace restrictions. It helps maintain safe separation and flow. Pilots follow instructions and confirm changes.",
+    "answer_ru": "Диспетчер может изменить маршрут из-за погоды, перегрузки трафика или ограничений в зоне. Это помогает сохранить безопасные интервалы. Пилоты следуют инструкциям и подтверждают изменения."
+  },
+  {
+    "id": 91,
+    "level": "easy",
+    "question_en": "Why should flight crew members go through customs control?",
+    "question_ru": "Почему члены экипажа должны проходить таможенный контроль?",
+    "answer_en": "Crew members, like passengers, may carry personal belongings and are subject to international laws. Customs control ensures compliance and prevents illegal transport. Procedures may be simplified for crew.",
+    "answer_ru": "Члены экипажа, как и пассажиры, могут иметь личные вещи и подчиняются международным законам. Таможенный контроль обеспечивает соблюдение правил и предотвращает незаконный провоз. Для экипажа процедуры могут быть упрощены."
+  },
+  {
+    "id": 92,
+    "level": "easy",
+    "question_en": "What is the Minimum Equipment List used for?",
+    "question_ru": "Для чего используется список минимального оборудования (MEL)?",
+    "answer_en": "MEL shows which systems must be operational for the flight to be allowed. It helps decide whether a flight can depart with certain defects. It ensures safety within legal limits.",
+    "answer_ru": "MEL указывает, какое оборудование должно работать для разрешения на полёт. Он помогает понять, возможен ли вылет при некоторых неисправностях. Это гарантирует безопасность в рамках закона."
+  },
+  {
+    "id": 93,
+    "level": "easy",
+    "question_en": "How do you deal with a difficult local accent during flight?",
+    "question_ru": "Как вы справляетесь со сложным местным акцентом в полёте?",
+    "answer_en": "I stay focused, listen carefully, and ask ATC to repeat if necessary. I also use standard phraseology to avoid confusion. Experience helps me understand better over time.",
+    "answer_ru": "Я концентрируюсь, внимательно слушаю и при необходимости прошу повторить. Также использую стандартную фразеологию, чтобы избежать недопонимания. С опытом воспринимать акценты становится легче."
+  },
+  {
+    "id": 94,
+    "level": "easy",
+    "question_en": "Why are runway thresholds sometimes displaced?",
+    "question_ru": "Почему иногда сдвигаются пороги ВПП?",
+    "answer_en": "Runway thresholds are displaced due to obstacles, noise restrictions, or surface conditions. This allows aircraft to land safely while avoiding certain areas. Charts indicate the usable landing length.",
+    "answer_ru": "Пороги ВПП сдвигаются из-за препятствий, ограничений по шуму или состояния покрытия. Это позволяет безопасно приземляться, избегая проблемных зон. Схемы указывают доступную длину посадки."
+  },
+  {
+    "id": 95,
+    "level": "easy",
+    "question_en": "Why is each tow-bar designed for only one type of aircraft?",
+    "question_ru": "Почему каждая буксирная штанга рассчитана только на определённый тип самолёта?",
+    "answer_en": "Tow-bars match the nose gear configuration and attachment points of specific aircraft. Using the wrong one can cause damage or unsafe towing. That’s why compatibility is essential.",
+    "answer_ru": "Буксирные штанги соответствуют конструкции носовой стойки и точкам крепления конкретного самолёта. Использование неподходящей может повредить шасси и привести к аварии. Поэтому важна совместимость."
+  },
+  {
+    "id": 96,
+    "level": "easy",
+    "question_en": "Why is it important to check weather reports before a flight?",
+    "question_ru": "Почему важно проверять погодные сводки перед полётом?",
+    "answer_en": "Weather reports help pilots plan the route, fuel, and alternates. They prepare the crew for possible turbulence or delays. Good planning ensures flight safety.",
+    "answer_ru": "Погодные сводки помогают планировать маршрут, топливо и запасные аэродромы. Экипаж заранее готовится к турбулентности или задержкам. Хорошее планирование повышает безопасность полёта."
+  },
+  {
+    "id": 97,
+    "level": "easy",
+    "question_en": "What distances do you prefer flying?",
+    "question_ru": "На какие расстояния вам больше нравится летать?",
+    "answer_en": "I enjoy medium-haul flights because they combine efficiency and variety. They allow me to fly to different destinations while avoiding fatigue. Every flight brings new experiences.",
+    "answer_ru": "Мне нравятся рейсы средней дальности — это эффективно и разнообразно. Я посещаю разные аэропорты и не устаю. Каждый рейс — это новый опыт."
+  },
+  {
+    "id": 98,
+    "level": "easy",
+    "question_en": "How can pilot fatigue be minimized?",
+    "question_ru": "Как можно снизить усталость пилота?",
+    "answer_en": "Proper rest, healthy habits, and good scheduling reduce fatigue. Crew rotation and rest breaks also help. Fatigue management is part of safety culture.",
+    "answer_ru": "Полноценный отдых, здоровый образ жизни и хорошее расписание снижают усталость. Также помогают смены экипажа и перерывы. Управление усталостью — часть культуры безопасности."
+  },
+  {
+    "id": 99,
+    "level": "easy",
+    "question_en": "What are PIREPs used for?",
+    "question_ru": "Для чего используются PIREP (пилотские отчёты о погоде)?",
+    "answer_en": "PIREPs provide real-time weather updates from pilots. They help other aircraft and meteorologists understand actual conditions. These reports improve flight safety and planning.",
+    "answer_ru": "PIREP — это актуальные сообщения пилотов о погоде. Они помогают другим экипажам и метеорологам узнать реальные условия. Эти отчёты повышают безопасность и помогают в планировании."
+  },
+  {
+    "id": 100,
+    "level": "easy",
+    "question_en": "What is the separation of duties between the Pilot Flying and the Pilot Monitoring?",
+    "question_ru": "Как распределяются обязанности между пилотом, выполняющим полёт, и пилотом-наблюдателем?",
+    "answer_en": "The Pilot Flying (PF) controls the aircraft, while the Pilot Monitoring (PM) handles communication, checklists, and monitoring. This teamwork improves safety and workload management. Each role is clearly defined.",
+    "answer_ru": "Пилот, выполняющий полёт (PF), управляет самолётом, а пилот-наблюдатель (PM) отвечает за связь, чек-листы и контроль. Такое распределение снижает нагрузку и повышает безопасность. У каждого чёткая роль."
+  },
+  {
+    "id": 101,
+    "level": "easy",
+    "question_en": "How can pilots avoid confusion of their call sign?",
+    "question_ru": "Как пилоты могут избежать путаницы с позывным?",
+    "answer_en": "Pilots use correct pronunciation and read back the full call sign. If there is a conflict, they inform ATC and request a temporary change. Situational awareness is key.",
+    "answer_ru": "Пилоты чётко произносят и повторяют весь позывной. При совпадении они сообщают диспетчеру и просят временно изменить его. Главное — внимательность и осведомлённость."
+  },
+  {
+    "id": 102,
+    "level": "easy",
+    "question_en": "What training is necessary for a Captain position?",
+    "question_ru": "Какая подготовка нужна для получения должности командира воздушного судна?",
+    "answer_en": "A Captain must complete advanced simulator sessions, leadership training, and pass check rides. Experience as a First Officer is also required. The airline ensures the pilot is fully qualified.",
+    "answer_ru": "Капитан проходит углублённые тренировки на тренажёре, обучение лидерству и проверочные полёты. Также нужен опыт работы в должности второго пилота. Авиакомпания проверяет полную готовность кандидата."
+  },
+  {
+    "id": 103,
+    "level": "easy",
+    "question_en": "What do you report to a controller if there is a bomb on board?",
+    "question_ru": "Что вы сообщаете диспетчеру, если на борту бомба?",
+    "answer_en": "I inform ATC using the appropriate phrase, such as 'Bomb threat on board,' and follow emergency procedures. I declare an emergency and coordinate landing. All safety protocols are followed strictly.",
+    "answer_ru": "Я сообщаю диспетчеру фразой «на борту угроза взрыва» и действую по аварийной инструкции. Объявляется аварийная ситуация и согласовывается посадка. Все меры безопасности строго соблюдаются."
+  },
+  {
+    "id": 104,
     "level": "hard",
-    "question_en": "What is your procedure in case of engine failure during cruise?",
-    "question_ru": "Каковы ваши действия при отказе двигателя в крейсерском полёте?",
-    "answer_en": "I reduce speed, inform ATC, and descend if needed. I plan for diversion.",
-    "answer_ru": "Снижаю скорость, сообщаю диспетчеру и при необходимости снижаюсь. Планирую уход на запасной аэродром."
+    "question_en": "How difficult is it to go around with a single engine failure?",
+    "question_ru": "Насколько сложно уйти на второй круг при отказе одного двигателя?",
+    "answer_en": "A go-around with a single engine failure is challenging because of asymmetric thrust and reduced performance. Pilots must carefully manage pitch, thrust, and airspeed. Proper training and coordination are essential for safety.",
+    "answer_ru": "Уход на второй круг при отказе одного двигателя — это сложно из-за асимметричной тяги и снижения лётных характеристик. Пилоты должны точно управлять тангажом, тягой и скоростью. Безопасность зависит от подготовки и слаженности экипажа."
+  },
+  {
+    "id": 105,
+    "level": "hard",
+    "question_en": "Please tell me about your flight experience in the area of volcanic activity.",
+    "question_ru": "Расскажите о вашем опыте полётов в районе вулканической активности.",
+    "answer_en": "I once flew near a volcanic ash cloud and had to reroute the flight. We used weather radar and reports from other aircraft to avoid the danger. Flying in such areas requires extreme caution and constant monitoring.",
+    "answer_ru": "Однажды я летел рядом с облаком вулканического пепла и пришлось изменить маршрут. Мы использовали метеорадар и отчёты других экипажей, чтобы избежать опасности. Полёты в таких районах требуют крайней осторожности и постоянного контроля."
+  },
+  {
+    "id": 106,
+    "level": "hard",
+    "question_en": "What would you do if, after a missed approach, the weather suddenly deteriorated?",
+    "question_ru": "Что бы вы сделали, если после ухода на второй круг погода внезапно ухудшилась?",
+    "answer_en": "I would evaluate fuel status and available alternates, then coordinate with ATC for a diversion. Safety is the main priority in such dynamic situations. We must remain calm and follow procedures strictly.",
+    "answer_ru": "Я оценю остаток топлива и доступные запасные аэродромы, затем свяжусь с диспетчером для отклонения. В таких ситуациях главное — безопасность. Нужно сохранять спокойствие и строго следовать процедурам."
+  },
+  {
+    "id": 107,
+    "level": "hard",
+    "question_en": "What do you think has probably happened if some changes have been made to your flight plan?",
+    "question_ru": "Как вы думаете, что могло произойти, если в ваш план полёта были внесены изменения?",
+    "answer_en": "Changes to the flight plan may result from weather conditions, traffic flow, or ATC requirements. It could also be due to military activity or restricted airspace. Pilots must review and confirm the updates carefully.",
+    "answer_ru": "Изменения в плане полёта могут быть связаны с погодой, загрузкой воздушного пространства или требованиями диспетчера. Также причиной могут быть военные зоны или ограничения. Пилоты должны внимательно проверить и подтвердить обновления."
+  },
+  {
+    "id": 108,
+    "level": "hard",
+    "question_en": "If there was an unruly passenger on board, how could pilots handle the situation?",
+    "question_ru": "Если на борту оказался буйный пассажир, как пилоты могут справиться с ситуацией?",
+    "answer_en": "The pilots stay focused on flying while the cabin crew manages the situation. If needed, pilots may request priority landing and notify authorities. Communication and teamwork are vital in handling such events.",
+    "answer_ru": "Пилоты продолжают управлять самолётом, а ситуацию решает бортпроводник. При необходимости пилоты запрашивают приоритетную посадку и сообщают властям. Важно взаимодействие и чёткая координация действий экипажа."
+  },
+  {
+    "id": 109,
+    "level": "hard",
+    "question_en": "Why do some pilots abort takeoff after reaching V1?",
+    "question_ru": "Почему некоторые пилоты прерывают взлёт после достижения V1?",
+    "answer_en": "In rare cases, pilots may abort after V1 due to critical failures like engine fire or loss of control. This is highly risky and must be justified. Normally, takeoff must continue after V1.",
+    "answer_ru": "В редких случаях пилоты прерывают взлёт после V1 из-за критических отказов, например, пожара двигателя или потери управления. Это очень рискованно и должно быть обосновано. Обычно после V1 взлёт продолжается."
+  },
+  {
+    "id": 110,
+    "level": "hard",
+    "question_en": "What can airport services do to prevent security problems?",
+    "question_ru": "Что могут сделать службы аэропорта для предотвращения проблем с безопасностью?",
+    "answer_en": "They can implement strict access control, use surveillance systems, and conduct random checks. Cooperation with law enforcement is essential. Continuous training improves readiness.",
+    "answer_ru": "Они могут ввести строгий контроль доступа, использовать системы видеонаблюдения и проводить выборочные проверки. Важна координация с правоохранительными органами. Постоянное обучение повышает готовность."
+  },
+  {
+    "id": 111,
+    "level": "hard",
+    "question_en": "If the yaw damper fails, what will you do?",
+    "question_ru": "Что вы сделаете при отказе демпфера рыскания?",
+    "answer_en": "I will follow the checklist and turn off the yaw damper system if needed. Manual rudder input will be required to maintain stability. Flight characteristics will be affected, so caution is needed.",
+    "answer_ru": "Я выполню чек-лист и при необходимости отключу систему демпфера рыскания. Придётся вручную работать педалями для стабилизации. Характеристики полёта изменятся, потребуется осторожность."
+  },
+  {
+    "id": 112,
+    "level": "hard",
+    "question_en": "Imagine the controller repeats the message many times, but you don't understand him at all. What can you do?",
+    "question_ru": "Представьте, диспетчер многократно повторяет сообщение, но вы совсем его не понимаете. Что вы будете делать?",
+    "answer_en": "I would ask the controller to use standard phraseology or speak slower. If communication remains unclear, I would request instructions via text (CPDLC) if available. Misunderstandings must be avoided at all costs.",
+    "answer_ru": "Я попрошу диспетчера использовать стандартную фразеологию или говорить медленнее. Если связь по-прежнему непонятна, я запрошу текстовые инструкции (через CPDLC), если это возможно. Недопонимание необходимо исключить любой ценой."
+  },
+  {
+    "id": 113,
+    "level": "hard",
+    "question_en": "What equipment will help you land in low visibility conditions?",
+    "question_ru": "Какое оборудование помогает выполнить посадку при низкой видимости?",
+    "answer_en": "ILS (Instrument Landing System) and autoland functions assist pilots in low visibility landings. Runway lights and RVR sensors also play a key role. All systems must be checked and briefed before approach.",
+    "answer_ru": "Система посадки по приборам (ILS) и функция автопосадки помогают пилотам при сниженной видимости. Также важны огни ВПП и датчики дальности видимости (RVR). Все системы должны быть проверены и оговорены до начала захода."
+  },
+  {
+    "id": 114,
+    "level": "hard",
+    "question_en": "What ground services will you request in case of unruly passengers on board?",
+    "question_ru": "Какие наземные службы вы вызовете при наличии буйных пассажиров на борту?",
+    "answer_en": "I will request airport security and police assistance upon arrival. Medical support may also be needed if someone is injured or in distress. Coordination with ground services ensures safety.",
+    "answer_ru": "Я запрошу охрану аэропорта и полицию после посадки. При необходимости также вызову медицинскую помощь. Координация с наземными службами обеспечивает безопасность."
+  },
+  {
+    "id": 115,
+    "level": "hard",
+    "question_en": "Why is a noise abatement procedure introduced at some airports?",
+    "question_ru": "Почему в некоторых аэропортах вводятся процедуры снижения шума?",
+    "answer_en": "Noise abatement procedures reduce the impact of aircraft noise on surrounding communities. They involve specific departure and approach paths and power settings. Compliance is both a social and regulatory responsibility.",
+    "answer_ru": "Процедуры снижения шума уменьшают влияние авиационного шума на окружающие районы. Они включают определённые маршруты и режимы работы двигателей. Соблюдение — это социальная и нормативная обязанность."
+  },
+  {
+    "id": 116,
+    "level": "hard",
+    "question_en": "What working experience should a pilot have to become a Captain?",
+    "question_ru": "Какой опыт работы должен иметь пилот, чтобы стать командиром воздушного судна?",
+    "answer_en": "A pilot must have sufficient flight hours, including time as First Officer, and demonstrate strong leadership and technical skills. They must also pass simulator checks and assessments. Airlines have specific upgrade criteria.",
+    "answer_ru": "Пилот должен иметь достаточный налёт, включая время в должности второго пилота, и демонстрировать лидерские и технические навыки. Также необходимо пройти тренажёрные проверки и оценки. У авиакомпаний есть свои требования к повышению."
+  },
+  {
+    "id": 117,
+    "level": "hard",
+    "question_en": "What does a crew need when flying to an unknown airport?",
+    "question_ru": "Что нужно экипажу при полёте в незнакомый аэропорт?",
+    "answer_en": "The crew needs updated charts, airport briefings, and information on local procedures. Knowledge of terrain, ATC specifics, and ground facilities is also essential. Proper preparation ensures a safe operation.",
+    "answer_ru": "Экипажу нужны актуальные схемы, брифинг по аэропорту и информация о местных процедурах. Также важно знать особенности местности, диспетчерской работы и наземной инфраструктуры. Хорошая подготовка обеспечивает безопасность."
+  },
+  {
+    "id": 118,
+    "level": "hard",
+    "question_en": "What will you do if there is static electricity on the windscreen?",
+    "question_ru": "Что вы будете делать, если на лобовом стекле статическое электричество?",
+    "answer_en": "I will switch to an alternate view or use instruments for navigation and landing. Static discharge can interfere with visibility and radio. It's important to stay focused and report the condition.",
+    "answer_ru": "Я перейду на альтернативный обзор или полагаться на приборы для навигации и посадки. Статическое электричество может ухудшать видимость и влиять на радиосвязь. Важно сохранять концентрацию и сообщить о проблеме."
+  },
+  {
+    "id": 119,
+    "level": "hard",
+    "question_en": "What should pilots be extremely focused on while operating in airspace with mixed traffic?",
+    "question_ru": "На чём пилоты должны быть особенно сосредоточены при полётах в воздушном пространстве со смешанным трафиком?",
+    "answer_en": "Pilots must maintain situational awareness, follow ATC instructions carefully, and monitor other traffic visually and via TCAS. Mixed airspace includes VFR and IFR traffic, which increases complexity. Vigilance is key.",
+    "answer_ru": "Пилоты должны сохранять осведомлённость о ситуации, внимательно следовать указаниям диспетчеров и следить за другим трафиком визуально и по TCAS. В смешанном пространстве находятся VFR и IFR борта, что повышает сложность. Бдительность — главное."
+  },
+  {
+    "id": 120,
+    "level": "hard",
+    "question_en": "Military flights near airports are said to be hardly possible. How often do you think it happens?",
+    "question_ru": "Говорят, что полёты военной авиации рядом с аэропортами маловероятны. Как часто, по вашему мнению, это случается?",
+    "answer_en": "Military flights near civil airports are rare but may occur during joint operations, emergencies, or training. ATC coordinates such movements to avoid conflicts. Pilots must stay alert when notified.",
+    "answer_ru": "Полёты военной авиации рядом с гражданскими аэропортами редки, но возможны при совместных операциях, ЧС или учениях. Диспетчеры координируют такие полёты. Пилоты должны быть особенно внимательны при уведомлении."
+  },
+  {
+    "id": 121,
+    "level": "hard",
+    "question_en": "How would you describe the difference between ditching and belly landing?",
+    "question_ru": "Как вы опишете разницу между посадкой на воду и на фюзеляж?",
+    "answer_en": "Ditching is an emergency landing on water, while a belly landing is on land without landing gear. Ditching requires specific procedures and flotation devices. Both require calm crew coordination.",
+    "answer_ru": "Посадка на воду — это аварийная посадка на водную поверхность, а на фюзеляж — на сушу без шасси. При посадке на воду нужны особые процедуры и спасательные средства. В обоих случаях важна слаженность экипажа."
+  },
+  {
+    "id": 122,
+    "level": "hard",
+    "question_en": "What would you do if a stray animal appeared on the airfield during takeoff?",
+    "question_ru": "Что вы сделаете, если во время взлёта на ВПП появилось животное?",
+    "answer_en": "If before V1, I would reject the takeoff immediately. If after V1, I would continue and report the incident to ATC. The safety of the aircraft is the top priority.",
+    "answer_ru": "Если до V1 — я немедленно прекращу взлёт. Если после V1 — продолжу и сообщу об инциденте диспетчеру. Безопасность самолёта — главный приоритет."
+  },
+  {
+    "id": 123,
+    "level": "hard",
+    "question_en": "Having received information about a bomb scare on board, what should a pilot report to ATC?",
+    "question_ru": "Получив информацию об угрозе взрыва на борту, что пилот должен сообщить диспетчеру?",
+    "answer_en": "The pilot must declare an emergency and report a bomb threat using standard phraseology. ATC will coordinate a safe route and landing. The crew must remain calm and follow procedures.",
+    "answer_ru": "Пилот должен объявить аварийную ситуацию и сообщить об угрозе взрыва стандартной фразой. Диспетчер обеспечит безопасный маршрут и посадку. Экипаж должен сохранять спокойствие и следовать инструкциям."
+  },
+  {
+    "id": 124,
+    "level": "hard",
+    "question_en": "Why do you think restrictions on carrying liquids on board were implemented?",
+    "question_ru": "Почему, по вашему мнению, были введены ограничения на провоз жидкостей на борту?",
+    "answer_en": "Restrictions were introduced to prevent the use of liquid explosives on aircraft. Security threats led to tighter screening procedures. Passengers are allowed limited volumes in special packaging.",
+    "answer_ru": "Ограничения были введены для предотвращения использования жидких взрывчатых веществ на борту. Угрозы безопасности привели к ужесточению контроля. Пассажирам разрешено провозить ограниченные объёмы в специальной упаковке."
+  },
+  {
+    "id": 125,
+    "level": "hard",
+    "question_en": "What upgrades have Boeing made to improve the fire resistance of aircraft interiors?",
+    "question_ru": "Какие усовершенствования внедрила компания Boeing для повышения огнестойкости интерьера самолёта?",
+    "answer_en": "Boeing has improved materials in cabin walls, carpets, and seats to be more fire-resistant. Smoke and heat release have been reduced. These changes enhance passenger safety during emergencies.",
+    "answer_ru": "Boeing улучшила материалы стенок салона, ковров и кресел, сделав их более огнестойкими. Снижены выделения дыма и тепла. Эти меры повышают безопасность пассажиров в чрезвычайных ситуациях."
+  },
+  {
+    "id": 126,
+    "level": "hard",
+    "question_en": "What events are likely if animals penetrate the restricted airfield area?",
+    "question_ru": "Какие события вероятны, если животные проникнут в охраняемую зону аэродрома?",
+    "answer_en": "Animal intrusions can delay departures or arrivals and pose collision risks. Runway inspections and wildlife control may be needed. Safety is ensured by temporary closures and coordination.",
+    "answer_ru": "Проникновение животных может вызвать задержки вылетов и прилётов, а также риск столкновений. Требуются проверки полосы и контроль дикой природы. Для обеспечения безопасности возможны временные закрытия и координация служб."
+  },
+  {
+    "id": 127,
+    "level": "hard",
+    "question_en": "Doctors say flying is detrimental. What supports their opinion?",
+    "question_ru": "Врачи говорят, что полёты вредны. Что подтверждает их мнение?",
+    "answer_en": "Flying may cause dehydration, reduced oxygen levels, and circadian rhythm disruption. Prolonged immobility can also increase health risks. These factors support medical concerns.",
+    "answer_ru": "Полёты могут вызывать обезвоживание, снижение уровня кислорода и нарушение биоритмов. Долгое сидение также повышает риски для здоровья. Эти факторы подтверждают мнение врачей."
+  },
+  {
+    "id": 128,
+    "level": "hard",
+    "question_en": "Why is identifying wind shear vitally important for the crew and passengers?",
+    "question_ru": "Почему определение сдвига ветра жизненно важно для экипажа и пассажиров?",
+    "answer_en": "Wind shear can cause sudden loss of lift and control, especially during takeoff and landing. Early detection allows pilots to react and avoid accidents. It directly affects flight safety.",
+    "answer_ru": "Сдвиг ветра может вызвать резкую потерю подъёмной силы и управление, особенно при взлёте и посадке. Раннее определение позволяет пилотам своевременно отреагировать. Это напрямую влияет на безопасность полёта."
+  },
+  {
+    "id": 129,
+    "level": "hard",
+    "question_en": "Could you specify the difference between a microburst and wind shear?",
+    "question_ru": "Можете уточнить разницу между микропорывом и сдвигом ветра?",
+    "answer_en": "A microburst is a type of wind shear caused by intense downdrafts, creating strong divergent winds. Wind shear is a broader term for any sudden wind change. Microbursts are short-lived but extremely dangerous.",
+    "answer_ru": "Микропорыв — это вид сдвига ветра, вызванный мощным нисходящим потоком, создающим расходящиеся потоки у земли. Сдвиг ветра — более общее понятие для любых резких изменений ветра. Микропорывы кратковременны, но очень опасны."
+  },
+  {
+    "id": 130,
+    "level": "hard",
+    "question_en": "If a missed approach is imminent, would you prefer to make it manually or automatically? Why?",
+    "question_ru": "Если предстоит уход на второй круг, предпочтёте ли вы выполнить его вручную или автоматически? Почему?",
+    "answer_en": "I prefer a manual go-around for better control and situational awareness. However, if workload is high or visibility low, using autopilot can reduce stress. It depends on the phase and conditions of flight.",
+    "answer_ru": "Я предпочитаю выполнять уход вручную для лучшего контроля и понимания ситуации. Однако при высокой нагрузке или плохой видимости автопилот снижает стресс. Всё зависит от этапа и условий полёта."
+  },
+  {
+    "id": 131,
+    "level": "hard",
+    "question_en": "What would you do if your flight plan timed out?",
+    "question_ru": "Что бы вы сделали, если срок действия плана полёта истёк?",
+    "answer_en": "I would contact ATC to file a new flight plan or request revalidation. Timing out may occur due to delays on the ground. It's important to avoid entering airspace without clearance.",
+    "answer_ru": "Я бы связался с диспетчером, чтобы подать новый план полёта или продлить текущий. Просрочка может возникнуть из-за задержек. Важно не входить в воздушное пространство без разрешения."
+  },
+  {
+    "id": 132,
+    "level": "hard",
+    "question_en": "What features of people's appearance might seem suspicious?",
+    "question_ru": "Какие особенности внешности людей могут показаться подозрительными?",
+    "answer_en": "Unusual clothing for the season, excessive nervousness, or attempts to avoid eye contact may raise suspicion. Security staff are trained to observe such behavior. Pilots should report anything unusual.",
+    "answer_ru": "Нетипичная одежда для сезона, чрезмерная нервозность или избегание зрительного контакта могут вызывать подозрение. Службы безопасности обучены замечать такие признаки. Пилоты должны сообщать о любых странностях."
+  },
+  {
+    "id": 133,
+    "level": "hard",
+    "question_en": "What are the effects of medical-related incidents on a flight?",
+    "question_ru": "Как медицинские инциденты влияют на выполнение полёта?",
+    "answer_en": "Medical incidents may require diversion, onboard treatment, or changes in flight level. They add stress to the crew and may delay the flight. Quick decisions and calm communication are vital.",
+    "answer_ru": "Медицинские инциденты могут потребовать отклонения, оказания помощи на борту или смены эшелона. Это увеличивает нагрузку на экипаж и может вызвать задержку. Важны быстрые решения и спокойная координация."
+  },
+  {
+    "id": 134,
+    "level": "hard",
+    "question_en": "What is a pilot required to do in case of a burst tire during takeoff?",
+    "question_ru": "Что обязан сделать пилот при разрыве шины во время взлёта?",
+    "answer_en": "If the burst occurs before V1, the pilot should reject the takeoff and stop safely on the runway. If after V1, the takeoff must continue and the problem will be handled in the air. Post-landing inspection is mandatory.",
+    "answer_ru": "Если разрыв произошёл до V1, пилот должен прервать взлёт и безопасно остановиться. Если после V1 — продолжить взлёт и решать проблему в воздухе. После посадки необходим осмотр шасси."
+  },
+  {
+    "id": 135,
+    "level": "hard",
+    "question_en": "Aviation personnel strikes have become surprisingly common. What do you think of this?",
+    "question_ru": "Забастовки авиационного персонала стали неожиданно частыми. Что вы об этом думаете?",
+    "answer_en": "Strikes are a sign of unresolved issues between staff and management. While disruptive, they are sometimes the only way to express concerns. Solutions should be found through negotiation.",
+    "answer_ru": "Забастовки свидетельствуют о нерешённых конфликтах между персоналом и руководством. Хотя они мешают работе, иногда это единственный способ выразить недовольство. Решение должно находиться путём диалога."
+  },
+  {
+    "id": 136,
+    "level": "hard",
+    "question_en": "What specific engine operation features should a pilot be aware of when flying in hot climates?",
+    "question_ru": "Какие особенности работы двигателя должен учитывать пилот при полётах в жарком климате?",
+    "answer_en": "In hot climates, engine performance decreases due to reduced air density. Pilots should adjust thrust settings and takeoff calculations. Monitoring temperatures is also important to avoid overheating.",
+    "answer_ru": "В жарком климате эффективность двигателя снижается из-за низкой плотности воздуха. Пилоты должны корректировать режимы тяги и расчёты взлёта. Также важно следить за температурой, чтобы избежать перегрева."
+  },
+  {
+    "id": 137,
+    "level": "hard",
+    "question_en": "Have you ever had difficulties understanding ATC due to a local accent?",
+    "question_ru": "Сталкивались ли вы с трудностями в понимании диспетчера из-за местного акцента?",
+    "answer_en": "Yes, sometimes local accents make communication harder. In such cases, I ask for repetition or standard phraseology. Clarity is always the goal in radiotelephony.",
+    "answer_ru": "Да, местный акцент иногда затрудняет понимание. В таких случаях я прошу повторить или использовать стандартные фразы. Ясность в радиообмене всегда на первом месте."
+  },
+  {
+    "id": 138,
+    "level": "hard",
+    "question_en": "What is the difference between tarmac and apron?",
+    "question_ru": "В чём разница между перроном и трамаком?",
+    "answer_en": "‘Tarmac’ is a general, informal term often used to refer to any paved surface at the airport. ‘Apron’ is the correct term for the area where aircraft are parked, loaded, or refueled. Precision is important in aviation language.",
+    "answer_ru": "«Трамак» — это общее и неформальное название для любой асфальтированной поверхности в аэропорту. «Перрон» — точный термин для зоны стоянки, погрузки и заправки самолётов. В авиации важна точность терминов."
+  },
+  {
+    "id": 139,
+    "level": "hard",
+    "question_en": "What ground equipment facilitates passenger boarding?",
+    "question_ru": "Какое наземное оборудование облегчает посадку пассажиров?",
+    "answer_en": "Passenger stairs, jet bridges, and buses are commonly used. Each option depends on the airport infrastructure. Jet bridges are preferred for comfort and speed.",
+    "answer_ru": "Обычно используются трапы, телескопические мосты и автобусы. Выбор зависит от инфраструктуры аэропорта. Мосты удобнее и быстрее для посадки."
+  },
+  {
+    "id": 140,
+    "level": "hard",
+    "question_en": "What actions are required if food poisoning is suspected on board?",
+    "question_ru": "Какие действия нужно предпринять при подозрении на пищевое отравление на борту?",
+    "answer_en": "The crew must isolate the affected passenger, provide medical assistance, and inform the captain. If the condition is serious, a diversion may be necessary. A report is made after landing.",
+    "answer_ru": "Экипаж должен изолировать пострадавшего, оказать первую помощь и доложить командиру. При серьёзном состоянии возможен уход на запасной. После посадки составляется отчёт."
+  },
+  {
+    "id": 141,
+    "level": "hard",
+    "question_en": "What are the advantages and disadvantages of being a pilot?",
+    "question_ru": "Каковы плюсы и минусы профессии пилота?",
+    "answer_en": "Being a pilot offers travel, good salary, and a sense of responsibility. However, it includes irregular schedules, high stress, and time away from family. Passion for aviation is essential to enjoy the job.",
+    "answer_ru": "Профессия пилота даёт возможность путешествовать, получать достойную зарплату и нести ответственность. Но есть и минусы: нерегулярный график, стресс и разлука с семьёй. Главное — любить авиацию."
+  },
+  {
+    "id": 142,
+    "level": "hard",
+    "question_en": "How important is salary in a pilot's job?",
+    "question_ru": "Насколько важна зарплата в работе пилота?",
+    "answer_en": "Salary is important for motivation and supporting a demanding lifestyle. However, safety, responsibility, and job satisfaction are even more crucial. A balanced approach is necessary.",
+    "answer_ru": "Зарплата важна для мотивации и обеспечения образа жизни. Однако безопасность, ответственность и удовлетворение от работы — ещё важнее. Нужен сбалансированный подход."
+  },
+  {
+    "id": 143,
+    "level": "hard",
+    "question_en": "What does a pilot do if he is unsure of a waypoint name?",
+    "question_ru": "Что делает пилот, если он не уверен в названии точки маршрута?",
+    "answer_en": "The pilot verifies it via the flight management system, charts, or asks ATC for confirmation. It's critical to avoid navigation errors. Double-checking is a standard practice.",
+    "answer_ru": "Пилот проверяет точку по навигационной системе, картам или уточняет у диспетчера. Это важно для предотвращения ошибок навигации. Перепроверка — обычная практика."
+  },
+  {
+    "id": 144,
+    "level": "hard",
+    "question_en": "What measures can be taken to sufficiently decrease mid-air collisions?",
+    "question_ru": "Какие меры можно предпринять для снижения риска столкновений в воздухе?",
+    "answer_en": "Strict adherence to ATC instructions, use of TCAS, and maintaining situational awareness help reduce collision risk. Pilots should also report conflicting traffic. Good visibility and communication are essential.",
+    "answer_ru": "Строгое выполнение указаний диспетчера, использование TCAS и высокая осведомлённость о ситуации снижают риск столкновений. Пилоты также должны докладывать о встречном трафике. Важны хорошая видимость и связь."
+  },
+  {
+    "id": 145,
+    "level": "hard",
+    "question_en": "What should you do if forced to land at an unfamiliar aerodrome?",
+    "question_ru": "Что вы должны сделать при вынужденной посадке на незнакомом аэродроме?",
+    "answer_en": "I would obtain information from ATC or charts, follow visual cues, and proceed cautiously. Coordination with ground services is crucial. Safety remains the top priority.",
+    "answer_ru": "Я получу информацию от диспетчера или по схемам, буду ориентироваться визуально и действовать осторожно. Координация с наземными службами обязательна. Главное — безопасность."
+  },
+  {
+    "id": 146,
+    "level": "hard",
+    "question_en": "What equipment is used in case of an emergency evacuation?",
+    "question_ru": "Какое оборудование используется при аварийной эвакуации?",
+    "answer_en": "Slides, life vests, flashlights, and escape ropes are used depending on the situation. The crew commands the evacuation and assists passengers. Quick and calm action is essential.",
+    "answer_ru": "В зависимости от ситуации применяются трапы, спасательные жилеты, фонари и канаты. Экипаж руководит эвакуацией и помогает пассажирам. Важны скорость и спокойствие."
+  },
+  {
+    "id": 147,
+    "level": "hard",
+    "question_en": "How can insects affect flight safety, if at all?",
+    "question_ru": "Могут ли насекомые повлиять на безопасность полёта?",
+    "answer_en": "Yes, insects can block sensors, such as pitot tubes, leading to incorrect data. They may also affect cockpit visibility or get into sensitive systems. Regular inspections help prevent issues.",
+    "answer_ru": "Да, насекомые могут забивать датчики, например, приёмники полного давления, что приводит к неверным данным. Также они могут ухудшить обзор или попасть в важные системы. Регулярные осмотры предотвращают проблемы."
+  },
+  {
+    "id": 148,
+    "level": "hard",
+    "question_en": "Being advised of a bomb threat on board, how would you react?",
+    "question_ru": "Как вы отреагируете на сообщение об угрозе взрыва на борту?",
+    "answer_en": "I would declare an emergency, inform ATC, and follow the bomb threat checklist. Depending on the phase of flight, diversion might be required. Crew coordination and calmness are vital.",
+    "answer_ru": "Я объявлю аварийную ситуацию, сообщу диспетчеру и выполню чек-лист угрозы взрыва. В зависимости от этапа полёта может потребоваться отклонение. Важны слаженность экипажа и спокойствие."
+  },
+  {
+    "id": 149,
+    "level": "hard",
+    "question_en": "Why do airport security services rely on sniffer dogs?",
+    "question_ru": "Почему службы безопасности аэропорта используют собак-ищейк?",
+    "answer_en": "Sniffer dogs are effective in detecting explosives, drugs, and prohibited items. They are fast, mobile, and can work in crowded areas. Their use enhances airport security significantly.",
+    "answer_ru": "Собаки-ищейки эффективно обнаруживают взрывчатку, наркотики и запрещённые предметы. Они быстры, подвижны и могут работать в местах с большим скоплением людей. Их применение значительно усиливает безопасность."
+  },
+  {
+    "id": 150,
+    "level": "hard",
+    "question_en": "If the situation due to fumes worsens, how will you manage it?",
+    "question_ru": "Если ситуация с дымом или испарениями ухудшается, как вы будете действовать?",
+    "answer_en": "I would don the oxygen mask, initiate the smoke and fumes checklist, and prepare for an emergency descent or diversion. Crew and passenger safety come first. Communication with ATC is essential.",
+    "answer_ru": "Я надену кислородную маску, выполню чек-лист по задымлению и при необходимости начну аварийное снижение или отклонение. Безопасность экипажа и пассажиров — в приоритете. Связь с диспетчером обязательна."
+  },
+  {
+    "id": 151,
+    "level": "hard",
+    "question_en": "What events might make a pilot return to the apron?",
+    "question_ru": "Какие события могут заставить пилота вернуться на перрон?",
+    "answer_en": "Technical malfunctions, passenger issues, fuel imbalance, or ATC instructions may cause a return. Ground crew assistance may be required. The decision is based on flight safety.",
+    "answer_ru": "Возврат на перрон возможен из-за технических неисправностей, проблем с пассажирами, дисбаланса топлива или указаний диспетчера. Может потребоваться помощь наземных служб. Решение принимается в интересах безопасности."
+  },
+  {
+    "id": 152,
+    "level": "hard",
+    "question_en": "How do you personally cope with stress, if any?",
+    "question_ru": "Как вы лично справляетесь со стрессом, если он возникает?",
+    "answer_en": "I rely on rest, physical activity, and deep breathing to manage stress. Talking with colleagues and focusing on procedures also helps. Mental resilience is crucial for pilots.",
+    "answer_ru": "Я справляюсь со стрессом с помощью отдыха, физических упражнений и дыхательных техник. Разговор с коллегами и концентрация на процедурах тоже помогают. Психологическая устойчивость — важное качество пилота."
+  },
+  {
+    "id": 153,
+    "level": "hard",
+    "question_en": "What events would trigger most landing incidents?",
+    "question_ru": "Какие события чаще всего приводят к инцидентам при посадке?",
+    "answer_en": "Unstable approaches, weather changes, wind shear, or late decisions to go around are common causes. Fatigue and runway conditions also contribute. Pilots must remain alert and prepared.",
+    "answer_ru": "К частым причинам инцидентов относятся нестабильный заход, изменение погоды, сдвиг ветра или запоздалое решение об уходе. Также влияют усталость и состояние полосы. Пилоты должны быть бдительны и готовы к действиям."
+  },
+  {
+    "id": 154,
+    "level": "hard",
+    "question_en": "Why should crosswind component limitations be taken into account?",
+    "question_ru": "Почему необходимо учитывать ограничения по боковому ветру?",
+    "answer_en": "Exceeding crosswind limits can lead to runway excursions or loss of directional control. Aircraft performance varies by type, so limits must be respected. Safety is the main concern.",
+    "answer_ru": "Превышение ограничений по боковому ветру может привести к выкатыванию или потере направления. Характеристики зависят от типа самолёта, поэтому лимиты нужно соблюдать. Безопасность — в приоритете."
+  },
+  {
+    "id": 155,
+    "level": "hard",
+    "question_en": "What factors may force a pilot to initiate a missed approach?",
+    "question_ru": "Какие факторы могут заставить пилота уйти на второй круг?",
+    "answer_en": "Poor visibility, unstable approach, ATC instruction, or runway obstruction may require a missed approach. It's a normal safety procedure. The pilot must always be ready to execute it.",
+    "answer_ru": "Плохая видимость, нестабильный заход, указание диспетчера или препятствие на полосе могут потребовать ухода. Это стандартная процедура безопасности. Пилот всегда должен быть готов её выполнить."
+  },
+  {
+    "id": 156,
+    "level": "hard",
+    "question_en": "What weather information should a pilot know before the flight?",
+    "question_ru": "Какую информацию о погоде должен знать пилот перед полётом?",
+    "answer_en": "Pilots need data on wind, visibility, clouds, turbulence, icing, and alternate weather. TAFs, METARs, and SIGMETs help with planning. Accurate forecasts reduce in-flight surprises.",
+    "answer_ru": "Пилоту необходимы данные о ветре, видимости, облачности, турбулентности, обледенении и погоде на запасных. TAF, METAR и SIGMET помогают планировать. Точный прогноз снижает риски в полёте."
+  },
+  {
+    "id": 157,
+    "level": "hard",
+    "question_en": "What would you do if a purser informed you about a passenger smoking in the lavatory?",
+    "question_ru": "Что вы сделаете, если старший бортпроводник сообщит о курении пассажира в туалете?",
+    "answer_en": "I would request details, ensure the situation is under control, and make a report. Depending on severity, I might inform ATC or request law enforcement. Smoking on board is strictly prohibited.",
+    "answer_ru": "Я уточню детали, удостоверюсь, что ситуация под контролем, и оформлю доклад. При серьёзности инцидента сообщу диспетчеру или попрошу полицию. Курение на борту строго запрещено."
+  },
+  {
+    "id": 158,
+    "level": "hard",
+    "question_en": "What in-flight weather situations are demanding for a pilot?",
+    "question_ru": "Какие погодные явления в полёте являются самыми сложными для пилота?",
+    "answer_en": "Thunderstorms, turbulence, wind shear, icing, and poor visibility are demanding. They affect control, comfort, and flight safety. Proper planning and timely decisions are essential.",
+    "answer_ru": "Грозы, турбулентность, сдвиг ветра, обледенение и плохая видимость особенно сложны. Они влияют на управление, комфорт и безопасность. Важно заранее планировать и принимать решения вовремя."
+  },
+  {
+    "id": 159,
+    "level": "hard",
+    "question_en": "If pilot incapacitation occurs shortly after takeoff, what would you do?",
+    "question_ru": "Если пилот теряет работоспособность вскоре после взлёта, что вы сделаете?",
+    "answer_en": "The other pilot takes control, ensures aircraft stability, and informs ATC. A return or diversion may be necessary. The incapacitated pilot receives medical attention from crew or passengers.",
+    "answer_ru": "Второй пилот берёт управление, стабилизирует полёт и сообщает диспетчеру. Возможно, потребуется возврат или отклонение. Непригодному пилоту оказывается первая помощь экипажем или пассажирами."
+  },
+  {
+    "id": 160,
+    "level": "hard",
+    "question_en": "What can hinder the normal flow of flight?",
+    "question_ru": "Что может нарушить нормальное течение полёта?",
+    "answer_en": "Technical failures, medical issues, weather, ATC restrictions, or unruly passengers can disrupt a flight. Pilots must stay flexible and follow procedures. Decision-making is key in such cases.",
+    "answer_ru": "Технические неисправности, проблемы со здоровьем, погода, ограничения диспетчеров или поведение пассажиров могут нарушить полёт. Пилоты должны быть гибкими и действовать по процедурам. Главное — принятие решений."
+  },
+  {
+    "id": 161,
+    "level": "hard",
+    "question_en": "What should a pilot do after losing communication?",
+    "question_ru": "Что должен сделать пилот при потере связи?",
+    "answer_en": "The pilot follows radio failure procedures, continues as per last clearance, and tries to reestablish contact. Squawking 7600 informs ATC. Coordination depends on flight phase and airspace type.",
+    "answer_ru": "Пилот выполняет процедуру потери связи, продолжает по последнему разрешению и пытается восстановить контакт. Код 7600 на ответчике сообщает диспетчеру. Дальнейшие действия зависят от этапа полёта и типа воздушного пространства."
+  },
+  {
+    "id": 162,
+    "level": "hard",
+    "question_en": "How is \"speaking internationally intelligible\" ensured in aviation?",
+    "question_ru": "Как в авиации обеспечивается международная понятность речи?",
+    "answer_en": "It is ensured by using standard ICAO phraseology, clear pronunciation, and limiting local expressions. English is the universal language. Continuous training helps maintain proficiency.",
+    "answer_ru": "Это достигается использованием стандартной фразеологии ICAO, чётким произношением и исключением местных выражений. Английский — международный язык. Постоянная практика помогает сохранить уровень владения."
+  },
+  {
+    "id": 163,
+    "level": "hard",
+    "question_en": "What type of approach would you choose in low visibility?",
+    "question_ru": "Какой тип захода вы выберете при низкой видимости?",
+    "answer_en": "I would choose a precision approach, such as ILS Category II or III. It provides vertical and lateral guidance. Autoland may also be used depending on aircraft and crew certification.",
+    "answer_ru": "Я выберу точный заход, например, ILS категории II или III. Он обеспечивает вертикальное и горизонтальное наведение. Также возможна автопосадка в зависимости от сертификации самолёта и экипажа."
+  },
+  {
+    "id": 164,
+    "level": "hard",
+    "question_en": "What should a pilot do if unsure about a taxi route?",
+    "question_ru": "Что должен сделать пилот, если он не уверен в маршруте руления?",
+    "answer_en": "The pilot should stop the aircraft in a safe place and request clarification from ATC. It's better to delay than to enter a wrong taxiway. Safety and situational awareness come first.",
+    "answer_ru": "Пилот должен остановить самолёт в безопасном месте и запросить уточнение у диспетчера. Лучше задержаться, чем вырулить не туда. Безопасность и осведомлённость — в приоритете."
+  },
+  {
+    "id": 165,
+    "level": "hard",
+    "question_en": "What in-flight solutions depend on Pilot Monitoring suggestions (according to CRM)?",
+    "question_ru": "Какие решения в полёте зависят от предложений пилота-наблюдателя согласно CRM?",
+    "answer_en": "Pilot Monitoring assists with cross-checks, calls out deviations, and supports decision-making. His input can influence diversions, go-arounds, or handling malfunctions. CRM promotes shared responsibility.",
+    "answer_ru": "Пилот-наблюдатель помогает с перепроверками, сообщает о отклонениях и участвует в принятии решений. Его мнение важно при отклонениях, уходе на второй круг и устранении неисправностей. CRM предполагает совместную ответственность."
+  },
+  {
+    "id": 166,
+    "level": "hard",
+    "question_en": "Could you share your memories about the most unforgettable flight in your career?",
+    "question_ru": "Можете рассказать о самом незабываемом рейсе в вашей карьере?",
+    "answer_en": "One of my most unforgettable flights involved a medical emergency midair. We had to divert quickly, coordinate with ATC, and stay calm. The crew’s teamwork made a big difference.",
+    "answer_ru": "Один из самых незабываемых рейсов произошёл из-за медицинской чрезвычайной ситуации. Мы быстро отклонились от маршрута, скоординировались с диспетчером и сохранили спокойствие. Отличная командная работа сыграла ключевую роль."
+  },
+  {
+    "id": 167,
+    "level": "hard",
+    "question_en": "What would you do in case of sudden cabin depressurization?",
+    "question_ru": "Что вы сделаете в случае внезапной разгерметизации кабины?",
+    "answer_en": "I would don the oxygen mask immediately, initiate an emergency descent, and inform ATC. The goal is to reach a safe altitude quickly. Then I’d assess the situation and plan accordingly.",
+    "answer_ru": "Я немедленно надену кислородную маску, начну аварийное снижение и сообщу диспетчеру. Цель — быстро достичь безопасной высоты. Затем оценю ситуацию и приму меры."
+  },
+  {
+    "id": 168,
+    "level": "hard",
+    "question_en": "Why would a retransmission station be used on a VHF frequency?",
+    "question_ru": "Зачем может использоваться ретранслятор на частоте VHF?",
+    "answer_en": "VHF signals are limited by line of sight, so retransmission stations extend communication in mountainous or remote areas. They ensure continuous contact with ATC. This improves safety and coordination.",
+    "answer_ru": "Сигналы VHF ограничены прямой видимостью, поэтому ретрансляторы расширяют зону связи в горах и удалённых районах. Это обеспечивает постоянный контакт с диспетчером и повышает безопасность."
+  },
+  {
+    "id": 169,
+    "level": "hard",
+    "question_en": "What lateral separation is considered dangerous for flight?",
+    "question_ru": "Какая боковая дистанция считается опасной в полёте?",
+    "answer_en": "Lateral separation below standard minimums, especially under 3–5 NM in controlled airspace, can be dangerous. It increases the risk of wake turbulence or midair collisions. ATC and pilots must ensure proper spacing.",
+    "answer_ru": "Боковая дистанция ниже стандартных минимумов, особенно менее 3–5 морских миль, опасна. Это повышает риск спутной турбулентности или столкновения. Диспетчеры и пилоты должны соблюдать нужные интервалы."
+  },
+  {
+    "id": 170,
+    "level": "hard",
+    "question_en": "Why are hold-short points displaced for CAT III operations?",
+    "question_ru": "Почему точки остановки перед ВПП смещаются при заходе CAT III?",
+    "answer_en": "In CAT III approaches, hold-short points are farther from the runway to prevent interference with sensitive ILS signals. This ensures accurate guidance. Proper marking is essential for compliance.",
+    "answer_ru": "При заходе CAT III точки остановки удаляются от полосы, чтобы не мешать точной работе ILS. Это обеспечивает корректное наведение. Правильная разметка обязательна для соблюдения процедур."
+  },
+  {
+    "id": 171,
+    "level": "hard",
+    "question_en": "If a belly landing is required, how will the crew prepare for it?",
+    "question_ru": "Если требуется посадка на фюзеляж, как экипаж подготовится?",
+    "answer_en": "The crew will inform ATC, brief the cabin crew, and complete the relevant checklist. Passengers are secured and emergency services alerted. A smooth approach and level attitude are critical.",
+    "answer_ru": "Экипаж сообщит диспетчеру, проведёт инструктаж бортпроводников и выполнит чек-лист. Пассажиры закрепляются, службы ЧС оповещаются. Важны плавный заход и горизонтальное положение при посадке."
+  },
+  {
+    "id": 172,
+    "level": "hard",
+    "question_en": "How reasonable is traveling with pets in the passenger cabin?",
+    "question_ru": "Насколько оправдано путешествие с животными в салоне?",
+    "answer_en": "Traveling with pets in the cabin is acceptable if rules are followed and animals are calm. It reduces stress for owners and avoids cargo complications. Safety and hygiene must be considered.",
+    "answer_ru": "Путешествие с животными в салоне допустимо при соблюдении правил и спокойном поведении питомца. Это снижает стресс владельцев и исключает риски, связанные с багажом. Важно учитывать безопасность и гигиену."
+  },
+  {
+    "id": 173,
+    "level": "hard",
+    "question_en": "What clues may hint at a real bomb scare on board?",
+    "question_ru": "Какие признаки могут указывать на реальную угрозу взрыва на борту?",
+    "answer_en": "Suspicious behavior, unattended items, or direct threats from passengers may indicate danger. Crew must stay calm and follow security procedures. All reports must be taken seriously.",
+    "answer_ru": "Подозрительное поведение, оставленные предметы без присмотра или прямые угрозы пассажиров могут указывать на опасность. Экипаж должен сохранять спокойствие и действовать по инструкции. Любые сигналы нужно воспринимать всерьёз."
+  },
+  {
+    "id": 174,
+    "level": "hard",
+    "question_en": "What conditions are required for transporting perishable organs for transplant?",
+    "question_ru": "Какие условия необходимы для перевозки органов, предназначенных для трансплантации?",
+    "answer_en": "Organs must be transported in special containers with temperature control and minimal delay. Flight planning and coordination with medical teams are essential. The crew must treat it as a priority cargo.",
+    "answer_ru": "Органы перевозятся в специальных контейнерах с контролем температуры и минимальной задержкой. Важно заранее согласовать полёт с медицинскими службами. Экипаж рассматривает такой груз как приоритетный."
+  },
+  {
+    "id": 175,
+    "level": "hard",
+    "question_en": "What services and facilities may help if an aircraft catches fire after takeoff?",
+    "question_ru": "Какие службы и средства могут помочь при возгорании самолёта после взлёта?",
+    "answer_en": "Emergency response teams with fire trucks, foam systems, and evacuation equipment are essential. Rapid communication between the tower and rescue units is vital. Airport fire services must be trained for such events.",
+    "answer_ru": "Пожарные команды с пенными системами, средствами эвакуации и спецтехникой крайне важны. Необходима быстрая связь между диспетчерами и спасателями. Службы должны быть обучены действиям в таких ситуациях."
+  },
+  {
+    "id": 176,
+    "level": "hard",
+    "question_en": "What sources can help pilots retrieve airport-related information? (e.g. Airport Directory)",
+    "question_ru": "Какие источники помогут пилотам получить информацию об аэропортах? (например, справочник аэропортов)",
+    "answer_en": "Pilots use AIPs, Jeppesen charts, NOTAMs, and airport directories for up-to-date data. These sources include procedures, runways, frequencies, and ground services. Pre-flight briefing must include this review.",
+    "answer_ru": "Пилоты используют AIP, карты Jeppesen, NOTAM и справочники аэропортов. Эти источники содержат процедуры, ВПП, частоты и данные о наземных службах. Предполетный брифинг должен включать их изучение."
+  },
+  {
+    "id": 177,
+    "level": "hard",
+    "question_en": "What will you do if you see a crew member in low spirits and poor physical condition?",
+    "question_ru": "Что вы сделаете, если заметите, что член экипажа в плохом настроении и физическом состоянии?",
+    "answer_en": "I would speak to the crew member privately and assess the situation. If unfit for duty, I would inform the captain or management. Crew well-being is essential for safety.",
+    "answer_ru": "Я поговорю с коллегой наедине и оценю ситуацию. Если он не готов к работе, сообщу командиру или руководству. Самочувствие экипажа — ключ к безопасности."
+  },
+  {
+    "id": 178,
+    "level": "hard",
+    "question_en": "Some say it’s nearly impossible to land safely when flying near volcanic activity. What do you think?",
+    "question_ru": "Некоторые говорят, что безопасная посадка рядом с вулканической активностью почти невозможна. Что вы об этом думаете?",
+    "answer_en": "Volcanic ash can severely damage engines and reduce visibility. Safe landing depends on avoidance, early detection, and good coordination. It’s difficult, but not impossible with proper planning.",
+    "answer_ru": "Вулканический пепел может серьёзно повредить двигатели и ухудшить видимость. Безопасность зависит от избегания, своевременного распознавания и хорошей координации. Это трудно, но возможно при правильной подготовке."
+  },
+  {
+    "id": 179,
+    "level": "hard",
+    "question_en": "Why are dust storms thought to affect flight operations?",
+    "question_ru": "Почему считают, что пыльные бури влияют на полёт?",
+    "answer_en": "Dust storms reduce visibility, affect engines, and may contaminate sensors. Airports may suspend operations for safety. Pilots must avoid these areas and rely on weather reports.",
+    "answer_ru": "Пыльные бури снижают видимость, влияют на работу двигателей и загрязняют датчики. Аэропорты могут приостанавливать работу. Пилоты должны избегать таких районов и использовать метеосводки."
+  },
+  {
+    "id": 180,
+    "level": "hard",
+    "question_en": "A severe wind shear doesn’t seem easy to recover from, does it?",
+    "question_ru": "Сильный сдвиг ветра — это ведь не так просто компенсировать, не так ли?",
+    "answer_en": "True, strong wind shear can lead to loss of lift and control. Pilots must respond immediately with maximum thrust and correct pitch. Training and awareness are crucial.",
+    "answer_ru": "Да, сильный сдвиг ветра может вызвать потерю подъёмной силы и управление. Пилоты должны немедленно увеличить тягу и скорректировать тангаж. Обучение и внимательность — ключевые факторы."
+  },
+  {
+    "id": 181,
+    "level": "hard",
+    "question_en": "Why are briefings required to be held?",
+    "question_ru": "Зачем обязательно проводить брифинги?",
+    "answer_en": "Briefings ensure all crew members are aware of procedures, threats, and responsibilities. They improve coordination and safety. It's a standard part of flight preparation.",
+    "answer_ru": "Брифинги помогают всем членам экипажа понимать процедуры, угрозы и зоны ответственности. Они улучшают координацию и безопасность. Это стандартная часть подготовки к полёту."
+  },
+  {
+    "id": 182,
+    "level": "hard",
+    "question_en": "What passenger-related problems are typical for charter flights?",
+    "question_ru": "Какие проблемы с пассажирами характерны для чартерных рейсов?",
+    "answer_en": "Charter flights may involve less experienced travelers, overbooking, or group behavior issues. Misunderstandings and delays are common. Good communication and preparation help prevent them.",
+    "answer_ru": "На чартерных рейсах чаще встречаются неопытные пассажиры, перебронирование и проблемы с группами. Нередки недопонимание и задержки. Помогают чёткое информирование и подготовка экипажа."
+  },
+  {
+    "id": 183,
+    "level": "hard",
+    "question_en": "What natural phenomena must always be avoided?",
+    "question_ru": "Каких природных явлений пилоты должны избегать всегда?",
+    "answer_en": "Thunderstorms, volcanic ash clouds, and severe turbulence must always be avoided. These pose serious risks to aircraft control and structure. Avoidance is key to flight safety.",
+    "answer_ru": "Грозы, облака вулканического пепла и сильная турбулентность всегда подлежат обходу. Они представляют серьёзную угрозу для управления и конструкции самолёта. Избегание — основа безопасности."
+  },
+  {
+    "id": 184,
+    "level": "hard",
+    "question_en": "What consequences can an earthquake have for takeoff or landing?",
+    "question_ru": "Какие последствия может иметь землетрясение для взлёта или посадки?",
+    "answer_en": "An earthquake can damage runways, lighting systems, and terminal infrastructure. It may lead to closures or diversions. Pre-flight checks and NOTAMs help assess risks.",
+    "answer_ru": "Землетрясение может повредить ВПП, светосигнальное оборудование и терминалы. Это может привести к закрытию аэропорта или отклонению рейса. Оценке рисков помогают предварительные проверки и NOTAM."
+  },
+  {
+    "id": 185,
+    "level": "hard",
+    "question_en": "What cases would prevent an aircraft from entering airspace?",
+    "question_ru": "В каких случаях самолёту запрещается входить в воздушное пространство?",
+    "answer_en": "Airspace may be closed due to military activity, weather conditions, or diplomatic restrictions. Lack of clearance or equipment failure can also prevent entry. Pilots must coordinate with ATC.",
+    "answer_ru": "Воздушное пространство может быть закрыто из-за военных операций, погодных условий или дипломатических ограничений. Отсутствие разрешения или отказ оборудования также может стать причиной. Пилоты должны согласовывать вход с диспетчерами."
+  },
+  {
+    "id": 186,
+    "level": "hard",
+    "question_en": "What would you do if the main electrical generator failed?",
+    "question_ru": "Что вы сделаете при отказе основного генератора?",
+    "answer_en": "I would activate the standby or auxiliary systems and follow the checklist. Load shedding may be required. Coordination with ATC and monitoring of battery life are important.",
+    "answer_ru": "Я активирую резервную или вспомогательную систему и выполню чек-лист. Может потребоваться отключение части оборудования. Важно держать связь с диспетчером и контролировать заряд батарей."
+  },
+  {
+    "id": 187,
+    "level": "hard",
+    "question_en": "Which accents are sufficiently intelligible for radiotelephony communication?",
+    "question_ru": "Какие акценты являются достаточно понятными для радиообмена?",
+    "answer_en": "Accents that use clear standard phraseology and neutral pronunciation are most intelligible. ICAO English promotes global understanding. Training reduces confusion caused by local accents.",
+    "answer_ru": "Понятны те акценты, при которых используется чёткая стандартная фразеология и нейтральное произношение. ICAO English обеспечивает глобальное взаимопонимание. Обучение снижает путаницу, вызванную локальными акцентами."
+  },
+  {
+    "id": 188,
+    "level": "hard",
+    "question_en": "If you encountered the term FICON, how would you decode it?",
+    "question_ru": "Если вы встретили термин FICON, как вы его расшифруете?",
+    "answer_en": "FICON stands for Field Condition. It's used in NOTAMs to describe runway surface conditions, including contamination and braking action. Pilots use it to assess landing performance.",
+    "answer_ru": "FICON означает Field Condition — состояние аэродрома. Используется в NOTAM для описания состояния ВПП, включая загрязнение и тормозные характеристики. Пилоты используют это для оценки посадки."
+  },
+  {
+    "id": 189,
+    "level": "hard",
+    "question_en": "What might airport opening hours depend on?",
+    "question_ru": "От чего могут зависеть часы работы аэропорта?",
+    "answer_en": "Opening hours depend on air traffic, noise restrictions, lighting availability, and staffing. Some airports close overnight due to local laws. Schedules are published in AIPs.",
+    "answer_ru": "Часы работы зависят от объёма трафика, ограничений по шуму, наличия освещения и персонала. Некоторые аэропорты закрываются ночью по местным законам. Расписания публикуются в AIP."
+  },
+  {
+    "id": 190,
+    "level": "hard",
+    "question_en": "To what extent do flight and cabin crews depend on each other?",
+    "question_ru": "Насколько зависят друг от друга лётный и кабинный экипажи?",
+    "answer_en": "They depend on each other for safety, communication, and passenger management. The cabin crew supports flight operations and provides feedback during abnormal situations. Trust and teamwork are essential.",
+    "answer_ru": "Они зависят друг от друга в вопросах безопасности, взаимодействия и работы с пассажирами. Кабинный экипаж помогает в полёте и докладывает при нештатных ситуациях. Доверие и командная работа крайне важны."
+  },
+  {
+    "id": 191,
+    "level": "hard",
+    "question_en": "You are likely to succeed in your career. How do you think it will grow?",
+    "question_ru": "Скорее всего, вы добьётесь успеха в карьере. Как вы думаете, как она будет развиваться?",
+    "answer_en": "I hope to gain more experience, become a captain, and take on training responsibilities. I’m also interested in safety management roles. Growth requires continuous learning and dedication.",
+    "answer_ru": "Я надеюсь набраться опыта, стать командиром и обучать других. Мне также интересны роли в области управления безопасностью. Рост требует постоянного обучения и отдачи делу."
+  },
+  {
+    "id": 192,
+    "level": "hard",
+    "question_en": "Imagine one of the flight crew members made a mistake. What are the correct actions?",
+    "question_ru": "Представьте, что один из членов экипажа допустил ошибку. Какие правильные действия?",
+    "answer_en": "The mistake should be acknowledged, discussed respectfully, and corrected immediately. Blame is avoided; the focus is on safety and learning. CRM encourages open communication.",
+    "answer_ru": "Ошибка должна быть признана, обсуждена с уважением и немедленно исправлена. Без обвинений — акцент на безопасности и обучении. CRM поощряет открытую коммуникацию."
+  },
+  {
+    "id": 193,
+    "level": "hard",
+    "question_en": "When should a pilot make the “Runway Vacated” call?",
+    "question_ru": "Когда пилот должен передать сообщение «освободили ВПП»?",
+    "answer_en": "The call is made after the aircraft has completely passed the holding point and is clear of the runway. It informs ATC that the runway is free for other traffic. Timing is crucial for efficiency.",
+    "answer_ru": "Сообщение передаётся, когда самолёт полностью миновал точку ожидания и освободил полосу. Оно информирует диспетчера, что ВПП свободна для других. Время передачи критически важно для эффективности."
+  },
+  {
+    "id": 194,
+    "level": "hard",
+    "question_en": "Do you think a passenger without a ticket could cause a diversion? Why?",
+    "question_ru": "Может ли, по-вашему, пассажир без билета стать причиной отклонения рейса? Почему?",
+    "answer_en": "Yes, an unauthorized passenger is a serious security issue. It may lead to diversion and investigation. All boarding procedures must be followed strictly.",
+    "answer_ru": "Да, несанкционированный пассажир — это серьёзная угроза безопасности. Это может привести к отклонению рейса и расследованию. Все процедуры посадки должны соблюдаться строго."
+  },
+  {
+    "id": 195,
+    "level": "hard",
+    "question_en": "What are the potential consequences of busting your flight level?",
+    "question_ru": "Каковы возможные последствия нарушения эшелона полёта?",
+    "answer_en": "It can result in loss of separation, TCAS alerts, or conflict with other traffic. Pilots may face investigation and corrective training. Strict altitude adherence is essential.",
+    "answer_ru": "Это может привести к нарушению интервала, срабатыванию TCAS и конфликту с другим трафиком. Возможны расследование и дополнительное обучение. Соблюдение эшелона — обязательно."
+  },
+  {
+    "id": 196,
+    "level": "hard",
+    "question_en": "Is it possible for a pilot to be suspended after a physical incapacitation incident?",
+    "question_ru": "Могут ли пилота отстранить от полётов после утраты работоспособности?",
+    "answer_en": "Yes, a medical evaluation is required after such incidents. Suspension may occur until the pilot is declared fit. Safety always comes first in such cases.",
+    "answer_ru": "Да, после инцидента требуется медицинская проверка. Пилот может быть временно отстранён до восстановления допуска. В таких случаях безопасность — на первом месте."
+  },
+  {
+    "id": 197,
+    "level": "hard",
+    "question_en": "Why would a normal flight plan include alternate airports en route?",
+    "question_ru": "Почему обычный план полёта может включать запасные аэродромы по маршруту?",
+    "answer_en": "Alternates are needed in case of diversion due to weather, technical issues, or medical emergencies. They provide safe landing options. It’s a key element of flight planning.",
+    "answer_ru": "Запасные аэродромы нужны при отклонении из-за погоды, технических проблем или ЧС на борту. Они обеспечивают безопасные точки посадки. Это важная часть планирования полёта."
+  },
+  {
+    "id": 198,
+    "level": "hard",
+    "question_en": "How do you think airspace will be managed in 20 years?",
+    "question_ru": "Как, по-вашему, будет управляться воздушное пространство через 20 лет?",
+    "answer_en": "Airspace will likely rely more on automation, satellite navigation, and digital communication. Dynamic airspace and unmanned traffic integration will play a key role. Safety and efficiency will improve.",
+    "answer_ru": "Воздушное пространство, вероятно, будет больше использовать автоматизацию, спутниковую навигацию и цифровую связь. Важную роль сыграют динамическое управление и интеграция БПЛА. Безопасность и эффективность возрастут."
+  },
+  {
+    "id": 199,
+    "level": "hard",
+    "question_en": "If you were free to set your own schedule, what would it look like?",
+    "question_ru": "Если бы вы могли сами составлять своё расписание, каким бы оно было?",
+    "answer_en": "I’d prefer balanced flying hours with adequate rest and time for family. Alternating between short-haul and medium-haul flights would keep variety. Predictability and flexibility are ideal.",
+    "answer_ru": "Я бы выбрал сбалансированное количество часов, с достаточным отдыхом и временем для семьи. Чередование рейсов средней и малой дальности — для разнообразия. Идеально — предсказуемость и гибкость."
+  },
+  {
+    "id": 200,
+    "level": "hard",
+    "question_en": "What bird species are likely to be encountered at high altitudes?",
+    "question_ru": "Какие виды птиц можно встретить на больших высотах?",
+    "answer_en": "Birds like bar-headed geese and vultures have been recorded above 30,000 feet. However, most bird strikes occur during takeoff and landing. Awareness of migration routes is important.",
+    "answer_ru": "Гуси с полосатой головой и грифы встречались на высотах выше 30 000 футов. Однако большинство столкновений с птицами происходит при взлёте и посадке. Важно учитывать маршруты миграции."
+  },
+  {
+    "id": 201,
+    "level": "hard",
+    "question_en": "What type of data should the Pilot-in-Command obtain about dangerous cargo before dispatch?",
+    "question_ru": "Какие данные должен получить командир воздушного судна о опасном грузе перед вылетом?",
+    "answer_en": "The pilot must know the type, quantity, location, and handling instructions for dangerous goods. Emergency procedures and compatibility must also be checked. Full documentation is required on board.",
+    "answer_ru": "Пилот должен знать тип, количество, расположение и инструкции по обращению с опасным грузом. Также проверяются аварийные процедуры и совместимость. Полный пакет документов должен быть на борту."
+  },
+  {
+    "id": 202,
+    "level": "hard",
+    "question_en": "Do you agree that going on strike is an effective way to defend professional rights?",
+    "question_ru": "Согласны ли вы с тем, что забастовка — эффективный способ отстаивания профессиональных прав?",
+    "answer_en": "Strikes can raise awareness and force negotiations, but they disrupt public services. Dialogue and compromise are often more productive. Strikes should be a last resort.",
+    "answer_ru": "Забастовки могут привлечь внимание и заставить вести переговоры, но нарушают работу транспорта. Диалог и компромисс обычно эффективнее. Забастовка — это крайняя мера."
+  },
+  {
+    "id": 203,
+    "level": "hard",
+    "question_en": "What scenarios might lead to an ATC significantly delaying your arrival?",
+    "question_ru": "Какие ситуации могут привести к значительной задержке вашего прибытия по вине диспетчерской службы?",
+    "answer_en": "Traffic congestion, weather restrictions, or runway closures can cause delays. ATC may also hold flights due to emergencies or VIP movements. Pilots must coordinate and adjust fuel planning.",
+    "answer_ru": "Перегрузка трафика, погодные ограничения или закрытие ВПП могут вызывать задержки. Также это возможно из-за ЧС или полётов VIP-персон. Пилоты должны координироваться и учитывать это при расчёте топлива."
   }
 ]
