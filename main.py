@@ -1,12 +1,6 @@
 import json
 import logging
-from telegram.ext import (
-    ApplicationBuilder,
-    CommandHandler,
-    MessageHandler,
-    CallbackQueryHandler,
-    filters,
-)
+from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, CallbackQueryHandler, filters
 from config import BOT_TOKEN
 from handlers.commands import start_command, support_command
 from handlers.questions import handle_user_message
@@ -23,23 +17,23 @@ logging.basicConfig(
 # Создаём приложение
 app = ApplicationBuilder().token(BOT_TOKEN).build()
 
-# Загружаем вопросы в память для режима экзамена
+# Загружаем список вопросов в память (используется в handlers.questions)
 with open("questions.json", encoding="utf-8") as f:
     app.bot_data["questions"] = json.load(f)
 
-# Обработчики команд
+# Обработка команды /start
 app.add_handler(CommandHandler("start", start_command))
 app.add_handler(CommandHandler("support", support_command))
 
-# Обработчики настроек
+# Обработчики меню (настройки)
 for handler in get_settings_handlers():
     app.add_handler(handler)
 
-# Обработчики админа
+# Обработчики админ-панели
 for handler in get_admin_handlers():
     app.add_handler(handler)
 
-# Обработка текстовых сообщений (вопросы, переводы, ответы и отзывы)
+# Обработка обычных текстовых сообщений (вопросы, переводы, ответы, отзывы)
 async def message_dispatcher(update, context):
     if context.user_data.get("feedback_mode"):
         await handle_feedback_message(update, context)
