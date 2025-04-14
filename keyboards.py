@@ -1,4 +1,5 @@
 from telegram import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
+from config import ADMIN_ID
 
 def get_label(key, lang):
     labels = {
@@ -12,11 +13,16 @@ def get_label(key, lang):
     return labels[key][lang]
 
 def get_main_keyboard(user_id, lang="en"):
-    return ReplyKeyboardMarkup([
+    base_keyboard = [
         [get_label("next", lang), get_label("answer", lang)],
         [get_label("q_translate", lang), get_label("a_translate", lang)],
         [get_label("settings", lang), get_label("support", lang)]
-    ], resize_keyboard=True)
+    ]
+    # Кнопка "Управление" добавляется только для администратора
+    if user_id == ADMIN_ID:
+        admin_text = "🛠️ Управление" if lang == "ru" else "🛠️ Admin Control"
+        base_keyboard.append([admin_text])
+    return ReplyKeyboardMarkup(base_keyboard, resize_keyboard=True)
 
 def get_language_keyboard():
     return InlineKeyboardMarkup([
