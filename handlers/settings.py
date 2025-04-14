@@ -2,7 +2,6 @@ from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes, CallbackQueryHandler, MessageHandler, filters
 from keyboards import get_language_keyboard, get_difficulty_keyboard, get_main_keyboard
 from handlers.questions import get_user_data, user_data
-from handlers.exam import start_exam
 from config import ADMIN_ID
 
 async def settings_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -23,8 +22,7 @@ async def settings_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("⚙️ Сложность" if lang == "ru" else "⚙️ Difficulty", callback_data="change_level")],
         [InlineKeyboardButton("📊 Прогресс" if lang == "ru" else "📊 Progress", callback_data="show_progress")],
         [InlineKeyboardButton("🔁 Начать сначала" if lang == "ru" else "🔁 Start over", callback_data="reset_progress")],
-        [InlineKeyboardButton("🗣️ Оставить отзыв" if lang == "ru" else "🗣️ Leave feedback", callback_data="leave_feedback")],
-        [InlineKeyboardButton("🎓 Режим экзамена" if lang == "ru" else "🎓 Exam Mode", callback_data="exam_mode")]
+        [InlineKeyboardButton("🗣️ Оставить отзыв" if lang == "ru" else "🗣️ Leave feedback", callback_data="leave_feedback")]
     ]
     markup = InlineKeyboardMarkup(buttons)
     await update.message.reply_text(text, reply_markup=markup)
@@ -48,7 +46,6 @@ async def handle_settings_callback(update: Update, context: ContextTypes.DEFAULT
     elif query.data == "show_progress":
         easy = len(data["easy_done"])
         hard = len(data["hard_done"])
-        exams = data.get("exams_passed", 0)
         answer_viewed = data.get("answers_viewed", 0)
         q_trans = data.get("q_translate_count", 0)
         a_trans = data.get("a_translate_count", 0)
@@ -57,7 +54,6 @@ async def handle_settings_callback(update: Update, context: ContextTypes.DEFAULT
             f"{t('📊 Прогресс:', '📊 Progress:')}\n"
             f"🛫 {t('Лёгкие вопросы', 'Easy questions')}: {easy}\n"
             f"🚀 {t('Сложные вопросы', 'Hard questions')}: {hard}\n"
-            f"📚 {t('Экзаменов пройдено', 'Exams completed')}: {exams}\n"
             f"💬 {t('Просмотров ответа', 'Answers viewed')}: {answer_viewed}\n"
             f"🌍 {t('Переводов вопроса', 'Question translations')}: {q_trans}\n"
             f"🇷🇺 {t('Переводов ответа', 'Answer translations')}: {a_trans}"
@@ -72,7 +68,6 @@ async def handle_settings_callback(update: Update, context: ContextTypes.DEFAULT
             "answers_viewed": 0,
             "q_translate_count": 0,
             "a_translate_count": 0,
-            "exams_passed": 0,
             "language": lang,
             "level": "easy"
         }
@@ -103,12 +98,10 @@ async def handle_settings_callback(update: Update, context: ContextTypes.DEFAULT
         user_data[user_id]["level"] = "hard"
         await query.edit_message_text("🚀 Режим сложных вопросов активирован!" if lang == "ru" else "🚀 Hard question mode activated!")
         await query.message.reply_text("🔁 Обновляем клавиатуру..." if lang == "ru" else "🔁 Updating keyboard...", reply_markup=get_main_keyboard(user_id, lang))
-    elif query.data == "exam_mode":
-        await start_exam(update, context)
 
 def get_settings_handlers():
     return [
         MessageHandler(filters.Regex("⚙️ Настройки|⚙️ Settings"), settings_command),
         CallbackQueryHandler(handle_settings_callback,
-            pattern="^(change_language|change_level|show_progress|reset_progress|leave_feedback|lang_en|lang_ru|level_easy|level_hard|switch_to_hard|exam_mode)$")
+            pattern="^(change_language|change_level|show_progress|reset_progress|leave_feedback|lang_en|lang_ru|level_easy|level_hard|switch_to_hard)$")
     ]
