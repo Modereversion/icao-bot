@@ -96,9 +96,13 @@ async def handle_settings_callback(update: Update, context: ContextTypes.DEFAULT
     elif query.data == "switch_to_hard":
         context.user_data["level"] = "hard"
         user_data[user_id]["level"] = "hard"
-        await query.edit_message_text("🚀 Режим сложных вопросов активирован!" if lang == "ru" else "🚀 Hard question mode activated!")
-        await query.message.reply_text("🔁 Обновляем клавиатуру...", reply_markup=get_main_keyboard(user_id, lang))
-
+        if lang == "ru":
+            await query.edit_message_text("🚀 Режим сложных вопросов активирован!")
+            await query.message.reply_text("🔁 Обновляем клавиатуру...", reply_markup=get_main_keyboard(user_id, lang))
+        else:
+            await query.edit_message_text("🚀 Hard question mode activated!")
+            await query.message.reply_text("🔁 Updating keyboard...", reply_markup=get_main_keyboard(user_id, lang))
+            
 def get_settings_handlers():
     return [
         MessageHandler(filters.Regex("⚙️ Настройки|⚙️ Settings"), settings_command),
