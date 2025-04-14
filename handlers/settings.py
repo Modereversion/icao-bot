@@ -1,18 +1,14 @@
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes, CallbackQueryHandler, MessageHandler, filters
 from keyboards import get_language_keyboard, get_difficulty_keyboard, get_main_keyboard
-from handlers.questions import get_user_data, user_data
+from handlers.questions import get_user_data, user_data, send_new_question
 from config import ADMIN_ID
 
 async def settings_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     telegram_lang = update.effective_user.language_code or "en"
-
-    lang = context.user_data.get("language")
-    if not lang:
-        lang = "ru" if telegram_lang.startswith("ru") else "en"
-        context.user_data["language"] = lang
-
+    lang = "ru" if telegram_lang.startswith("ru") else "en"
+    context.user_data["language"] = lang
     data = get_user_data(user_id)
     data["language"] = lang
 
@@ -24,20 +20,23 @@ async def settings_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🔁 Начать сначала" if lang == "ru" else "🔁 Start over", callback_data="reset_progress")],
         [InlineKeyboardButton("🗣️ Оставить отзыв" if lang == "ru" else "🗣️ Leave feedback", callback_data="leave_feedback")]
     ]
-    markup = InlineKeyboardMarkup(buttons)
-    await update.message.reply_text(text, reply_markup=markup)
+    await update.message.reply_text(text, reply_markup=InlineKeyboardMarkup(buttons))
 
 async def handle_settings_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     user_id = query.from_user.id
     await query.answer()
-
     lang = context.user_data.get("language", "en")
     level = context.user_data.get("level", "easy")
     data = get_user_data(user_id)
 
     def t(ru, en):
         return ru if lang == "ru" else en
+
+    def continue_button():
+        return InlineKeyboardMarkup([
+            [InlineKeyboardButton("▶️ Продолжить тренировку" if lang == "ru" else "▶️ Continue", callback_data="start_training")]
+        ])
 
     if query.data == "change_language":
         await query.edit_message_text(t("🌐 Выберите язык:", "🌐 Choose language:"), reply_markup=get_language_keyboard())
@@ -58,7 +57,7 @@ async def handle_settings_callback(update: Update, context: ContextTypes.DEFAULT
             f"🌍 {t('Переводов вопросов', 'Question translations')}: {q_trans}\n"
             f"🇷🇺 {t('Переводов ответов', 'Answer translations')}: {a_trans}"
         )
-        await query.edit_message_text(progress)
+        await query.edit_message_text(progress, reply_markup=continue_button())
     elif query.data == "reset_progress":
         context.user_data.clear()
         user_data[user_id] = {
@@ -73,37 +72,38 @@ async def handle_settings_callback(update: Update, context: ContextTypes.DEFAULT
             "language": lang,
             "level": "easy"
         }
-        await query.edit_message_text(t("🔁 Прогресс сброшен. Начни сначала!", "🔁 Progress reset. Start over!"))
+        await query.edit_message_text(t("🔁 Прогресс сброшен. Начинаем заново!" , "🔁 Progress reset. Starting again!"), reply_markup=continue_button())
     elif query.data == "leave_feedback":
         context.user_data["feedback_mode"] = True
-        await query.edit_message_text(t("✍️ Напишите свой отзыв, и он будет отправлен автору.", "✍️ Please write your feedback message."))
+        await query.edit_message_text(t("✍️ Напишите свой отзыв, и он будет отправлен автору.", "✍️ Please write your feedback message."),
+                                      reply_markup=continue_button())
     elif query.data == "lang_en":
         context.user_data["language"] = "en"
         user_data[user_id]["language"] = "en"
-        await query.edit_message_text("🌐 Language set to English.")
-        await query.message.reply_text("🔁 Keyboard updated.", reply_markup=get_main_keyboard(user_id, "en"))
+        await query.edit_message_text("🌐 Language set to English.", reply_markup=continue_button())
     elif query.data == "lang_ru":
         context.user_data["language"] = "ru"
         user_data[user_id]["language"] = "ru"
-        await query.edit_message_text("🌐 Язык установлен: Русский.")
-        await query.message.reply_text("🔁 Клавиатура обновлена.", reply_markup=get_main_keyboard(user_id, "ru"))
+        await query.edit_message_text("🌐 Язык установлен: Русский.", reply_markup=continue_button())
     elif query.data == "level_easy":
         context.user_data["level"] = "easy"
         user_data[user_id]["level"] = "easy"
-        await query.edit_message_text(t("🛫 Уровень установлен: Лёгкий", "🛫 Level set: Easy"))
+        await query.edit_message_text(t("🛫 Уровень установлен: Лёгкий", "🛫 Level set: Easy"), reply_markup=continue_button())
     elif query.data == "level_hard":
         context.user_data["level"] = "hard"
         user_data[user_id]["level"] = "hard"
-        await query.edit_message_text(t("🚀 Уровень установлен: Сложный", "🚀 Level set: Hard"))
+        await query.edit_message_text(t("🚀 Уровень установлен: Сложный", "🚀 Level set: Hard"), reply_markup=continue_button())
     elif query.data == "switch_to_hard":
         context.user_data["level"] = "hard"
         user_data[user_id]["level"] = "hard"
-        await query.edit_message_text("🚀 Режим сложных вопросов активирован!" if lang == "ru" else "🚀 Hard question mode activated!")
-        await query.message.reply_text("🔁 Обновляем клавиатуру..." if lang == "ru" else "🔁 Updating keyboard...", reply_markup=get_main_keyboard(user_id, lang))
+        await query.edit_message_text("🚀 Режим сложных вопросов активирован!" if lang == "ru" else "🚀 Hard mode activated!",
+                                      reply_markup=continue_button())
+    elif query.data == "start_training":
+        await send_new_question(update, context, user_id, lang)
 
 def get_settings_handlers():
     return [
         MessageHandler(filters.Regex("⚙️ Настройки|⚙️ Settings"), settings_command),
         CallbackQueryHandler(handle_settings_callback,
-            pattern="^(change_language|change_level|show_progress|reset_progress|leave_feedback|lang_en|lang_ru|level_easy|level_hard|switch_to_hard)$")
+            pattern="^(change_language|change_level|show_progress|reset_progress|leave_feedback|lang_en|lang_ru|level_easy|level_hard|switch_to_hard|start_training)$")
     ]
