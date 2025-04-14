@@ -1,4 +1,4 @@
-from telegram import Update
+from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import ContextTypes
 from keyboards import get_main_keyboard
 
@@ -9,37 +9,50 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["language"] = lang
     context.user_data["level"] = "easy"
 
-    if lang == "ru":
-        welcome = (
-            "👋 Привет! Добро пожаловать в **Level 4 Trainer** – твой персональный тренажер к сдаче устной части экзамена ИКАО! ✈️💼\n\n"
-            "Здесь ты сможешь:\n"
-            "• Тренировать ответы на экзаменационные вопросы 🎯\n"
-            "• Получать голосовое сопровождение вопросов и ответов на английском языке 🔊🇬🇧\n"
-            "• Переводить вопросы и ответы на русский язык 🌐🇷🇺\n"
-            "• Отслеживать свой прогресс 📊 и совершенствовать навыки 🚀\n\n"
-            "Нажми «Следующий вопрос», чтобы начать! 🌟"
-        )
-    else:
-        welcome = (
-            "👋 Hello! Welcome to **Level 4 Trainer** – your personal trainer for the ICAO oral exam! ✈️💼\n\n"
-            "With this bot, you can:\n"
-            "• Practice answers for exam questions 🎯\n"
-            "• Receive voice support for questions and answers in English 🔊🇬🇧\n"
-            "• Translate questions and answers into Russian 🌐🇷🇺\n"
-            "• Track your progress 📊 and improve your skills 🚀\n\n"
-            "Tap 'Next question' to get started! 🌟"
-        )
-
-    await update.message.reply_text(
-        welcome,
-        reply_markup=get_main_keyboard(user_id, lang)
+    welcome = (
+        "👋 Привет! Добро пожаловать в Level 4 Trainer – твой тренажер к устной части экзамена ИКАО! ✈️\n\n"
+        "Нажми «Следующий вопрос», чтобы начать 🚀"
+        if lang == "ru" else
+        "👋 Welcome to Level 4 Trainer – your personal ICAO speaking exam trainer! ✈️\n\n"
+        "Tap 'Next question' to get started 🚀"
     )
+
+    await update.message.reply_text(welcome, reply_markup=get_main_keyboard(user_id, lang))
 
 async def support_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     lang = context.user_data.get("language", "en")
-    text = (
-        "💳 Вы можете поддержать проект здесь:\nhttps://www.sberbank.com/sms/pbpn?requisiteNumber=79155691550"
-        if lang == "ru" else
-        "💳 You can support the project here:\nhttps://www.sberbank.com/sms/pbpn?requisiteNumber=79155691550"
+
+    keyboard = InlineKeyboardMarkup([
+        [InlineKeyboardButton("💳 Поддержать" if lang == "ru" else "💳 Support", callback_data="show_support_link")],
+        [InlineKeyboardButton("🔙 Назад" if lang == "ru" else "🔙 Back", callback_data="back_to_main")]
+    ])
+
+    await update.message.reply_text(
+        "💙 Спасибо за желание поддержать проект!" if lang == "ru"
+        else "💙 Thank you for wanting to support the project!",
+        reply_markup=keyboard
     )
-    await update.message.reply_text(text)
+
+async def handle_support_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    lang = context.user_data.get("language", "en")
+    await query.answer()
+
+    if query.data == "show_support_link":
+        text = (
+            "🙏 Этот бот был создан одним человеком с нуля — с любовью к авиации и стремлением помочь другим в подготовке к экзамену ICAO.\n\n"
+            "Если он оказался полезен — поддержать можно переводом на Сбер:\n"
+            "https://www.sberbank.com/sms/pbpn?requisiteNumber=79155691550"
+            if lang == "ru" else
+            "🙏 This bot was built entirely by one person — with a love for aviation and a passion to help others prepare for the ICAO exam.\n\n"
+            "If you found it helpful, you can support it via Sber transfer:\n"
+            "https://www.sberbank.com/sms/pbpn?requisiteNumber=79155691550"
+        )
+        await query.edit_message_text(text)
+    elif query.data == "back_to_main":
+        text = (
+            "🔙 Возвращаемся к обучению! Желаю отличной практики ✈️"
+            if lang == "ru" else
+            "🔙 Back to training! Wishing you a great practice session ✈️"
+        )
+        await query.edit_message_text(text)
