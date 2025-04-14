@@ -9,30 +9,27 @@ from telegram.ext import (
 )
 from config import BOT_TOKEN
 from handlers.commands import start_command, support_command, handle_support_callback
-from handlers.questions import handle_user_message, handle_inline_callback
+from handlers.questions import handle_user_message
 from handlers.settings import get_settings_handlers
 from handlers.admin import get_admin_handlers
 from handlers.feedback import handle_feedback_message
 
-# Настройка логов
+# Логирование
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     level=logging.INFO
 )
 
-# Создание приложения
+# Создаём приложение
 app = ApplicationBuilder().token(BOT_TOKEN).build()
 
-# Загрузка вопросов
+# Загружаем вопросы в память (для режима вопросов)
 with open("questions.json", encoding="utf-8") as f:
     app.bot_data["questions"] = json.load(f)
 
 # Команды
 app.add_handler(CommandHandler("start", start_command))
 app.add_handler(CommandHandler("support", support_command))
-
-# Поддержка через инлайн-кнопки
-app.add_handler(CallbackQueryHandler(handle_support_callback, pattern="^(show_support_link|back_to_main)$"))
 
 # Настройки
 for handler in get_settings_handlers():
@@ -42,10 +39,10 @@ for handler in get_settings_handlers():
 for handler in get_admin_handlers():
     app.add_handler(handler)
 
-# Обработка инлайн-кнопок в блоке тренировки
-app.add_handler(CallbackQueryHandler(handle_inline_callback))
+# Инлайн-обработчики: поддержка проекта
+app.add_handler(CallbackQueryHandler(handle_support_callback, pattern="^(show_support_link|back_to_main)$"))
 
-# Обработка текстовых сообщений (в том числе приветствие)
+# Основной текстовый обработчик: вопрос/перевод/ответ/отзыв
 async def message_dispatcher(update, context):
     if context.user_data.get("feedback_mode"):
         await handle_feedback_message(update, context)
@@ -54,7 +51,7 @@ async def message_dispatcher(update, context):
 
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, message_dispatcher))
 
-# Запуск бота
+# Запуск
 if __name__ == "__main__":
     logging.info("🚀 Бот запущен!")
     app.run_polling()

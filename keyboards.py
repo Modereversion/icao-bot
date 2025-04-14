@@ -1,22 +1,28 @@
 from telegram import ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
 from config import ADMIN_ID
 
+def get_label(key, lang):
+    labels = {
+        "next": {"ru": "✈️ Следующий вопрос", "en": "✈️ Next question"},
+        "answer": {"ru": "💬 Ответ", "en": "💬 Answer"},
+        "q_translate": {"ru": "🌍 Перевод вопроса", "en": "🌍 Translate question"},
+        "a_translate": {"ru": "🇷🇺 Перевод ответа", "en": "🇷🇺 Translate answer"},
+        "support": {"ru": "💳 Поддержать проект", "en": "💳 Support project"},
+        "settings": {"ru": "⚙️ Настройки", "en": "⚙️ Settings"},
+    }
+    return labels[key][lang]
+
 def get_main_keyboard(user_id, lang="en"):
-    keyboard = []
-
-    # ⚙️ Настройки
-    row = ["⚙️ Настройки" if lang == "ru" else "⚙️ Settings"]
-
-    # 💳 Поддержать
-    row.append("💳 Поддержать проект" if lang == "ru" else "💳 Support project")
-    keyboard.append(row)
-
-    # 🛠️ Админ-панель (только для ADMIN_ID)
+    base_keyboard = [
+        [get_label("next", lang), get_label("answer", lang)],
+        [get_label("q_translate", lang), get_label("a_translate", lang)],
+        [get_label("settings", lang), get_label("support", lang)]
+    ]
+    # Кнопка "Управление" добавляется только для администратора
     if user_id == ADMIN_ID:
-        admin_text = "🛠️ Управление" if lang == "ru" else "🛠️ Admin"
-        keyboard.append([admin_text])
-
-    return ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
+        admin_text = "🛠️ Управление" if lang == "ru" else "🛠️ Admin Control"
+        base_keyboard.append([admin_text])
+    return ReplyKeyboardMarkup(base_keyboard, resize_keyboard=True)
 
 def get_language_keyboard():
     return InlineKeyboardMarkup([
