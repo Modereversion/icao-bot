@@ -28,7 +28,10 @@ def get_user_data(user_id):
             "auto_repeat": False,
             "answer_display_count": 0,
             "q_translate_count": 0,
-            "a_translate_count": 0
+            "a_translate_count": 0,
+            "answers_viewed": 0,
+            "q_translations": 0,
+            "a_translations": 0
         }
     return user_data[user_id]
 
@@ -42,7 +45,6 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
     data["language"] = lang
     context.user_data["language"] = lang
 
-    # Кнопки
     btn_next    = "✈️ Следующий вопрос" if lang == "ru" else "✈️ Next question"
     btn_answer  = "💬 Ответ" if lang == "ru" else "💬 Answer"
     btn_q_trans = "🌍 Перевод вопроса" if lang == "ru" else "🌍 Translate question"
@@ -60,7 +62,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         await update.message.reply_text(prompt, reply_markup=inline_keyboard)
         return
 
-    # 💳 Поддержать проект — теперь вызывает инлайн-меню из commands.py
+    # 💳 Поддержать проект
     if msg == btn_support:
         from handlers.commands import support_command
         await support_command(update, context)
@@ -110,6 +112,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
             if voice:
                 await update.message.reply_voice(voice)
             data["answer_display_count"] = 1
+            data["answers_viewed"] += 1  # ✅ учёт статистики
         else:
             await update.message.reply_text("❗ Ответ уже получен." if lang == "ru" else "❗ Answer already shown.")
         return
@@ -123,6 +126,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         if data["q_translate_count"] == 0:
             await update.message.reply_text(f"🌍 {q['question_ru']}")
             data["q_translate_count"] = 1
+            data["q_translations"] += 1  # ✅ учёт статистики
         else:
             await update.message.reply_text("❗ Вопрос уже переведён." if lang == "ru" else "❗ Question already translated.")
         return
@@ -139,6 +143,7 @@ async def handle_user_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         if data["a_translate_count"] == 0:
             await update.message.reply_text(f"🇷🇺 {q['answer_ru']}")
             data["a_translate_count"] = 1
+            data["a_translations"] += 1  # ✅ учёт статистики
         else:
             await update.message.reply_text("❗ Ответ уже переведён." if lang == "ru" else "❗ Answer already translated.")
         return
