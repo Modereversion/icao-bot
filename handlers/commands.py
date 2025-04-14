@@ -5,7 +5,6 @@ from keyboards import get_main_keyboard
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     lang_code = update.effective_user.language_code or "en"
-    # Если пользователь использует русскую раскладку, выбираем "ru", иначе "en"
     lang = "ru" if lang_code.startswith("ru") else "en"
     context.user_data["language"] = lang
     context.user_data["level"] = "easy"
@@ -38,14 +37,9 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def support_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     lang = context.user_data.get("language", "en")
-    if lang == "ru":
-        text = (
-            "💳 Вы можете поддержать проект здесь:\n"
-            "https://www.sberbank.com/sms/pbpn?requisiteNumber=79155691550"
-        )
-    else:
-        text = (
-            "💳 You can support the project here:\n"
-            "https://www.sberbank.com/sms/pbpn?requisiteNumber=79155691550"
-        )
+    text = (
+        "💳 Вы можете поддержать проект здесь:\nhttps://www.sberbank.com/sms/pbpn?requisiteNumber=79155691550"
+        if lang == "ru" else
+        "💳 You can support the project here:\nhttps://www.sberbank.com/sms/pbpn?requisiteNumber=79155691550"
+    )
     await update.message.reply_text(text)
